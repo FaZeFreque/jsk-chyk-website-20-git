@@ -1,0 +1,728 @@
+/* ==========================================================
+   CHYK — COMPREHENSIVE MOBILE / TABLET FIX
+   Targets: ≤1024px (tablet), ≤767px (phone)
+   Loaded last on every page — overrides with minimal !important,
+   fixes layout causes rather than hiding overflow.
+   ========================================================== */
+
+/* ───────────────────────────────────────────────────────────
+   0. GLOBAL SAFETY — every page
+   ─────────────────────────────────────────────────────────── */
+
+/* Prevent any stray fixed-width element from causing horizontal scroll */
+@media (max-width: 1024px) {
+  html, body { max-width: 100vw; overflow-x: hidden; }
+
+  /* Images & videos never exceed container */
+  img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Tables scroll horizontally inside their container */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+
+  /* Ensure all containers respect viewport */
+  .container, .container-sm {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    box-sizing: border-box;
+  }
+
+  /* Text wrapping safety — overflow-wrap handles long words without mid-word breaks */
+  h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Buttons: wrap in flex contexts, never overflow */
+  .btn { white-space: normal; text-align: center; }
+  .flex, [style*="display:flex"], [style*="display: flex"] { flex-wrap: wrap; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   1. HEADER — consistent across all pages
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  /* Full-width pill → full-width bar */
+  .site-header {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    padding: 0.65rem 1.25rem !important;
+    background: rgba(8, 8, 8, 0.92) !important;
+    box-sizing: border-box !important;
+  }
+  .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+  /* Always show header logo; hide persistent floating logo */
+  .header-logo,
+  .site-header .logo { display: flex !important; align-items: center; gap: 0.5rem; }
+  .header-logo img  { height: 32px !important; filter: brightness(0) invert(1); object-fit: contain; }
+  .persistent-chyk-logo { display: none !important; }
+  /* Always show hamburger */
+  .hamburger { display: flex !important; }
+  /* Hide desktop nav */
+  .desktop-nav { display: none !important; }
+
+  /* No horizontal overflow from nav */
+  .nav-dropdown, .nav-dd-panel { display: none !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-header { padding: 0.75rem 1.5rem !important; }
+  .header-logo img { height: 36px !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   2. PAGE HERO — inner pages
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .page-hero {
+    min-height: 42vh !important;
+    padding: 5.5rem 1.25rem 2.5rem !important;
+    overflow: hidden !important;
+  }
+  .page-hero-title {
+    font-size: clamp(2rem, 9.5vw, 3rem) !important;
+    letter-spacing: -1px !important;
+    line-height: 0.95 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+  .page-hero-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    max-width: 100% !important;
+  }
+  /* Decorative background text — clip strictly, never expand page */
+  .page-hero-big-text {
+    font-size: clamp(4rem, 20vw, 8rem) !important;
+    right: -1vw !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .page-hero {
+    min-height: 48vh !important;
+    padding: 6rem 2rem 3rem !important;
+  }
+  .page-hero-title {
+    font-size: clamp(3rem, 7vw, 5rem) !important;
+    letter-spacing: -2px !important;
+  }
+  .page-hero-big-text {
+    font-size: clamp(6rem, 14vw, 11rem) !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   3. SECTIONS & TYPOGRAPHY
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .section, .section-sm, .section-lg {
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 7.5vw, 3rem) !important;
+    letter-spacing: -1px !important;
+    line-height: 0.95 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .section { padding: 5rem 2rem !important; }
+  .section-sm { padding: 3.5rem 2rem !important; }
+  .section-lg { padding: 7rem 2rem !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   4. STATS BAND — all pages
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .stats-band { padding: 2.5rem 1.1rem !important; }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+    max-width: 100% !important;
+  }
+  .stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    padding: 0.75rem 0.5rem !important;
+  }
+  .stat-item:nth-child(even) { border-right: none !important; }
+  .stat-number {
+    font-size: clamp(2rem, 9vw, 3.2rem) !important;
+    letter-spacing: -1px !important;
+  }
+  .stat-label { font-size: 0.65rem !important; letter-spacing: 1.5px !important; }
+}
+
+@media (max-width: 374px) {
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-item { border-bottom: 1px solid rgba(255,255,255,0.05) !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   5. BUTTONS — touch targets & no overflow
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .btn {
+    min-height: 44px !important;
+    padding: 0.75rem 1.4rem !important;
+    font-size: 0.78rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Button groups wrap instead of overflow */
+  .flex.gap-sm, .flex.gap-md,
+  .form-nav-btns, .modal-ctas,
+  .featured-event-body .flex {
+    flex-wrap: wrap !important;
+    gap: 0.65rem !important;
+  }
+  .btn-primary, .btn-outline, .btn-ghost, .btn-dark {
+    flex-shrink: 0 !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   6. EVENTS PAGE
+   ─────────────────────────────────────────────────────────── */
+
+/* Featured event card: stack on mobile */
+@media (max-width: 767px) {
+  .featured-event-card {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+  .featured-event-img {
+    aspect-ratio: 16/9 !important;
+    width: 100% !important;
+    max-height: 55vw !important;
+  }
+  .featured-event-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .featured-event-body {
+    padding: 1.25rem 1.25rem 1.5rem !important;
+  }
+  .featured-event-title {
+    font-size: clamp(1.2rem, 5vw, 1.75rem) !important;
+    word-break: break-word !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Event list row: 2-col on mobile */
+  .event-list-row {
+    grid-template-columns: 56px 1fr !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+  .event-list-row > :last-child {
+    grid-column: 1 / -1 !important;
+  }
+  .event-list-title { font-size: 0.9rem !important; }
+
+  /* Event card title wrap */
+  .event-card-title { word-break: break-word !important; }
+
+  /* Filter tabs: horizontal scroll */
+  #event-filters {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.4rem !important;
+    scrollbar-width: none !important;
+    max-width: 100% !important;
+  }
+  #event-filters::-webkit-scrollbar { display: none !important; }
+  .filter-tab { flex-shrink: 0 !important; white-space: nowrap !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .featured-event-card { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .featured-event-body { padding: 1.75rem !important; }
+  .events-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   7. MAGAZINE PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Latest issue: stack cover above body */
+  .magazine-latest-card {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 1.25rem !important;
+    box-sizing: border-box !important;
+  }
+  .magazine-latest-cover {
+    width: min(200px, 55vw) !important;
+    margin: 0 auto !important;
+  }
+  .magazine-latest-title {
+    font-size: clamp(1.3rem, 5.5vw, 2rem) !important;
+    word-break: break-word !important;
+  }
+  .magazine-latest-desc { font-size: 0.85rem !important; }
+  .magazine-latest-body .flex { flex-wrap: wrap !important; gap: 0.65rem !important; }
+
+  /* Issues grid: 2 cols minimum */
+  .magazine-issues-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .magazine-issue-title { font-size: 0.82rem !important; }
+
+  /* Write-for / CTA section - no overflow */
+  .section .magazine-write-cta,
+  .section [class*="write"] {
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+  }
+
+  /* Book reviews: single column */
+  .book-reviews-grid { grid-template-columns: 1fr !important; }
+  .book-review-card { grid-template-columns: 80px 1fr !important; gap: 1rem !important; }
+
+  /* Short reads: single column, no right column overflow */
+  .short-read-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    padding: 1.1rem 1rem !important;
+  }
+  .short-read-meta { text-align: left !important; }
+
+  /* Reduce empty space in latest section */
+  #latest-issue-feature { margin-bottom: 2rem !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .magazine-latest-card { grid-template-columns: 160px 1fr !important; gap: 2rem !important; padding: 2rem !important; }
+  .magazine-issues-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .book-reviews-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   8. ACTIVITIES PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .activities-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .activity-card-img { aspect-ratio: 16/9 !important; max-width: 100% !important; }
+  .activity-card-img img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  .activities-header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+  /* Filter tabs: scroll horizontally */
+  .activities-header .filter-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    max-width: 100% !important;
+    padding-bottom: 0.4rem !important;
+  }
+  .activities-header .filter-tabs::-webkit-scrollbar { display: none !important; }
+  .activities-header .filter-tabs .filter-tab { flex-shrink: 0 !important; white-space: nowrap !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .activities-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   9. ABOUT PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .about-intro {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .about-intro-img {
+    max-width: min(360px, 90vw) !important;
+    margin: 0 auto !important;
+  }
+  .age-group-cards { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .age-card { padding: 1.5rem !important; }
+  .age-card-range { font-size: 2rem !important; }
+
+  /* Emblem: stack */
+  .emblem-section { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .emblem-img-wrap { width: min(160px, 40vw) !important; margin: 0 auto !important; }
+
+  /* Org tree: prevent horizontal overflow */
+  .org-tree { width: 100% !important; overflow: visible !important; }
+  .org-level {
+    flex-wrap: wrap !important;
+    gap: 0.6rem !important;
+    justify-content: center !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .org-node {
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0.6rem 1rem !important;
+    max-width: calc(50% - 0.3rem) !important;
+    font-size: 0.78rem !important;
+  }
+  .org-connector { flex-wrap: wrap !important; gap: 0.6rem !important; padding: 0 0.5rem 1.5rem !important; }
+  .org-connector > * { max-width: calc(50% - 0.3rem) !important; }
+  .shloka-text { font-size: clamp(1.1rem, 4.5vw, 1.6rem) !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about-intro { grid-template-columns: 1fr 1fr !important; gap: 3rem !important; }
+  .age-group-cards { grid-template-columns: 1fr 1fr !important; }
+  .org-level { flex-wrap: wrap !important; gap: 0.8rem !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   10. CONTACT PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .contact-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .contact-info { position: static !important; }
+  .contact-form-wrap { padding: 1.5rem 1.25rem !important; }
+  .contact-type-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .centres-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contact-layout { grid-template-columns: 1fr 1.2fr !important; gap: 3rem !important; }
+  .centres-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   11. JOIN PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .join-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .join-form-wrap { padding: 1.5rem 1.25rem !important; }
+  .interests-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   12. WINGS PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .wings-grid { grid-template-columns: 1fr !important; }
+  .wings-involve-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .wings-category-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 0.4rem !important;
+  }
+  .wings-category-tabs::-webkit-scrollbar { display: none !important; }
+  .wings-category-tabs .filter-tab { flex-shrink: 0 !important; white-space: nowrap !important; }
+  .wing-detail-layout { overflow-wrap: break-word !important; word-break: break-word !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wings-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .wings-involve-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   13. CONTENT HUB PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .hub-cards { grid-template-columns: 1fr !important; }
+  .hub-featured { grid-template-columns: 1fr !important; }
+  .hub-featured-main { min-height: 280px !important; }
+  .hub-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hub-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  .hub-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   14. TALKS & ARTICLES PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .talks-grid, .articles-grid { grid-template-columns: 1fr !important; }
+  .talks-controls { flex-direction: column !important; align-items: flex-start !important; gap: 0.75rem !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .talks-grid, .articles-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   15. SOCIAL PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .social-platforms-grid { grid-template-columns: 1fr !important; }
+  .social-feed-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .yt-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .social-platforms-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .social-feed-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .yt-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   16. ART PAGE
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .gallery-masonry { columns: 2 !important; column-gap: 0.75rem !important; }
+  .gallery-item { margin-bottom: 0.75rem !important; }
+  .art-submit-cta { padding: 2rem 1.25rem !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .gallery-masonry { columns: 3 !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   17. MODAL / LIGHTBOX — fit viewport on mobile
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .modal-overlay {
+    padding: 0 !important;
+    align-items: flex-end !important;
+  }
+  .modal-box {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    max-height: 92dvh !important;
+    max-height: 92vh !important;        /* fallback */
+    border-radius: 20px 20px 0 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+  .modal-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 55vw !important;
+    min-height: 180px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+  }
+  .modal-body {
+    height: auto !important;
+    padding: 1.25rem 1.25rem 2.5rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex: 1 !important;
+  }
+  .modal-close {
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    width: 40px !important; height: 40px !important;
+    z-index: 100 !important;
+  }
+  .modal-title { font-size: clamp(1.1rem, 5vw, 1.5rem) !important; }
+  .modal-ctas { flex-wrap: wrap !important; gap: 0.65rem !important; }
+}
+
+/* Lightbox */
+@media (max-width: 767px) {
+  .lightbox-img { max-width: 96vw !important; max-height: 75vh !important; }
+  .lightbox-close {
+    top: 0.75rem !important; right: 0.75rem !important;
+    width: 44px !important; height: 44px !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   18. FOOTER — mobile/tablet
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .site-footer { padding: 3rem 1.25rem 1.75rem !important; }
+  .footer-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .footer-links { grid-template-columns: 1fr 1fr !important; gap: 1.25rem !important; }
+  .footer-desc { max-width: 100% !important; }
+  .footer-social-col { flex-direction: row !important; flex-wrap: wrap !important; gap: 0.5rem !important; }
+  .footer-bottom { flex-direction: column !important; text-align: center !important; gap: 0.3rem !important; }
+}
+
+@media (max-width: 430px) {
+  .footer-links { grid-template-columns: 1fr !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-footer { padding: 4rem 2rem 2rem !important; }
+  .footer-inner { grid-template-columns: 1fr 1fr !important; gap: 3rem !important; }
+  .footer-social-col { flex-direction: row !important; flex-wrap: wrap !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   19. LEADERS & ALUMNI PAGES — person cards
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Leader/alumni card grids */
+  [class*="people-grid"],
+  [class*="leaders-grid"],
+  [class*="alumni-grid"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  /* Profile modal on mobile */
+  .modal-box[class*="profile"],
+  .modal-box {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  /* Person card image */
+  .profile-img-placeholder,
+  .leader-photo,
+  .alumni-photo {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 374px) {
+  [class*="people-grid"],
+  [class*="leaders-grid"],
+  [class*="alumni-grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   20. TOUCH — disable hover effects, improve UX
+   ─────────────────────────────────────────────────────────── */
+
+@media (hover: none), (pointer: coarse) {
+  /* Hide cursor entirely */
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  body { cursor: auto !important; }
+
+  /* Disable hover transforms that only make sense with mouse */
+  .btn:hover { transform: none !important; box-shadow: none !important; }
+  .card:hover { transform: none !important; }
+  .activity-card:hover { transform: none !important; }
+  .event-card:hover { transform: none !important; }
+  .wing-card:hover { transform: none !important; }
+  .hub-card:hover { transform: none !important; }
+  .why-card:hover { transform: none !important; }
+  .platform-card:hover { transform: none !important; }
+
+  /* Keep tap feedback */
+  .btn:active { transform: scale(0.95) !important; opacity: 0.85; }
+  .filter-tab:active { opacity: 0.7; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   21. MOBILE MENU ANIMATION — smooth, reliable
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .mobile-menu {
+    padding-top: 6rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .mobile-nav-link {
+    padding: 0.5rem 0 !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .mobile-cta { min-height: 44px !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   22. FORM FIXES — mobile usability
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .form-row { grid-template-columns: 1fr !important; }
+  .form-input, .form-textarea, .form-select {
+    font-size: 16px !important; /* prevent iOS zoom */
+  }
+  .search-input { font-size: 16px !important; }
+  .form-actions { flex-wrap: wrap !important; gap: 0.65rem !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   23. TESTIMONIALS — mobile single column
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ───────────────────────────────────────────────────────────
+   24. SECTION HEADER ROW — wrap on mobile
+   ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .section-hrow {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+  .events-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+}

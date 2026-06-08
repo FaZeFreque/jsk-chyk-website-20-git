@@ -1972,3 +1972,115 @@ h1, h2, h3, .logo, .loading-text {
     height: 60vw !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   HOMEPAGE MOBILE / TABLET — extra targeted fixes
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Milestone card 05 uniformity: enforce consistent image ratio on ALL cards ── */
+@media (max-width: 1024px) {
+  .deck-card .deck-img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+}
+
+/* ── Homepage: hero title / CTA visible on mobile ── */
+@media (max-width: 767px) {
+  /* Hero padding accounts for fixed header */
+  .hero-content {
+    padding-top: 6rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    box-sizing: border-box !important;
+  }
+  .hero-title {
+    font-size: clamp(2.8rem, 12vw, 5rem) !important;
+    letter-spacing: -1px !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+  .hero-subtitle {
+    font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+    max-width: 100% !important;
+  }
+  /* CTA buttons: wrap neatly */
+  .hero-ctas, .hero-buttons, .cta-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+  .hero-ctas .btn, .hero-buttons .btn, .cta-group .btn {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  /* Stats counter section on homepage */
+  .stats-section,
+  .stats-counter,
+  [class*="stats-row"] {
+    flex-wrap: wrap !important;
+    gap: 1.25rem 2rem !important;
+    padding: 2.5rem 1.25rem !important;
+  }
+  .stat-block, [class*="stat-item"] {
+    flex: 1 1 40% !important;
+    text-align: center !important;
+  }
+
+  /* Lenis / GSAP scroll: ensure content sections don't clip */
+  .main-content {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* chyk-core: remove excess left/right space that can overflow */
+  .chyk-core {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .core-text-vertical {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    box-sizing: border-box !important;
+    max-width: 100vw !important;
+  }
+  .core-title {
+    font-size: clamp(2rem, 9vw, 3.5rem) !important;
+    word-break: break-word !important;
+    letter-spacing: -1px !important;
+  }
+
+  /* People / alumni section on homepage */
+  .people-section .section-grid,
+  [class*="people-grid"],
+  [class*="alumni-grid"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-title {
+    font-size: clamp(2.2rem, 11vw, 3.5rem) !important;
+  }
+}
+
+/* ── Tablet homepage ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 5rem) !important;
+  }
+  .chyk-core {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .core-text-vertical {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
