@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force -Path \"css\", \"js\", \"js\\\\utils\", \"data\")",
+      "Bash(Select-Object FullName)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(node --input-type=module)",
+      "Bash(node --check \"F:/CIRS F/jsk-chyk-website structured/jsk-chyk-website 13/js/base.js\")",
+      "Bash(node --check \"F:/CIRS F/jsk-chyk-website structured/jsk-chyk-website 13/js/activities.js\")",
+      "Bash(node --check \"F:/CIRS F/jsk-chyk-website structured/jsk-chyk-website 13/js/content-hub.js\")",
+      "Bash(node --check \"F:/CIRS F/jsk-chyk-website structured/jsk-chyk-website 13/js/wings.js\")",
+      "Bash(node --check \"F:/CIRS F/jsk-chyk-website structured/jsk-chyk-website 13/js/nav.js\")",
+      "PowerShell(Get-ChildItem -Path \"F:\\\\CIRS F\\\\jsk-chyk-website structured\\\\jsk-chyk-website 16\" -Force | Select-Object Name, @{N='Type';E={if\\($_.PSIsContainer\\){'Folder'}else{'File'}}} | Format-Table -AutoSize)",
+      "Bash(Select-String -Pattern \"home-people\" \"F:\\\\CIRS F\\\\jsk-chyk-website structured\\\\jsk-chyk-website 16\\\\style.css\")",
+      "Bash(Select-Object -First 3)",
+      "Bash(Get-Content \"F:\\\\CIRS F\\\\jsk-chyk-website structured\\\\jsk-chyk-website 16\\\\style.css\")",
+      "Bash(Select-Object -Last 5)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node --check \"F:\\\\CIRS F\\\\jsk-chyk-website structured\\\\jsk-chyk-website 16\\\\script.js\")",
+      "Skill(run)",
+      "Skill(run:*)"
+    ]
+  }
+}

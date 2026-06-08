@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHYK | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&family=Anton&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <!-- Shared base styles (nav, footer, components) -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+        <!-- Persistent Huge CHYK Logo -->
+        <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 0; pointer-events: none;">
+            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+        </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Initial Text Loading Screen -->
+    <div class="loading-screen">
+        <h1 class="loading-text">CHYK</h1>
+    </div>
+
+    <!-- Mobile Menu (shared) -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-top">
+            <nav class="mobile-nav-links">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="about.html" class="mobile-nav-link">About</a>
+                <a href="activities.html" class="mobile-nav-link">Activities</a>
+                <a href="events.html" class="mobile-nav-link">Events</a>
+                <a href="content-hub.html" class="mobile-nav-link">Content Hub</a>
+                <a href="talks-and-articles.html" class="mobile-nav-link">Talks</a>
+                <a href="magazine.html" class="mobile-nav-link">Magazine</a>
+                <a href="art.html" class="mobile-nav-link">Art</a>
+                <a href="social.html" class="mobile-nav-link">Social</a>
+                <a href="wings.html" class="mobile-nav-link">Wings</a>
+                <a href="contact.html" class="mobile-nav-link">Contact</a>
+                <a href="leaders.html" class="mobile-nav-link">Leaders</a>
+                <a href="alumni.html" class="mobile-nav-link">Alumni</a>
+            </nav>
+            <a href="join.html" class="mobile-cta">Join CHYK →</a>
+        </div>
+        <p class="mobile-menu-footer">CHYK — Chinmaya Yuva Kendra © 2024</p>
+    </div>
+
+    <!-- Main Content wrapper -->
+    <div class="main-content">
+
+        <!-- Header / Nav — .nav class kept for GSAP compatibility; site-header for new CSS -->
+        <header class="nav site-header" id="site-header" style="opacity: 0; visibility: hidden;">
+            <div class="header-inner">
+                <a href="index.html" class="header-logo">
+                    <img src="chyk website logo.png" alt="CHYK" class="logo-img">
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="activities.html" class="nav-link">Activities</a>
+                    <a href="events.html" class="nav-link">Events</a>
+                    <a href="content-hub.html" class="nav-link">Content Hub</a>
+                    <div class="nav-more-wrapper">
+                        <button class="nav-more-trigger nav-link">More <span class="nav-arrow">↓</span></button>
+                        <div class="nav-dropdown">
+                            <a href="talks-and-articles.html">Talks & Articles</a>
+                            <a href="magazine.html">Magazine</a>
+                            <a href="art.html">Art</a>
+                            <a href="social.html">Social</a>
+                            <a href="wings.html">Wings</a>
+                            <a href="contact.html">Contact</a>
+                            <a href="leaders.html">Leaders</a>
+                            <a href="alumni.html">Alumni</a>
+                        </div>
+                    </div>
+                    <a href="join.html" class="nav-link nav-cta magnetic-btn">Join CHYK</a>
+                </nav>
+                <button class="hamburger" id="hamburger" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN HORIZONTAL EXPERIENCE -->
+        <section class="horizontal-experience">
+            <div class="horizontal-sticky">
+
+                <!-- FIXED BACKGROUND LAYERS (Shared across home and horizontal scroll) -->
+                <div class="hero-bg" style="position: absolute; width: 100vw; height: 100vh;">
+                    <video class="hero-vid main-vid" muted loop playsinline>
+                        <source src="./BG VID.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Darkness Overlay & Flashlight Reveal -->
+                <div class="hero-darkness" style="position: absolute; width: 100vw; height: 100vh;">
+                    <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+                        <defs>
+                            <radialGradient id="flashlight-grad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="black" />
+                                <stop offset="40%" stop-color="#444" />
+                                <stop offset="75%" stop-color="#aaa" />
+                                <stop offset="100%" stop-color="white" />
+                            </radialGradient>
+                            <mask id="flashlight-mask">
+                                <rect width="100%" height="100%" fill="white" />
+                                <ellipse id="flashlight" cx="50%" cy="50%" rx="0" ry="0" fill="url(#flashlight-grad)" />
+                            </mask>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#050505" mask="url(#flashlight-mask)" />
+                    </svg>
+                </div>
+
+                <!-- Preloader video (Ensured autoplay and higher z-index) -->
+                <video class="hero-vid preloader-vid" autoplay muted playsinline
+                    style="z-index: 100; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover;">
+                    <source src="./pre loader half.mp4" type="video/mp4">
+                </video>
+
+                <!-- HERO CONTENT (HIDDEN TAGS) -->
+                <div class="hero-content">
+                    <div class="logo top-left" style="position: absolute; top: -15px; left: 40px;">
+                        <img src="chinmaya logo.png" alt="Chinmaya Logo" style="height: 140px; object-fit: contain;">
+                    </div>
+                    <div class="hero-tag top-right">EST. 2024 / CHYK GLOBAL<br>MUMBAI, IN</div>
+                    <div class="hero-main" style="mix-blend-mode: difference;">
+                        <h1 class="hero-title"
+                            style="color: #ffffff; font-size: 4.5vw; line-height: 1.1; text-align: center; font-weight: 800; letter-spacing: -1px;">
+                            HARNESSING<br>
+                            <span class="gold-text" style="animation: none; text-shadow: none; white-space: nowrap; display: inline-block;">YOUTH POTENTIAL</span>
+                        </h1>
+                        <p class="hero-subtitle">The digital frontier for the next generation of seekers.</p>
+                    </div>
+                    <div class="floating-node" style="top: 25%; left: 15%;">50K+ SEEKERS</div>
+                    <div class="floating-node" style="top: 70%; left: 80%;">12 COUNTRIES</div>
+                    <div class="floating-node" style="top: 35%; left: 82%;">ZERO BOUNDARIES</div>
+                    <div class="floating-node" style="top: 75%; left: 20%;">ESTABLISHED 2024</div>
+                    <div class="scroll-indicator" style="mix-blend-mode: normal;">SCROLL DOWN</div>
+                </div>
+
+                <!-- Background Moving Particles (Fixed across entire scroll) -->
+                <canvas id="bg-particles"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 25; pointer-events: none; opacity: 0;"></canvas>
+
+                <div class="horizontal-track" style="position: relative; z-index: 30; height: 100vh;">
+
+                    <!-- Increased spacer width to 150vw to keep frames off-screen initially -->
+                    <div class="slide hero-slide"
+                        style="background: transparent; width: 150vw; height: 100vh; flex-shrink: 0; pointer-events: none;"></div>
+
+                    <!-- Lando Style Scrapbook Gallery -->
+                    <div class="scrapbook-track">
+                        <!-- Background Decorative Elements (Reduced for clarity) -->
+                        <div class="bg-stuff"
+                            style="position: absolute; left: 100vw; top: 20vh; opacity: 0.1; font-size: 10vw; font-family: 'Syne'; font-weight: 800; color: #fff; pointer-events: none; z-index: 1;">
+                            01</div>
+                        <div class="bg-stuff"
+                            style="position: absolute; left: 500vw; top: 10vh; opacity: 0.05; font-size: 10vw; font-family: 'Syne'; font-weight: 800; color: #fff; pointer-events: none; z-index: 0;">
+                            EVOLVE</div>
+                        <div class="bg-stuff"
+                            style="position: absolute; left: 900vw; top: 70vh; opacity: 0.05; font-size: 10vw; font-family: 'Syne'; font-weight: 800; color: #fff; pointer-events: none; z-index: 0;">
+                            LEGACY</div>
+
+                        <!-- Topographic Map Background -->
+                        <svg class="scrapbook-svg topographic-map" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                            <defs>
+                                <filter id="gooey">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="blur" />
+                                    <feColorMatrix in="blur" mode="matrix"
+                                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="gooey" />
+                                    <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+                                </filter>
+                            </defs>
+                            <g filter="url(#gooey)">
+                                <path class="topo-line" d="M-100,200 C150,100 350,300 500,200 S850,100 1100,200"
+                                    stroke="var(--gold)" fill="none" opacity="0.4" stroke-width="4" />
+                                <path class="topo-line" d="M-100,400 C200,300 400,500 600,400 S800,300 1100,400"
+                                    stroke="var(--gold)" fill="none" opacity="0.3" stroke-width="4" />
+                                <path class="topo-line" d="M-100,600 C100,500 300,700 500,600 S900,500 1100,600"
+                                    stroke="var(--gold)" fill="none" opacity="0.4" stroke-width="4" />
+                                <path class="topo-line" d="M-100,800 C250,700 450,900 700,800 S950,700 1100,800"
+                                    stroke="var(--gold)" fill="none" opacity="0.3" stroke-width="4" />
+                                <circle class="topo-line" cx="200" cy="300" r="30" stroke="var(--gold)" fill="none"
+                                    opacity="0.2" stroke-width="3" />
+                                <circle class="topo-line" cx="500" cy="500" r="50" stroke="var(--gold)" fill="none"
+                                    opacity="0.2" stroke-width="3" />
+                                <circle class="topo-line" cx="800" cy="700" r="40" stroke="var(--gold)" fill="none"
+                                    opacity="0.2" stroke-width="3" />
+                            </g>
+                        </svg>
+
+                        <!-- Items (Tighter Spacing for Dense Experience) -->
+                        <div class="scrapbook-item size-detail y-top" style="left: 5vw;">
+                            <div class="scrapbook-text">MUMBAI, 2024</div>
+                            <img src="assets/gallery-1.png" alt="Mumbai">
+                        </div>
+
+                        <div class="text-holder y-bot" style="left: 25vw;">
+                            <h2>The Origin</h2>
+                            <p>Where disruption began. A collective effort to redefine the boundaries of the digital
+                                space.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-mid" style="left: 55vw;">
+                            <div class="scrapbook-text">LONDON, 2024</div>
+                            <img src="./lando-grid-1.png" alt="London">
+                        </div>
+
+                        <div class="text-holder y-top" style="left: 85vw;">
+                            <h2>Global Reach</h2>
+                            <p>Expanding across continents, connecting seekers from all corners of the globe.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-bot" style="left: 115vw;">
+                            <div class="scrapbook-text">TOKYO, 2025</div>
+                            <img src="assets/gallery-2.png" alt="Tokyo">
+                        </div>
+
+                        <div class="scrapbook-item size-hero y-mid" style="left: 145vw;">
+                            <div class="scrapbook-text">NEW YORK, 2025</div>
+                            <img src="./lando-hero.png" alt="New York">
+                        </div>
+
+                        <div class="text-holder y-bot" style="left: 195vw;">
+                            <h2>Unseen Dimensions</h2>
+                            <p>Pushing the limits of what is visually possible. Every frame tells a story of speed and
+                                precision.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-top" style="left: 230vw;">
+                            <div class="scrapbook-text">MONACO, 2026</div>
+                            <img src="assets/gallery-3.png" alt="Monaco">
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-mid" style="left: 265vw;">
+                            <div class="scrapbook-text">DATA-01</div>
+                            <img src="./3.png" alt="Data 1">
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-bot" style="left: 295vw;">
+                            <div class="scrapbook-text">DATA-02</div>
+                            <img src="./4.png" alt="Data 2">
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-top" style="left: 330vw;">
+                            <div class="scrapbook-text">DATA-03</div>
+                            <img src="./5.png" alt="Data 3">
+                        </div>
+
+                        <div class="text-holder y-mid" style="left: 360vw; width: 14vw;">
+                            <h2>The Process</h2>
+                            <p>Iterative. Brutal. Beautiful. The journey is the destination.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-bot" style="left: 395vw;">
+                            <div class="scrapbook-text">BERLIN, 2026</div>
+                            <img src="./lando-grid-2.png" alt="Berlin">
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-mid" style="left: 430vw;">
+                            <div class="scrapbook-text">PARIS, 2027</div>
+                            <img src="./1.png" alt="Paris">
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-top" style="left: 465vw;">
+                            <div class="scrapbook-text">SYDNEY, 2028</div>
+                            <img src="./4.png" alt="Sydney">
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-bot" style="left: 495vw;">
+                            <div class="scrapbook-text">PERTH, 2028</div>
+                            <img src="./1.png" alt="Perth">
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-mid" style="left: 535vw;">
+                            <div class="scrapbook-text">BRISBANE, 2028</div>
+                            <img src="./2.png" alt="Brisbane">
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-top" style="left: 565vw;">
+                            <div class="scrapbook-text">SEOUL, 2028</div>
+                            <img src="./3.png" alt="Seoul">
+                        </div>
+
+                        <div class="text-holder y-bot" style="left: 600vw;">
+                            <h2>Digital Synergy</h2>
+                            <p>Connecting the dots between ancient culture and modern technology.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-detail y-mid" style="left: 645vw;">
+                            <div class="scrapbook-text">MILAN, 2029</div>
+                            <img src="./5.png" alt="Milan">
+                        </div>
+
+                        <div class="scrapbook-item size-standard y-bot" style="left: 675vw;">
+                            <div class="scrapbook-text">MADRID, 2029</div>
+                            <img src="./1.png" alt="Madrid">
+                        </div>
+
+                        <div class="text-holder y-mid" style="left: 710vw; width: 20vw;">
+                            <h2>The Final Frontier</h2>
+                            <p>We are not just building a website. We are engineering a legacy that will inspire
+                                generations to come.</p>
+                        </div>
+
+                        <div class="scrapbook-item size-hero y-bot" style="left: 750vw;">
+                            <div class="scrapbook-text">GLOBAL, 2030</div>
+                            <img src="./lando-hero.png" alt="Legacy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 4. THE HORIZONTAL CAROUSEL & MILESTONE TEXT (Unified) -->
+        <section>
+            <div class="chyk-core">
+            <div class="core-bg-text">MILESTONES</div>
+            
+            <!-- MILESTONE TEXT (Pinned base) -->
+            <div class="core-text-vertical" style="position: absolute; top: 15vh; left: 10vw; z-index: 1;">
+                <div class="section-label" style="color: #888;">
+                    <span class="circle-icon"></span>
+                    CHAPTER THREE // THE ARCHIVE
+                </div>
+                <h2 class="core-title" style="color: #111;">
+                    MILESTONES<br><span class="gold-text">DISRUPTION.</span>
+                </h2>
+                    <div class="core-line"></div>
+                <div class="core-desc" style="max-width: 600px; margin-top: 2rem;">
+                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">CHYK is the convergence of pure aesthetics and high-performance execution. We strip away the unnecessary, leaving only what is absolutely vital to the user experience.</p>
+                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8;">Through the lens of modern architecture and brutalist precision, we bridge the gap between abstract thought and digital reality. Welcome to the new standard.</p>
+                </div>
+            </div>
+            <!-- HORIZONTAL WHITE GATES -->
+            <div class="chyk-gate chyk-gate-top"></div>
+            <div class="chyk-gate chyk-gate-bottom"></div>
+            
+            <!-- VOID CONTENT: Hidden beneath the white gates -->
+            <div class="void-content" style="background: url('gurudev bg.png') center/cover no-repeat;">
+                
+                <!-- Darkness Overlay for the Void Reveal (Z-index 0) -->
+                <div class="void-darkness" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;">
+                    <canvas id="void-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair;"></canvas>
+                </div>
+                <!-- Text on top of the darkness (Z-index 10) -->
+                <div class="void-center-text" style="z-index: 10; position: relative;">
+                    <span class="void-label">EST. 2026 // COMING SOON</span>
+                    <h2 class="rift-title">THE ASCENT <br> CONTINUES <span class="gold-text">SOON.</span></h2>
+                    <p class="void-manifesto">The next chapter is refining in the void.</p>
+                </div>
+            </div>
+
+            <!-- HORIZONTAL WHITE GATES -->
+            <!-- (Gates Removed - Replaced by Flashlight Reveal) -->
+
+            <div class="carousel-container">
+                <!-- Cards -->
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-content"><h4>MILESTONE 01</h4><p>GENESIS // 2020</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 02</h4><p>ASSEMBLY // 2021</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="2.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 03</h4><p>EXPANSION // 2022</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="3.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 04</h4><p>ACCELERATE // 2023</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="assets/gallery-1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 05</h4><p>INCEPTION // 2024</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-content"><h4>MILESTONE 06</h4><p>SYNTHESIS // 2025</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 07</h4><p>GLOBAL // 2026</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="2.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 08</h4><p>ASCENSION // 2027</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="3.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 09</h4><p>LEGACY // 2028</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-content"><h4>MILESTONE 10</h4><p>BEYOND // 2029</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 11</h4><p>HORIZON // 2030</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="2.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 12</h4><p>ECLIPSE // 2031</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="3.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 13</h4><p>OMNIPRESENCE // 2032</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-content"><h4>MILESTONE 14</h4><p>NEXUS // 2033</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 15</h4><p>QUANTUM // 2034</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="2.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 16</h4><p>AETHER // 2035</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="3.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 17</h4><p>ZENITH // 2036</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-content"><h4>MILESTONE 18</h4><p>PARADIGM // 2037</p></div>
+                </div>
+                <div class="deck-card">
+                    <div class="deck-img-wrapper"><img src="1.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content"><h4>MILESTONE 19</h4><p>INFINITE // 2038</p></div>
+                </div>
+                <div class="deck-card" style="overflow: visible;">
+                    <div class="deck-img-wrapper" style="border-top-left-radius: 20px; border-top-right-radius: 20px;"><img src="2.png" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-content" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><h4>MILESTONE 20</h4><p>ARCHIVE // 2039</p></div>
+                </div>
+
+                <!-- Mathematically perfect golden rope anchored to the container center, unaffected by 3D card scaling! -->
+                <div class="golden-rope" style="position: absolute; width: 200vw; height: 2px; background: #D4AF37; left: 50vw; top: 50vh; transform: translateY(-50%); transform-origin: left center; z-index: -1;"></div>
+            </div> <!-- Closes carousel-container -->
+        </div> <!-- Closes chyk-core -->
+    </section>
+
+
+        <!-- 4. THE INFINITY TUNNEL — THE CANVAS IMAGE SEQUENCE VORTEX -->
+        <section class="tunnel-finale">
+            <!-- THE DESTINATION VIDEO (Behind the canvas for seamless fade) -->
+            <div class="final-experience">
+                <video class="final-hover-vid" autoplay muted loop playsinline>
+                    <source src="assets/MAIN HOVER.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+            <canvas id="tunnel-canvas"></canvas>
+            <div class="distal-light"></div>
+
+            <div class="tunnel-container">
+                <!-- Transition Text: Appears during the blackout -->
+                <div class="tunnel-text-holder text-transition">
+                    <h2 class="journey-text">PREPARE FOR <span class="gold-text">IMPACT.</span></h2>
+                </div>
+
+                <div class="tunnel-text-holder text-1">
+                    <h2 class="journey-text">BEYOND THE <span class="gold-text">HORIZON.</span></h2>
+                </div>
+
+                <div class="tunnel-text-holder text-2">
+                    <h2 class="journey-text">THE ASCENT IS <span class="gold-text">INFINITE.</span></h2>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+        <!-- INTERACTIVE CARD DETAIL OVERLAY -->
+        <div id="card-detail-overlay" class="hidden-overlay">
+            <div class="overlay-background"></div>
+            <div class="overlay-content">
+                <button id="detail-close-btn">&times;</button>
+                <div class="detail-split">
+                    <div class="detail-left">
+                        <img id="detail-img" src="" alt="Expanded Milestone">
+                    </div>
+                    <div class="detail-right">
+                        <h4 id="detail-subtitle"></h4>
+                        <h2 id="detail-title"></h2>
+                        <div class="detail-divider"></div>
+                        <p id="detail-desc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- People Preview Section -->
+        <section class="home-people-preview">
+          <div class="home-people-inner">
+            <div class="home-people-eyebrow">The CHYK Community</div>
+            <h2 class="home-people-title">People Behind<br>the <span class="gold-text">Legacy</span></h2>
+            <div class="home-people-cards">
+              <a href="leaders.html" class="home-people-card home-people-card--leaders">
+                <div class="home-people-card-bg"></div>
+                <div class="home-people-card-content">
+                  <span class="home-people-card-eyebrow">Visionaries</span>
+                  <h3 class="home-people-card-title">CHYK Leaders</h3>
+                  <p class="home-people-card-desc">The swamins, acharyas, coordinators, and mentors who carry forward the Chinmaya legacy with purpose and grace.</p>
+                  <span class="home-people-card-cta">Meet the Leaders &rarr;</span>
+                </div>
+              </a>
+              <a href="alumni.html" class="home-people-card home-people-card--alumni">
+                <div class="home-people-card-bg"></div>
+                <div class="home-people-card-content">
+                  <span class="home-people-card-eyebrow">Archive</span>
+                  <h3 class="home-people-card-title">CHYK Alumni</h3>
+                  <p class="home-people-card-desc">Young seekers who carried the flame &mdash; professionals, artists, researchers, and youth leaders shaped by CHYK.</p>
+                  <span class="home-people-card-cta">Explore Alumni &rarr;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Site Footer -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
+                    <p class="footer-tagline">Find Yourself.</p>
+                    <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Navigate</h5>
+                        <a href="about.html">About CHYK</a>
+                        <a href="activities.html">Activities</a>
+                        <a href="events.html">Events</a>
+                        <a href="join.html">Join CHYK</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Explore</h5>
+                        <a href="content-hub.html">Content Hub</a>
+                        <a href="talks-and-articles.html">Talks & Articles</a>
+                        <a href="magazine.html">Magazine</a>
+                        <a href="art.html">Art</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>People</h5>
+                        <a href="leaders.html">CHYK Leaders</a>
+                        <a href="alumni.html">CHYK Alumni</a>
+                        <a href="wings.html">Wings</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-social-col">
+                    <a href="#" class="footer-social-icon" aria-label="Instagram">IG</a>
+                    <a href="#" class="footer-social-icon" aria-label="YouTube">YT</a>
+                    <a href="#" class="footer-social-icon" aria-label="Facebook">FB</a>
+                    <a href="#" class="footer-social-icon" aria-label="Twitter">X</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 CHYK — Chinmaya Yuva Kendra. All rights reserved.</p>
+                <p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p>
+            </div>
+        </footer>
+
+        <button id="view-bg-btn" class="magnetic-btn" style="position: fixed; bottom: 30px; right: 30px; z-index: 999999; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 10px 20px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Syne', sans-serif; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;">VIEW BG</button>
+        <script src="script.js"></script>
+        <script src="js/nav.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+

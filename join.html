@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHYK | Join</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+</head>
+<body>
+        <!-- Persistent Huge CHYK Logo -->
+        <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 1; pointer-events: none;">
+            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+        </div>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="page-transition-overlay"></div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-top">
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="activities.html" class="mobile-nav-link">Activities</a>
+        <a href="events.html" class="mobile-nav-link">Events</a>
+        <a href="content-hub.html" class="mobile-nav-link">Content Hub</a>
+        <a href="talks-and-articles.html" class="mobile-nav-link">Talks</a>
+        <a href="magazine.html" class="mobile-nav-link">Magazine</a>
+        <a href="art.html" class="mobile-nav-link">Art</a>
+        <a href="social.html" class="mobile-nav-link">Social</a>
+        <a href="wings.html" class="mobile-nav-link">Wings</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+      <a href="join.html" class="mobile-cta">Join CHYK →</a>
+    </div>
+    <p class="mobile-menu-footer">CHYK — Chinmaya Yuva Kendra © 2024</p>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="chyk website logo.png" alt="CHYK" class="logo-img">
+        <span class="logo-text">CHYK</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="activities.html" class="nav-link">Activities</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="content-hub.html" class="nav-link">Content Hub</a>
+        <div class="nav-more-wrapper">
+          <button class="nav-more-trigger nav-link">More <span class="nav-arrow">↓</span></button>
+          <div class="nav-dropdown">
+            <a href="talks-and-articles.html">Talks & Articles</a>
+            <a href="magazine.html">Magazine</a>
+            <a href="art.html">Art</a>
+            <a href="social.html">Social</a>
+            <a href="wings.html">Wings</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <a href="join.html" class="nav-link nav-cta magnetic-btn">Join CHYK</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="page-hero-overlay" style="background:linear-gradient(135deg,rgba(5,5,5,0.97) 0%,rgba(5,5,5,0.7) 60%,rgba(201,162,74,0.08) 100%);"></div>
+      <div class="page-hero-content">
+        <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> Begin Your Journey</p>
+        <h1 class="page-hero-title">Join<br><span class="text-gold">CHYK</span></h1>
+        <p class="page-hero-subtitle">Take the first step toward a life of purpose, community, and self-discovery. CHYK welcomes every young seeker aged 14–28.</p>
+      </div>
+      <div class="page-hero-big-text">JOIN</div>
+    </section>
+
+    <!-- Why Join -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:3.5rem;">
+          <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> Why CHYK</p>
+          <h2 class="section-title gsap-reveal">What You <span class="text-gold">Gain</span></h2>
+        </div>
+        <div class="why-grid" data-stagger>
+          <div class="why-card">
+            <div class="why-icon">📚</div>
+            <h3>Vedantic Wisdom</h3>
+            <p>Access structured study of Upanishads, Bhagavad Gita, and Swami Chinmayananda's teachings through weekly classes and residential camps.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🌍</div>
+            <h3>Global Community</h3>
+            <p>Connect with 50,000+ like-minded young seekers across India and 12 countries. Find your tribe, find lifelong friendships.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🏔️</div>
+            <h3>Transformative Experiences</h3>
+            <p>From Himalayan yatras to national conventions — CHYK experiences are designed to push boundaries and expand your sense of self.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🎭</div>
+            <h3>Arts & Culture</h3>
+            <p>Express yourself through CHYK's rich cultural ecosystem — theatre, music, art, and the beloved Udghosh National Youth Festival.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🤝</div>
+            <h3>Seva & Service</h3>
+            <p>Make a real difference through YEP, national outreach projects, and community service initiatives that go beyond individual benefit.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🎯</div>
+            <h3>Leadership Development</h3>
+            <p>Lead activities, organise events, guide younger members — CHYK is where you grow as a human being and as a leader.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Form -->
+    <section class="section" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);" id="form-section">
+      <div class="container">
+        <div class="join-layout">
+
+          <!-- Info Panel -->
+          <div class="join-info gsap-reveal-left">
+            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Membership</p>
+            <h2 class="section-title" style="font-size:clamp(2rem,4vw,3rem);">Ready to <span class="text-gold">Begin?</span></h2>
+            <div class="gold-line"></div>
+            <p>Fill out the form and a member of your nearest CHYK centre will reach out to welcome you. Membership is free and open to all young seekers aged 14–28.</p>
+
+            <div class="join-info-steps">
+              <div class="join-step">
+                <span class="join-step-num">01</span>
+                <div>
+                  <h4>Fill the Form</h4>
+                  <p>Share your basic details and the city / centre nearest to you.</p>
+                </div>
+              </div>
+              <div class="join-step">
+                <span class="join-step-num">02</span>
+                <div>
+                  <h4>Meet Your Centre</h4>
+                  <p>Your local CHYK centre coordinator will reach out to welcome you.</p>
+                </div>
+              </div>
+              <div class="join-step">
+                <span class="join-step-num">03</span>
+                <div>
+                  <h4>Attend Your First Activity</h4>
+                  <p>Join a study class, camp, or event. Experience the CHYK community first-hand.</p>
+                </div>
+              </div>
+              <div class="join-step">
+                <span class="join-step-num">04</span>
+                <div>
+                  <h4>Find Yourself</h4>
+                  <p>You're home. Dive deep into the journey of self-discovery.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="join-faq" style="margin-top:2.5rem;">
+              <h4 style="margin-bottom:1rem; font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3);">Common Questions</h4>
+
+              <div class="accordion-item">
+                <button class="accordion-trigger">Is CHYK membership free?</button>
+                <div class="accordion-body">
+                  <p>Membership itself is free. Individual programmes, camps, and events may have participation fees that vary by centre and activity.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-trigger">What age groups can join?</button>
+                <div class="accordion-body">
+                  <p>Pre-CHYK is for ages 14–17. CHYK is for ages 18–28. Some centres may have flexibility — check with your local centre.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-trigger">Do I need to be Hindu to join?</button>
+                <div class="accordion-body">
+                  <p>CHYK welcomes young seekers from all backgrounds. Vedanta is a universal philosophy — its wisdom belongs to all of humanity.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-trigger">What if there's no centre near me?</button>
+                <div class="accordion-body">
+                  <p>CHYK has an active online community and remote learning programmes. You can connect with us online and attend virtual events while we work to establish a centre near you.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Multi-step Form -->
+          <div class="join-form-wrap gsap-reveal-right">
+
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+              <div class="step-item active" data-step="1">
+                <div class="step-circle">1</div>
+                <span>You</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step-item" data-step="2">
+                <div class="step-circle">2</div>
+                <span>Location</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step-item" data-step="3">
+                <div class="step-circle">3</div>
+                <span>Interests</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step-item" data-step="4">
+                <div class="step-circle">4</div>
+                <span>Done</span>
+              </div>
+            </div>
+
+            <form class="join-form" id="join-form" novalidate>
+
+              <!-- Step 1: Personal Info -->
+              <div class="form-step active" data-step="1">
+                <h3 class="form-step-title">Tell us about yourself</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">First Name <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="firstName" placeholder="Your first name" required>
+                    <span class="form-error">Required</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Last Name <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="lastName" placeholder="Your last name" required>
+                    <span class="form-error">Required</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Email Address <span class="required">*</span></label>
+                    <input type="email" class="form-input" name="email" placeholder="you@example.com" required>
+                    <span class="form-error">Enter a valid email</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" name="phone" placeholder="+91 XXXXX XXXXX">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Date of Birth <span class="required">*</span></label>
+                    <input type="date" class="form-input" name="dob" required>
+                    <span class="form-error">Required (must be 14–28)</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">How did you hear about CHYK?</label>
+                    <select class="form-select" name="source">
+                      <option value="">Select...</option>
+                      <option value="friend">A friend / family member</option>
+                      <option value="social">Social media</option>
+                      <option value="event">Attended a CHYK event</option>
+                      <option value="chinmaya-mission">Chinmaya Mission</option>
+                      <option value="google">Google / online search</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-primary magnetic-btn" id="step1-next">Next: Location →</button>
+                </div>
+              </div>
+
+              <!-- Step 2: Location -->
+              <div class="form-step" data-step="2">
+                <h3 class="form-step-title">Where are you based?</h3>
+                <div class="form-grid">
+                  <div class="form-group" style="grid-column:1/-1;">
+                    <label class="form-label">City <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="city" placeholder="Your city" required>
+                    <span class="form-error">Required</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">State / Province <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="state" placeholder="Your state" required>
+                    <span class="form-error">Required</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Country <span class="required">*</span></label>
+                    <select class="form-select" name="country" required>
+                      <option value="">Select country...</option>
+                      <option value="India" selected>India</option>
+                      <option value="USA">United States</option>
+                      <option value="UK">United Kingdom</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Australia">Australia</option>
+                      <option value="UAE">UAE</option>
+                      <option value="Singapore">Singapore</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <span class="form-error">Required</span>
+                  </div>
+                  <div class="form-group" style="grid-column:1/-1;">
+                    <label class="form-label">Nearest CHYK Centre (if known)</label>
+                    <input type="text" class="form-input" name="centre" placeholder="e.g. Chinmaya Mission Mumbai">
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-ghost" id="step2-back">← Back</button>
+                  <button type="button" class="btn btn-primary magnetic-btn" id="step2-next">Next: Interests →</button>
+                </div>
+              </div>
+
+              <!-- Step 3: Interests -->
+              <div class="form-step" data-step="3">
+                <h3 class="form-step-title">What interests you?</h3>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.4); margin-bottom:1.5rem;">Select all that apply — this helps us connect you to the right activities.</p>
+                <div class="interests-grid">
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="vedanta"> <span>Vedanta Study</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="camps"> <span>Camps & CTCs</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="yatras"> <span>Himalayan Yatras</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="theatre"> <span>Theatre & Drama</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="music"> <span>Music & Bhajans</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="seva"> <span>Seva & Service</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="leadership"> <span>Leadership</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="talks"> <span>Talks & Lectures</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="art"> <span>Visual Arts</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="adventure"> <span>Adventure</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="writing"> <span>Writing & Articles</span>
+                  </label>
+                  <label class="interest-chip">
+                    <input type="checkbox" name="interests" value="national"> <span>National Projects</span>
+                  </label>
+                </div>
+                <div class="form-group" style="margin-top:1.5rem;">
+                  <label class="form-label">Anything else you'd like to share?</label>
+                  <textarea class="form-textarea" name="message" placeholder="Tell us a bit about yourself and what drew you to CHYK..."></textarea>
+                </div>
+                <div class="form-group" style="margin-top:1rem;">
+                  <label class="form-checkbox-label">
+                    <input type="checkbox" name="consent" required>
+                    <span>I agree to be contacted by CHYK regarding membership and activities. <span class="required">*</span></span>
+                  </label>
+                  <span class="form-error">You must consent to proceed</span>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-ghost" id="step3-back">← Back</button>
+                  <button type="submit" class="btn btn-primary magnetic-btn" id="step3-submit">Submit →</button>
+                </div>
+              </div>
+
+              <!-- Step 4: Success -->
+              <div class="form-step form-success" data-step="4">
+                <div class="success-state">
+                  <div class="success-icon">🙏</div>
+                  <h3>Welcome to CHYK!</h3>
+                  <p>Thank you for taking this step. A coordinator from your nearest CHYK centre will reach out to you within 3–5 working days.</p>
+                  <p style="margin-top:1rem;">In the meantime, explore what CHYK has to offer:</p>
+                  <div class="flex gap-sm flex-center" style="margin-top:1.75rem; flex-wrap:wrap;">
+                    <a href="activities.html" class="btn btn-primary magnetic-btn">Explore Activities</a>
+                    <a href="events.html" class="btn btn-outline">See Upcoming Events</a>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:2.5rem;">
+          <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> Stories</p>
+          <h2 class="section-title gsap-reveal">What CHYKers <span class="text-gold">Say</span></h2>
+        </div>
+        <div class="testimonials-grid" id="testimonials-grid" data-stagger>
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
+        <p class="footer-tagline">Find Yourself.</p>
+        <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="about.html">About CHYK</a>
+          <a href="activities.html">Activities</a>
+          <a href="events.html">Events</a>
+          <a href="join.html">Join CHYK</a>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="content-hub.html">Content Hub</a>
+          <a href="talks-and-articles.html">Talks & Articles</a>
+          <a href="magazine.html">Magazine</a>
+          <a href="art.html">Art</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="social.html">Social Media</a>
+          <a href="wings.html">Wings</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a>
+        </div>
+      </div>
+      <div class="footer-social-col">
+        <a href="#" class="footer-social-icon">IG</a>
+        <a href="#" class="footer-social-icon">YT</a>
+        <a href="#" class="footer-social-icon">FB</a>
+        <a href="#" class="footer-social-icon">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CHYK — Chinmaya Yuva Kendra. All rights reserved.</p>
+      <p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p>
+    </div>
+  </footer>
+
+  <script src="data/testimonials.js"></script>
+  <script src="js/base.js"></script>
+  <script src="js/join.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

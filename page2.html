@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHYK | The Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        body { background: #000; overflow: hidden; cursor: none; }
+        .nav { opacity: 1; visibility: visible; }
+        
+        /* Spotlight Effect CSS */
+        .spotlight-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        /* The hidden background image */
+        .hidden-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            opacity: 0.8;
+            /* The CSS Mask that creates the spotlight */
+            mask-image: radial-gradient(circle 15vw at 50% 50%, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 15vw at 50% 50%, black 40%, transparent 100%);
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+        }
+        
+        /* The dark overlay with text */
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; /* Let mouse move freely over the mask */
+        }
+        .dark-overlay h1 {
+            font-size: 10vw;
+            color: rgba(255,255,255,0.05);
+            text-align: center;
+            line-height: 1;
+        }
+        .gold-accent {
+            color: var(--gold);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+        <!-- Persistent Huge CHYK Logo -->
+        <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 1; pointer-events: none;">
+            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+        </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header class="nav">
+        <div class="logo"></div>
+        <div class="menu-btn"><a href="index.html" style="color: white; text-decoration: none;"><- GO BACK</a></div>
+    </header>
+
+    <div class="spotlight-container">
+        <!-- Hidden Image that gets revealed by spotlight -->
+        <img src="../lando-hero.png" alt="Hidden Vault" class="hidden-bg" id="spotlight">
+        
+        <!-- Foreground Text -->
+        <div class="dark-overlay">
+            <h1>SEEK<br><span class="gold-accent">THE TRUTH</span></h1>
+        </div>
+    </div>
+
+    <script>
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorRing = document.querySelector('.cursor-ring');
+        const spotlight = document.getElementById('spotlight');
+
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(cursorRing, { x: e.clientX, y: e.clientY, duration: 0.3 });
+            
+            // Move the spotlight mask exactly to the mouse coordinates
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            spotlight.style.maskImage = `radial-gradient(circle 15vw at ${x}px ${y}px, black 40%, transparent 100%)`;
+            spotlight.style.webkitMaskImage = `radial-gradient(circle 15vw at ${x}px ${y}px, black 40%, transparent 100%)`;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

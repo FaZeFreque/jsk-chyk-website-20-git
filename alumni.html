@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHYK | Alumni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+</head>
+<body>
+
+  <div class="persistent-chyk-logo" style="position:fixed;top:-15px;left:40px;z-index:999999;opacity:1;pointer-events:none;">
+    <img src="chyk website logo.png" alt="CHYK Logo" style="height:140px;object-fit:contain;filter:brightness(0) invert(1);">
+  </div>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="page-transition-overlay"></div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-top">
+      <nav class="mobile-nav-links"></nav>
+      <a href="join.html" class="mobile-cta">Join CHYK &rarr;</a>
+    </div>
+    <p class="mobile-menu-footer">CHYK &mdash; Chinmaya Yuva Kendra &copy; 2024</p>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="chyk website logo.png" alt="CHYK" class="logo-img" style="height:44px;object-fit:contain;">
+      </a>
+      <nav class="desktop-nav"></nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Hero -->
+    <section class="page-hero alumni-hero">
+      <div class="page-hero-overlay"></div>
+      <div class="alumni-hero-noise"></div>
+      <div class="page-hero-content gsap-reveal">
+        <p class="page-hero-eyebrow">The Legacy Continues</p>
+        <h1 class="page-hero-title">CHYK<br><span class="text-gold">Alumni</span></h1>
+        <p class="page-hero-subtitle">Young seekers who carried the flame of Vedantic wisdom into every corner of life &mdash; professionals, artists, researchers, leaders, and more.</p>
+      </div>
+      <div class="page-hero-big-text">ALUMNI</div>
+    </section>
+
+    <!-- Featured Alumni -->
+    <section class="section" id="featured-alumni">
+      <div class="container">
+        <div class="section-head gsap-reveal">
+          <p class="section-eyebrow">Featured</p>
+          <h2 class="section-title">Notable <span class="text-gold">Alumni</span></h2>
+        </div>
+        <div class="alumni-featured-grid" id="alumni-featured" data-stagger></div>
+      </div>
+    </section>
+
+    <!-- Filter + Grid -->
+    <section class="section section-sm" id="all-alumni">
+      <div class="container">
+        <div class="section-head gsap-reveal">
+          <p class="section-eyebrow">The Archive</p>
+          <h2 class="section-title">All <span class="text-gold">Profiles</span></h2>
+        </div>
+
+        <div class="filter-tabs-wrap gsap-reveal" id="alumni-filters" role="tablist" aria-label="Filter alumni">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="global-camp" role="tab" aria-selected="false">Global Camp Alumni</button>
+          <button class="filter-tab" data-filter="professionals" role="tab" aria-selected="false">Professionals</button>
+          <button class="filter-tab" data-filter="researchers" role="tab" aria-selected="false">Researchers</button>
+          <button class="filter-tab" data-filter="artists" role="tab" aria-selected="false">Artists &amp; Creators</button>
+          <button class="filter-tab" data-filter="youth-leaders" role="tab" aria-selected="false">Youth Leaders</button>
+          <button class="filter-tab" data-filter="seva" role="tab" aria-selected="false">Seva / Community</button>
+          <button class="filter-tab" data-filter="other" role="tab" aria-selected="false">Other</button>
+        </div>
+
+        <div class="profile-grid" id="alumni-grid"></div>
+
+        <p class="alumni-empty hidden" id="alumni-empty">No profiles found in this category yet.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-sm alumni-cta-section">
+      <div class="container">
+        <div class="alumni-cta-box gsap-reveal">
+          <p class="alumni-cta-eyebrow">Know someone?</p>
+          <h3 class="alumni-cta-title">Know a CHYK alumnus we should feature?</h3>
+          <p class="alumni-cta-sub">Help us build the most complete record of the CHYK legacy. Submit a profile and we&apos;ll review it.</p>
+          <a href="contact.html" class="btn-gold magnetic-btn">Submit a Profile</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Profile Modal -->
+  <div class="modal-overlay" id="alumni-modal" style="visibility:hidden;" role="dialog" aria-modal="true" aria-labelledby="alumni-modal-name">
+    <div class="modal-box alumni-modal-box">
+      <button class="modal-close" onclick="window.CHYK.closeModal('alumni-modal')" aria-label="Close">&times;</button>
+      <div class="modal-body alumni-modal-body">
+        <div class="modal-img-col">
+          <div class="profile-img-placeholder large" id="alumni-modal-img">
+            <span id="alumni-modal-initial"></span>
+          </div>
+        </div>
+        <div class="modal-info-col">
+          <span class="modal-tag" id="alumni-modal-cat"></span>
+          <h2 class="modal-name" id="alumni-modal-name"></h2>
+          <p class="modal-bio" id="alumni-modal-bio"></p>
+          <div class="modal-connection">
+            <p class="modal-connection-label">CHYK Connection</p>
+            <p class="modal-connection-text" id="alumni-modal-connection"></p>
+          </div>
+          <div class="modal-tags" id="alumni-modal-tags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="chyk website logo.png" alt="CHYK" class="footer-logo" style="height:44px;object-fit:contain;">
+        <p class="footer-tagline">Find Yourself.</p>
+        <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="about.html">About CHYK</a>
+          <a href="activities.html">Activities</a>
+          <a href="events.html">Events</a>
+          <a href="join.html">Join CHYK</a>
+        </div>
+        <div class="footer-col">
+          <h5>People</h5>
+          <a href="leaders.html">CHYK Leaders</a>
+          <a href="alumni.html">CHYK Alumni</a>
+          <a href="wings.html">Wings</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="social.html">Social Media</a>
+          <a href="content-hub.html">Content Hub</a>
+          <a href="magazine.html">Magazine</a>
+          <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a>
+        </div>
+      </div>
+      <div class="footer-social-col">
+        <a href="#" class="footer-social-icon" aria-label="Instagram">IG</a>
+        <a href="#" class="footer-social-icon" aria-label="YouTube">YT</a>
+        <a href="#" class="footer-social-icon" aria-label="Facebook">FB</a>
+        <a href="#" class="footer-social-icon" aria-label="Twitter">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 CHYK &mdash; Chinmaya Yuva Kendra. All rights reserved.</p>
+      <p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p>
+    </div>
+  </footer>
+
+  <script src="js/base.js"></script>
+  <script src="data/alumniData.js"></script>
+  <script src="js/alumni.js"></script>
+</body>
+</html>

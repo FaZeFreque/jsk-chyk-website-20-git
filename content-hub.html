@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHYK | Content Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+</head>
+<body>
+        <!-- Persistent Huge CHYK Logo -->
+        <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 1; pointer-events: none;">
+            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+        </div>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="page-transition-overlay"></div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-top">
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="activities.html" class="mobile-nav-link">Activities</a>
+        <a href="events.html" class="mobile-nav-link">Events</a>
+        <a href="content-hub.html" class="mobile-nav-link">Content Hub</a>
+        <a href="talks-and-articles.html" class="mobile-nav-link">Talks</a>
+        <a href="magazine.html" class="mobile-nav-link">Magazine</a>
+        <a href="art.html" class="mobile-nav-link">Art</a>
+        <a href="social.html" class="mobile-nav-link">Social</a>
+        <a href="wings.html" class="mobile-nav-link">Wings</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+      <a href="join.html" class="mobile-cta">Join CHYK →</a>
+    </div>
+    <p class="mobile-menu-footer">CHYK — Chinmaya Yuva Kendra © 2024</p>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="chyk website logo.png" alt="CHYK" class="logo-img">
+        <span class="logo-text">CHYK</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="activities.html" class="nav-link">Activities</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="content-hub.html" class="nav-link">Content Hub</a>
+        <div class="nav-more-wrapper">
+          <button class="nav-more-trigger nav-link">More <span class="nav-arrow">↓</span></button>
+          <div class="nav-dropdown">
+            <a href="talks-and-articles.html">Talks & Articles</a>
+            <a href="magazine.html">Magazine</a>
+            <a href="art.html">Art</a>
+            <a href="social.html">Social</a>
+            <a href="wings.html">Wings</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <a href="join.html" class="nav-link nav-cta magnetic-btn">Join CHYK</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content">
+        <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> Knowledge & Inspiration</p>
+        <h1 class="page-hero-title">Content<br><span class="text-gold">Hub</span></h1>
+        <p class="page-hero-subtitle">Talks from Gurudev, articles by CHYKers, the Udghosh magazine, art, social stories — all in one place.</p>
+      </div>
+      <div class="page-hero-big-text">HUB</div>
+    </section>
+
+    <!-- Search -->
+    <section class="section-sm" style="background:#050505; border-bottom:1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div class="search-bar">
+          <span class="search-icon">⌕</span>
+          <input type="text" class="search-input" id="hub-search" placeholder="Search talks, articles, magazine...">
+          <span class="search-clear" id="hub-search-clear">×</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hub Cards (Section links) -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:2.5rem;">
+          <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> Browse By</p>
+          <h2 class="section-title gsap-reveal">What Would You Like<br>to <span class="text-gold">Explore?</span></h2>
+        </div>
+        <div class="hub-cards" data-stagger>
+          <a href="talks-and-articles.html" class="hub-card magnetic-btn">
+            <div class="hub-card-icon">🎙️</div>
+            <h3>Talks & Articles</h3>
+            <p>Discourses by Gurudev, Acharyas, and CHYK members. Videos, audios, and written essays on Vedanta, self-knowledge, and values.</p>
+            <span class="hub-card-arrow">→</span>
+          </a>
+          <a href="magazine.html" class="hub-card magnetic-btn">
+            <div class="hub-card-icon">📖</div>
+            <h3>Magazine</h3>
+            <p>Udghosh — CHYK's flagship youth magazine. Inspiring stories, reflections, book reviews, and creative writing by young seekers.</p>
+            <span class="hub-card-arrow">→</span>
+          </a>
+          <a href="art.html" class="hub-card magnetic-btn">
+            <div class="hub-card-icon">🎨</div>
+            <h3>Art & Culture</h3>
+            <p>A gallery of creative work by CHYKers — posters, digital art, photography, fine art, and performing arts stills.</p>
+            <span class="hub-card-arrow">→</span>
+          </a>
+          <a href="social.html" class="hub-card magnetic-btn">
+            <div class="hub-card-icon">📱</div>
+            <h3>Social Stories</h3>
+            <p>Follow CHYK on Instagram, YouTube, and beyond. Reels, posts, and stories that bring the CHYK spirit to your feed.</p>
+            <span class="hub-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Talks -->
+    <section class="section" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div class="section-hrow">
+          <div>
+            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Talks</p>
+            <h2 class="section-title">Featured <span class="text-gold">Talks</span></h2>
+          </div>
+          <a href="talks-and-articles.html" class="btn btn-outline" style="flex-shrink:0;">View All →</a>
+        </div>
+        <div class="talks-grid" id="featured-talks-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="section">
+      <div class="container">
+        <div class="section-hrow">
+          <div>
+            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Articles</p>
+            <h2 class="section-title">Latest <span class="text-gold">Articles</span></h2>
+          </div>
+          <a href="talks-and-articles.html" class="btn btn-outline" style="flex-shrink:0;">View All →</a>
+        </div>
+        <div class="articles-grid" id="featured-articles-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Magazine -->
+    <section class="section" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div class="section-hrow">
+          <div>
+            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Magazine</p>
+            <h2 class="section-title">Latest <span class="text-gold">Udghosh</span></h2>
+          </div>
+          <a href="magazine.html" class="btn btn-outline" style="flex-shrink:0;">View All Issues →</a>
+        </div>
+        <div class="magazine-preview" id="magazine-preview">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Art Preview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-hrow">
+          <div>
+            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Art</p>
+            <h2 class="section-title">From Our <span class="text-gold">Gallery</span></h2>
+          </div>
+          <a href="art.html" class="btn btn-outline" style="flex-shrink:0;">Full Gallery →</a>
+        </div>
+        <div class="gallery-masonry" id="art-preview-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section-sm" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="container text-center">
+        <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> Stay Connected</p>
+        <h2 class="section-title gsap-reveal" style="font-size:clamp(1.8rem,4vw,3rem);">Never Miss New <span class="text-gold">Content</span></h2>
+        <p class="gsap-reveal" style="color:rgba(255,255,255,0.35); font-size:0.9rem; margin:0.75rem auto 1.75rem; max-width:480px;">Get weekly inspiration delivered to your inbox — talks, articles, event announcements, and stories from the CHYK community.</p>
+        <div class="gsap-reveal" style="display:flex; gap:0.6rem; justify-content:center; max-width:440px; margin:0 auto; flex-wrap:wrap;">
+          <input type="email" class="form-input" placeholder="your@email.com" style="border-radius:100px; flex:1; min-width:200px;">
+          <button class="btn btn-primary magnetic-btn">Subscribe</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
+        <p class="footer-tagline">Find Yourself.</p>
+        <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="about.html">About CHYK</a>
+          <a href="activities.html">Activities</a>
+          <a href="events.html">Events</a>
+          <a href="join.html">Join CHYK</a>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="content-hub.html">Content Hub</a>
+          <a href="talks-and-articles.html">Talks & Articles</a>
+          <a href="magazine.html">Magazine</a>
+          <a href="art.html">Art</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="social.html">Social Media</a>
+          <a href="wings.html">Wings</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a>
+        </div>
+      </div>
+      <div class="footer-social-col">
+        <a href="#" class="footer-social-icon">IG</a>
+        <a href="#" class="footer-social-icon">YT</a>
+        <a href="#" class="footer-social-icon">FB</a>
+        <a href="#" class="footer-social-icon">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CHYK — Chinmaya Yuva Kendra. All rights reserved.</p>
+      <p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p>
+    </div>
+  </footer>
+
+  <script src="data/talks.js"></script>
+  <script src="data/articles.js"></script>
+  <script src="data/magazine.js"></script>
+  <script src="data/art.js"></script>
+  <script src="js/base.js"></script>
+  <script src="js/content-hub.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
