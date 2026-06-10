@@ -1,10 +1,8 @@
 (function () {
   'use strict';
 
-  let currentFilter = 'all';
   let allActivities = [];
 
-  /* ── Render cards ── */
   function renderActivities(list) {
     const grid = document.getElementById('activities-grid');
     const noResults = document.getElementById('no-results');
@@ -17,29 +15,29 @@
       if (countEl) countEl.textContent = '0 activities';
       return;
     }
+
     noResults.style.display = 'none';
     if (countEl) countEl.textContent = list.length + ' activit' + (list.length === 1 ? 'y' : 'ies');
 
-    grid.innerHTML = list.map(a => `
-      <div class="activity-card${a.featured ? ' featured' : ''}" data-id="${a.id}">
+    grid.innerHTML = list.map((activity, index) => `
+      <article class="activity-card${activity.featured ? ' featured' : ''}" data-id="${activity.id}">
         <div class="activity-card-img">
-          <img src="${a.image || 'assets/placeholder.jpg'}" alt="${a.title}" loading="lazy">
-          ${a.featured ? '<span class="featured-badge">Featured</span>' : ''}
+          <img src="${activity.image || 'assets/placeholder.jpg'}" alt="${activity.title}" loading="lazy"${activity.imagePosition ? ` style="object-position:${activity.imagePosition}"` : ''}>
+          ${activity.featured ? '<span class="featured-badge">Featured</span>' : ''}
         </div>
         <div class="activity-card-body">
-          <div class="activity-card-icon">${a.icon || '✦'}</div>
-          <p class="activity-card-cat">${a.category}</p>
-          <h3 class="activity-card-title">${a.title}</h3>
-          <p class="activity-card-desc">${a.shortDesc}</p>
+          <div class="activity-card-number">${String(index + 1).padStart(2, '0')}</div>
+          <p class="activity-card-cat">${activity.categoryLabel || activity.category}</p>
+          <h3 class="activity-card-title">${activity.title}</h3>
+          <p class="activity-card-desc">${activity.shortDesc}</p>
           <div class="activity-card-tags">
-            ${(a.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+            ${(activity.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
           </div>
-          <button class="btn btn-outline activity-learn-btn" style="margin-top:1rem; font-size:0.78rem; padding:0.55rem 1.1rem;" data-id="${a.id}">Learn More →</button>
+          <button class="btn btn-outline activity-learn-btn" data-id="${activity.id}">Read Full Story</button>
         </div>
-      </div>
+      </article>
     `).join('');
 
-    /* stagger animate new cards in */
     if (typeof gsap !== 'undefined') {
       gsap.from(grid.querySelectorAll('.activity-card'), {
         opacity: 0,
@@ -51,19 +49,17 @@
     }
 
     grid.querySelectorAll('.activity-learn-btn').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        const card = e.target.closest('.activity-card');
-        openActivityModal(this.dataset.id, card);
+      btn.addEventListener('click', function () {
+        openActivityModal(this.dataset.id, this.closest('.activity-card'));
       });
     });
 
-    /* 3D tilt on desktop */
     if (window.matchMedia('(hover: hover)').matches && typeof gsap !== 'undefined') {
       grid.querySelectorAll('.activity-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const r = card.getBoundingClientRect();
-          const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
-          const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+        card.addEventListener('mousemove', event => {
+          const rect = card.getBoundingClientRect();
+          const dx = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+          const dy = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2);
           gsap.to(card, { rotateX: -dy * 5, rotateY: dx * 5, transformPerspective: 900, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
         });
         card.addEventListener('mouseleave', () => {
@@ -73,12 +69,10 @@
     }
   }
 
-  /* ── Filter ── */
   function applyFilter(filter) {
-    currentFilter = filter;
     const filtered = filter === 'all'
       ? allActivities
-      : allActivities.filter(a => a.category.toLowerCase() === filter || (a.tags || []).some(t => t.toLowerCase() === filter));
+      : allActivities.filter(activity => activity.category.toLowerCase() === filter);
     renderActivities(filtered);
   }
 
@@ -86,34 +80,44 @@
     const tabs = document.querySelectorAll('#activity-filters .filter-tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', function () {
-        tabs.forEach(t => t.classList.remove('active'));
+        tabs.forEach(item => item.classList.remove('active'));
         this.classList.add('active');
         applyFilter(this.dataset.filter);
       });
     });
   }
 
-  /* ── Modal ── */
-  function openActivityModal(id, triggerElement) {
-    const a = allActivities.find(x => x.id === id);
-    if (!a) return;
+  function initModalScroll() {
+    const modalBody = document.querySelector('#activity-modal .modal-body');
+    if (!modalBody) return;
 
-    document.getElementById('modal-activity-img').src = a.image || 'assets/placeholder.jpg';
-    document.getElementById('modal-activity-cat').textContent = a.category;
-    document.getElementById('modal-activity-title').textContent = a.title;
-    document.getElementById('modal-activity-desc').textContent = a.longDesc || a.shortDesc;
-    document.getElementById('modal-activity-who').textContent = a.whoCanJoin || 'Open to all CHYK members.';
-    const ctaEl = document.getElementById('modal-activity-cta');
-    if (ctaEl && a.cta) ctaEl.textContent = a.cta;
+    modalBody.addEventListener('wheel', function (event) {
+      if (this.scrollHeight <= this.clientHeight) return;
+      event.preventDefault();
+      event.stopPropagation();
+      this.scrollTop += event.deltaY;
+    }, { passive: false });
+  }
+
+  function openActivityModal(id, triggerElement) {
+    const activity = allActivities.find(item => item.id === id);
+    if (!activity) return;
+
+    document.getElementById('modal-activity-img').src = activity.image || 'assets/placeholder.jpg';
+    document.getElementById('modal-activity-img').alt = activity.title;
+    document.getElementById('modal-activity-img').style.objectPosition = activity.imagePosition || 'center';
+    document.getElementById('modal-activity-cat').textContent = activity.categoryLabel || activity.category;
+    document.getElementById('modal-activity-title').textContent = activity.title;
+    document.getElementById('modal-activity-desc').textContent = activity.longDesc || activity.shortDesc;
+    document.getElementById('modal-activity-who').textContent = activity.whoCanJoin || 'Open to all CHYK members.';
 
     window.CHYK && window.CHYK.openModal('activity-modal', triggerElement);
   }
 
-  /* ── Init ── */
   document.addEventListener('DOMContentLoaded', function () {
     allActivities = (window.CHYK_DATA && window.CHYK_DATA.activities) || [];
     initFilters();
+    initModalScroll();
     renderActivities(allActivities);
   });
-
 })();

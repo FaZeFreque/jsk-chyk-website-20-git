@@ -21,7 +21,7 @@
       <a class="talk-card" href="${t.link || 'talks-and-articles.html'}" target="_blank" rel="noopener">
         <div class="talk-card-img">
           <img src="${t.image || 'assets/placeholder.jpg'}" alt="${t.title}" loading="lazy">
-          <span class="talk-type-badge">${t.type === 'video' ? '▶ Video' : '🎧 Audio'}</span>
+          <span class="talk-type-badge">${t.type === 'video' ? 'Video' : 'Audio'}</span>
         </div>
         <div class="talk-card-body">
           <p class="talk-card-speaker-type">${speakerLabel(t.speakerType)}</p>
@@ -40,11 +40,11 @@
     const data = window.CHYK_DATA && window.CHYK_DATA.articles;
     if (!grid || !data) return;
 
-    const featured = data.filter(a => a.featured).slice(0, 3);
+    const featured = data.filter(a => a.featured).slice(0, 6);
     if (!featured.length) return;
 
     grid.innerHTML = featured.map(a => `
-      <div class="article-card">
+      <a class="article-card" href="article.html?id=${encodeURIComponent(a.id)}">
         <div class="article-card-img">
           <img src="${a.image || 'assets/placeholder.jpg'}" alt="${a.title}" loading="lazy">
         </div>
@@ -57,34 +57,24 @@
             <span>${a.readTime} read</span>
           </div>
         </div>
-      </div>
+      </a>
     `).join('');
   }
 
-  /* ── Magazine preview (latest issue) ── */
-  function renderMagazinePreview() {
-    const wrap = document.getElementById('magazine-preview');
-    const data = window.CHYK_DATA && window.CHYK_DATA.magazine;
-    if (!wrap || !data || !data.udghosh || !data.udghosh.length) return;
-
-    const latest = data.udghosh[0];
-    wrap.innerHTML = `
-      <div class="magazine-latest-card gsap-reveal">
-        <div class="magazine-latest-cover">
-          <img src="${latest.cover || 'assets/placeholder.jpg'}" alt="${latest.title}">
-        </div>
-        <div class="magazine-latest-body">
-          <p class="magazine-issue-label">Issue ${latest.issue} · ${latest.year}</p>
-          <h3 class="magazine-latest-title">${latest.title}</h3>
-          <p class="magazine-latest-theme">Theme: <span class="text-gold">"${latest.theme}"</span></p>
-          <p class="magazine-latest-desc">${latest.description}</p>
-          <div class="flex gap-sm mt-sm">
-            ${latest.link ? `<a href="${latest.link}" class="btn btn-primary magnetic-btn" target="_blank" rel="noopener">Read Online →</a>` : ''}
-            <a href="magazine.html" class="btn btn-outline">All Issues</a>
-          </div>
-        </div>
-      </div>
-    `;
+  function renderPublicationPreview() {
+    const wrap = document.getElementById('publication-preview');
+    const articles = (window.CHYK_DATA && window.CHYK_DATA.articles) || [];
+    if (!wrap || !articles.length) return;
+    const sources = ['Crossroads', 'Chinmaya Mission', 'Publications'];
+    wrap.innerHTML = sources.map(source => {
+      const count = articles.filter(article => article.category === source).length;
+      return `<a href="magazine.html#${source.toLowerCase().replace(/\s+/g, '-')}" class="publication-source-card">
+        <span class="publication-source-count">0${count}</span>
+        <p>${source}</p>
+        <h3>${source === 'Crossroads' ? 'Youth Essays' : source === 'Chinmaya Mission' ? 'Acharya Articles' : 'Selected Writings'}</h3>
+        <span class="publication-source-link">Explore collection</span>
+      </a>`;
+    }).join('');
   }
 
   /* ── Art preview (6 items masonry) ── */
@@ -167,7 +157,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     renderFeaturedTalks();
     renderFeaturedArticles();
-    renderMagazinePreview();
+    renderPublicationPreview();
     renderArtPreview();
     initSearch();
   });

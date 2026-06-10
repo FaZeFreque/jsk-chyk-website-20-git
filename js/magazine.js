@@ -1,140 +1,47 @@
 (function () {
   'use strict';
 
-  /* ── Latest issue feature ── */
-  function renderLatestIssue() {
-    const wrap = document.getElementById('latest-issue-feature');
-    const data = window.CHYK_DATA && window.CHYK_DATA.magazine;
-    if (!wrap || !data || !data.udghosh || !data.udghosh.length) return;
+  let currentFilter = 'all';
 
-    const latest = data.udghosh[0];
-    const latestCover = latest.cover || latest.image || 'assets/placeholder.jpg';
-    const latestReadLink = latest.link || latest.readLink || '';
-    const latestDownload = latest.downloadLink || '';
-    wrap.innerHTML = `
-      <div class="magazine-latest-card gsap-reveal">
-        <div class="magazine-latest-cover">
-          <img src="${latestCover}" alt="${latest.title}">
-          <div class="magazine-cover-badge">Latest Issue</div>
+  function renderPublications() {
+    const grid = document.getElementById('publication-article-grid');
+    const noResults = document.getElementById('publication-no-results');
+    const articles = (window.CHYK_DATA && window.CHYK_DATA.articles) || [];
+    if (!grid) return;
+    const list = currentFilter === 'all' ? articles : articles.filter(article => article.category === currentFilter);
+    noResults.style.display = list.length ? 'none' : 'block';
+    grid.innerHTML = list.map((article, index) => `
+      <a class="publication-article-card" href="article.html?id=${encodeURIComponent(article.id)}">
+        <div class="publication-article-image"><img src="${article.image}" alt="${article.title}" loading="lazy"><span>${String(index + 1).padStart(2, '0')}</span></div>
+        <div class="publication-article-body">
+          <p class="publication-article-source">${article.category}${article.source && article.source !== article.category ? ` · ${article.source}` : ''}</p>
+          <h3>${article.title}</h3>
+          <p class="publication-article-desc">${article.shortDesc}</p>
+          <div class="publication-article-meta"><span>${article.author}</span><span>${article.readTime} read</span></div>
+          <div class="article-card-tags">${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
         </div>
-        <div class="magazine-latest-body">
-          <p class="magazine-issue-label">Issue ${latest.issue || '01'} · ${latest.year}</p>
-          <h2 class="magazine-latest-title">${latest.title}</h2>
-          <p class="magazine-latest-theme">Theme: <span class="text-gold">"${latest.theme || ''}"</span></p>
-          <div class="gold-line"></div>
-          <p class="magazine-latest-desc">${latest.description || latest.shortDesc || ''}</p>
-          ${(latest.highlights && latest.highlights.length) ? `
-          <div class="magazine-highlights">
-            <p style="font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.75rem;">In This Issue</p>
-            ${latest.highlights.map(h => `<p style="font-size:0.83rem; color:rgba(255,255,255,0.4); padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.05);">✦ ${h}</p>`).join('')}
-          </div>` : ''}
-          <div class="flex gap-sm mt-md" style="flex-wrap:wrap;">
-            ${latestReadLink ? `<a href="${latestReadLink}" class="btn btn-primary magnetic-btn" target="_blank" rel="noopener">Read Online →</a>` : ''}
-            ${latestDownload ? `<a href="${latestDownload}" class="btn btn-outline" download>Download PDF</a>` : '<a href="contact.html" class="btn btn-outline">Get a Copy</a>'}
-          </div>
-        </div>
-      </div>
-    `;
-  }
+        <span class="publication-read-link">Read full article</span>
+      </a>`).join('');
 
-  /* ── Issues archive grid ── */
-  function renderIssues() {
-    const grid = document.getElementById('magazine-issues-grid');
-    const data = window.CHYK_DATA && window.CHYK_DATA.magazine;
-    if (!grid || !data || !data.udghosh) return;
-
-    const all = data.udghosh;
-
-    grid.innerHTML = all.map((issue, i) => {
-      const cover = issue.cover || issue.image || 'assets/placeholder.jpg';
-      const readLink = issue.link || issue.readLink || '';
-      return `
-      <div class="magazine-issue-card${i === 0 ? ' is-latest' : ''}">
-        <div class="magazine-issue-cover">
-          <img src="${cover}" alt="${issue.title}" loading="${i < 3 ? 'eager' : 'lazy'}">
-          ${i === 0 ? '<span class="magazine-cover-badge">Latest</span>' : ''}
-        </div>
-        <div class="magazine-issue-meta">
-          <p class="magazine-issue-label">Issue ${issue.issue || (i+1)}</p>
-          <h3 class="magazine-issue-title">${issue.title}</h3>
-          <p class="magazine-issue-theme text-gold">"${issue.theme || ''}"</p>
-          <p class="magazine-issue-year">${issue.year}</p>
-          <div class="flex gap-xs mt-sm">
-            ${readLink ? `<a href="${readLink}" class="btn btn-outline" style="font-size:0.76rem; padding:0.5rem 1rem;" target="_blank" rel="noopener">Read →</a>` : ''}
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-
-    if (typeof gsap !== 'undefined') {
-      gsap.from(grid.querySelectorAll('.magazine-issue-card'), {
-        scrollTrigger: { trigger: grid, start: 'top 80%' },
-        opacity: 0, y: 24, duration: 0.45, stagger: 0.08, ease: 'power2.out'
-      });
+    if (typeof gsap !== 'undefined' && list.length) {
+      gsap.from(grid.querySelectorAll('.publication-article-card'), { opacity: 0, y: 24, duration: 0.45, stagger: 0.06, ease: 'power2.out' });
     }
   }
 
-  /* ── Book reviews ── */
-  function renderBookReviews() {
-    const grid = document.getElementById('book-reviews-grid');
-    const data = window.CHYK_DATA && window.CHYK_DATA.magazine;
-    if (!grid || !data || !data.bookReviews) return;
-
-    grid.innerHTML = data.bookReviews.map(b => {
-      const cover = b.cover || b.image || 'assets/placeholder.jpg';
-      const bookTitle = b.book || b.title || 'Untitled';
-      const desc = b.review || b.shortDesc || b.description || '';
-      const reviewer = b.reviewer || b.author || '';
-      return `
-      <div class="book-review-card">
-        <div class="book-cover">
-          <img src="${cover}" alt="${bookTitle}" loading="lazy">
-        </div>
-        <div class="book-body">
-          <p class="book-meta">${b.genre || 'Spiritual'}</p>
-          <h3 class="book-title">${bookTitle}</h3>
-          <p class="book-author">by ${b.author || ''}</p>
-          <div style="margin:0.75rem 0; display:flex; gap:0.2rem;">
-            ${Array.from({ length: 5 }, (_, i) => `<span style="color:${i < (b.rating || 4) ? 'var(--gold)' : 'rgba(255,255,255,0.1)'}; font-size:0.9rem;">★</span>`).join('')}
-          </div>
-          <p class="book-desc">${desc}</p>
-          ${reviewer ? `<p class="book-reviewer">Reviewed by <span class="text-gold">${reviewer}</span></p>` : ''}
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  /* ── Short reads ── */
-  function renderShortReads() {
-    const list = document.getElementById('short-reads-list');
-    const data = window.CHYK_DATA && window.CHYK_DATA.magazine;
-    if (!list || !data || !data.shortReads) return;
-
-    list.innerHTML = data.shortReads.map(s => {
-      const category = s.category || 'Reflection';
-      const excerpt = s.excerpt || s.shortDesc || s.description || '';
-      const author = s.author || '';
-      return `
-      <div class="short-read-row">
-        <div class="short-read-body">
-          <p class="short-read-cat">${category}</p>
-          <h3 class="short-read-title">${s.title || ''}</h3>
-          <p class="short-read-excerpt">${excerpt}</p>
-        </div>
-        <div class="short-read-meta">
-          ${author ? `<p class="short-read-author">${author}</p>` : ''}
-          <p class="short-read-time">${s.readTime || ''}</p>
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  /* ── Init ── */
   document.addEventListener('DOMContentLoaded', function () {
-    renderLatestIssue();
-    renderIssues();
-    renderBookReviews();
-    renderShortReads();
-  });
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    const hashMap = { crossroads: 'Crossroads', 'chinmaya-mission': 'Chinmaya Mission', publications: 'Publications' };
+    if (hashMap[hash]) currentFilter = hashMap[hash];
 
+    document.querySelectorAll('#publication-source-nav .filter-tab').forEach(button => {
+      button.classList.toggle('active', button.dataset.filter === currentFilter);
+      button.addEventListener('click', function () {
+        document.querySelectorAll('#publication-source-nav .filter-tab').forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter;
+        renderPublications();
+      });
+    });
+    renderPublications();
+  });
 })();

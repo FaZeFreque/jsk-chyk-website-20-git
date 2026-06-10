@@ -38,7 +38,7 @@
       <div class="talk-card" data-id="${t.id}" style="cursor:pointer;">
         <div class="talk-card-img">
           <img src="${t.image || 'assets/placeholder.jpg'}" alt="${t.title}" loading="lazy">
-          <span class="talk-type-badge">${t.type === 'video' ? '▶ Video' : '🎧 Audio'}</span>
+          <span class="talk-type-badge">${t.type === 'video' ? 'Video' : 'Audio'}</span>
           ${t.featured ? '<span class="featured-badge" style="top:auto;bottom:0.75rem;">Featured</span>' : ''}
         </div>
         <div class="talk-card-body">
@@ -89,7 +89,7 @@
     noResults.style.display = 'none';
 
     grid.innerHTML = list.map(a => `
-      <div class="article-card${a.featured ? ' featured' : ''}">
+      <a class="article-card${a.featured ? ' featured' : ''}" href="article.html?id=${encodeURIComponent(a.id)}">
         <div class="article-card-img">
           <img src="${a.image || 'assets/placeholder.jpg'}" alt="${a.title}" loading="lazy">
         </div>
@@ -103,10 +103,10 @@
           <div class="article-card-meta">
             <span>${a.author}</span>
             <span>${a.readTime} read</span>
-            <span>${a.date}</span>
+            <span>${a.source || a.category}</span>
           </div>
         </div>
-      </div>
+      </a>
     `).join('');
 
     if (typeof gsap !== 'undefined') {

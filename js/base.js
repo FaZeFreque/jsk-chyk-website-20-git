@@ -118,8 +118,8 @@
           <span class="nav-dd-sub">Discourses &amp; essays</span>
         </a>
         <a href="magazine.html" class="nav-dd-item${isActive('magazine.html')}">
-          <span class="nav-dd-label">Udghosh Magazine</span>
-          <span class="nav-dd-sub">CHYK's youth publication</span>
+          <span class="nav-dd-label">Publications &amp; Blog</span>
+          <span class="nav-dd-sub">Crossroads, Mission &amp; selected writings</span>
         </a>
         <a href="art.html" class="nav-dd-item${isActive('art.html')}">
           <span class="nav-dd-label">Art &amp; Culture</span>
@@ -159,7 +159,7 @@
     <a href="join.html"               class="mobile-nav-link${isActive('join.html')}">Join CHYK</a>
     <a href="content-hub.html"        class="mobile-nav-link${isActive('content-hub.html')}">Content Hub</a>
     <a href="talks-and-articles.html" class="mobile-nav-link${isActive('talks-and-articles.html')}">Talks &amp; Articles</a>
-    <a href="magazine.html"           class="mobile-nav-link${isActive('magazine.html')}">Magazine</a>
+    <a href="magazine.html"           class="mobile-nav-link${isActive('magazine.html')}">Publications &amp; Blog</a>
     <a href="art.html"                class="mobile-nav-link${isActive('art.html')}">Art &amp; Culture</a>
     <a href="social.html"             class="mobile-nav-link${isActive('social.html')}">Social</a>
     <a href="wings.html"              class="mobile-nav-link${isActive('wings.html')}">Wings</a>

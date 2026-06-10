@@ -1,114 +1,40 @@
-/* CHYK Talks & Articles Data */
+/* Selected CHYK Talks & Discourses */
 window.CHYK_DATA = window.CHYK_DATA || {};
 window.CHYK_DATA.talks = [
   {
-    id: 'indias-longest-spiritual-tour',
-    title: "India's Longest Spiritual Tour!",
-    speaker: 'Yuvaveer',
-    speakerType: 'member',
-    topic: 'Spiritual Travel',
-    type: 'video',
-    duration: '60 min',
-    image: 'https://i.ytimg.com/vi/tuJiA9N30cY/hqdefault.jpg',
-    shortDesc: 'Yuvaveer Q & A about the ultimate spiritual road trip ever.',
-    link: 'https://www.youtube.com/watch?v=tuJiA9N30cY&list=PLvyiHR9N8-hJ0UHv2deV51QEOgqBQBFfA',
-    featured: true,
-    year: '2025'
+    id: 'bharat-martial-might', title: 'Bharat - Reclaiming Our Martial Might', speaker: 'Major Madhan Kumar', speakerType: 'guest',
+    topic: 'Modern Bharat', type: 'video', duration: '100 min', image: 'https://i.ytimg.com/vi/1y9EnAUXSig/hqdefault.jpg',
+    shortDesc: "An insider's take on modern Bharat's enviable military prowess.",
+    link: 'https://www.youtube.com/watch?v=1y9EnAUXSig&list=PLvyiHR9N8-hJWCdRf5JMYhv4zFO763YdR&index=5', featured: true
   },
   {
-    id: 'gita-for-hustlers-part-1',
-    title: 'Gita for Hustlers - Part 1',
-    speaker: 'Swami Swatmananda',
-    speakerType: 'acharya',
-    topic: 'Bhagavad Gita',
-    type: 'video',
-    duration: '55 min',
-    image: 'https://i.ytimg.com/vi/3CraSSTTFdU/hqdefault.jpg',
+    id: 'gurudev-vision-organisation', title: "Pujya Gurudev's Vision for the Organisation", speaker: 'Swami Swaroopananda', speakerType: 'acharya',
+    topic: 'Vision & Mission', type: 'video', duration: '45 min', image: 'https://i.ytimg.com/vi/oGNbCgBsi2s/hqdefault.jpg',
+    shortDesc: "Swami Swaroopananda shines light upon the visionary's powerful vision for Chinmaya Mission.",
+    link: 'https://www.youtube.com/watch?v=oGNbCgBsi2s&list=PLvyiHR9N8-hL_4dxjpGm2R7NhNJ80RYOy&index=4', featured: true
+  },
+  {
+    id: 'youth-today-gurudev', title: 'Youth Today', speaker: 'Swami Chinmayananda', speakerType: 'gurudev',
+    topic: 'Youth & Purpose', type: 'video', duration: '30 min', image: 'https://i.ytimg.com/vi/Hxm7B4L9Qds/hqdefault.jpg',
+    shortDesc: 'Pujya Gurudev Swami Chinmayananda lends insight and inspiration to the youth in this powerful address.',
+    link: 'https://www.youtube.com/watch?v=Hxm7B4L9Qds&t=1361s', featured: true
+  },
+  {
+    id: 'gita-for-hustlers', title: 'Gita for Hustlers - Part 1', speaker: 'Swami Swatmananda', speakerType: 'acharya',
+    topic: 'Bhagavad Gita', type: 'video', duration: '55 min', image: 'https://i.ytimg.com/vi/3CraSSTTFdU/hqdefault.jpg',
     shortDesc: 'Swami Swatmananda unpacks the everyday relevance of the Gita in style.',
-    link: 'https://www.youtube.com/watch?v=3CraSSTTFdU&list=PLvyiHR9N8-hJqTUxGACvVX14O_sae1s5g&index=2',
-    featured: true,
-    year: '2025'
+    link: 'https://www.youtube.com/watch?v=3CraSSTTFdU&list=PLvyiHR9N8-hJqTUxGACvVX14O_sae1s5g&index=2', featured: true
   },
   {
-    id: 'dear-mind-listen-episode-1',
-    title: 'Dear Mind, Listen! | Episode 1 - The Road to True Freedom',
-    speaker: 'Swami Chinmayananda',
-    speakerType: 'gurudev',
-    topic: 'Self-Unfoldment',
-    type: 'video',
-    duration: '6 min',
-    image: 'https://i.ytimg.com/vi/L0f5yqeWzS4/hqdefault.jpg',
-    shortDesc: 'An enriching podcast on the true meaning of freedom and how to find it.',
-    link: 'https://www.youtube.com/watch?v=L0f5yqeWzS4&list=PLvyiHR9N8-hIixyeBmmL3rMJ8-vk2SgAh',
-    featured: true,
-    year: '2025'
+    id: 'shefali-vaidya-bharatiyata', title: 'In Conversation with Shefali Vaidya', speaker: 'Shefali Vaidya', speakerType: 'guest',
+    topic: 'Bharatiyata', type: 'video', duration: '65 min', image: 'https://i.ytimg.com/vi/8EcJY6pDRi0/hqdefault.jpg',
+    shortDesc: "An exploration of Bharatiyata and what it means to belong to one of the world's oldest living civilisations.",
+    link: 'https://www.youtube.com/watch?v=8EcJY6pDRi0&list=PLvyiHR9N8-hIRxHQRowzqGTnHSW4lLRr3&index=24', featured: true
   },
   {
-    id: 'bharat-reclaiming-our-martial-might',
-    title: 'Bharat - Reclaiming Our Martial Might',
-    speaker: 'Major Madhan Kumar',
-    speakerType: 'guest',
-    topic: 'Modern Bharat',
-    type: 'video',
-    duration: '100 min',
-    image: 'https://i.ytimg.com/vi/1y9EnAUXSig/hqdefault.jpg',
-    shortDesc: "An insider's take on Modern Bharat's enviable military prowess.",
-    link: 'https://www.youtube.com/watch?v=1y9EnAUXSig&list=PLvyiHR9N8-hJWCdRf5JMYhv4zFO763YdR&index=5',
-    featured: true,
-    year: '2025'
-  },
-  {
-    id: 'guided-meditation-pujya-gurudev',
-    title: 'Guided Meditation by Pujya Swami Chinmayananda',
-    speaker: 'Swami Chinmayananda',
-    speakerType: 'gurudev',
-    topic: 'Meditation',
-    type: 'video',
-    duration: '17 min',
-    image: 'https://i.ytimg.com/vi/PEE4lEOxqis/hqdefault.jpg',
-    shortDesc: 'Close your eyes, open your mind, unleash your potential.',
-    link: 'https://www.youtube.com/watch?v=PEE4lEOxqis&list=PLvyiHR9N8-hISSw7W6P2U4SmvMZd1OFZc&index=1',
-    featured: true,
-    year: '2025'
-  },
-  {
-    id: 'man-behind-brahmos-bethere-2025',
-    title: 'Unleash Your Potential: The Man Behind BrahMos',
-    speaker: 'Padma Shri Dr. Prahlad Rama Rao',
-    speakerType: 'guest',
-    topic: 'Innovation & Defence',
-    type: 'video',
-    duration: '64 min',
-    image: 'https://i.ytimg.com/vi/2sqBZe931Cw/hqdefault.jpg',
-    shortDesc: 'The incredible true story of how one man prepared Bharat for Operation Sindoor.',
-    link: 'https://www.youtube.com/watch?v=2sqBZe931Cw&list=PLvyiHR9N8-hJWCdRf5JMYhv4zFO763YdR&index=7',
-    featured: true,
-    year: '2025'
-  },
-  {
-    id: 'article-dharma-youth',
-    title: 'Dharma and the Young Professional',
-    speaker: 'CHYK Editorial',
-    speakerType: 'member',
-    topic: 'Dharma',
-    type: 'article',
-    readTime: '6 min',
-    image: 'assets/gallery-3.jpg',
-    shortDesc: 'How the concept of Svadharma from the Bhagavad Gita can guide career choices in the modern world.',
-    featured: false,
-    year: '2024'
-  },
-  {
-    id: 'article-gurudev-youth',
-    title: 'What Gurudev Said About the Youth',
-    speaker: 'CHYK Editorial',
-    speakerType: 'member',
-    topic: 'Inspiration',
-    type: 'article',
-    readTime: '4 min',
-    image: 'assets/gallery-1.jpg',
-    shortDesc: "A curated collection of Pujya Gurudev's most inspiring words addressed specifically to young people.",
-    featured: false,
-    year: '2024'
+    id: 'vision-culture-spirituality', title: "Gurudev's Vision for Culture & Spirituality", speaker: 'Swami Mitrananda', speakerType: 'acharya',
+    topic: 'Culture & Spirituality', type: 'video', duration: '20 min', image: 'https://i.ytimg.com/vi/Chwtu3a0fIg/hqdefault.jpg',
+    shortDesc: "Swami Mitrananda unpacks the visionary's vision for Bharat's culture and spirituality.",
+    link: 'https://www.youtube.com/watch?v=Chwtu3a0fIg&list=PLvyiHR9N8-hL_4dxjpGm2R7NhNJ80RYOy&index=6', featured: true
   }
 ];

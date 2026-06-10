@@ -1,112 +1,34 @@
-/* CHYK Articles / Content Hub Data */
+/* Selected Written Articles & Essays */
 window.CHYK_DATA = window.CHYK_DATA || {};
 window.CHYK_DATA.articles = [
   {
-    id: 'movie-review-oppenheimer',
-    title: 'Oppenheimer Through a Vedantic Lens',
-    category: 'movie-reviews',
-    tags: ['Movies', 'Vedanta', 'Dharma'],
-    shortDesc: 'How Nolan\'s epic quietly mirrors the Kurukshetra dilemma of duty, conscience, and consequence.',
-    readTime: '6 min read',
-    author: 'Priya S.',
-    date: '2024-11-10',
-    image: 'assets/gallery-1.jpg',
-    featured: true
+    id: 'crossroads-youth-potential', title: 'Harnessing Youth Potential Through Dynamic Spirituality', category: 'Crossroads', source: 'Crossroads',
+    tags: ['Youth', 'Spirituality', 'Potential'], shortDesc: 'Discovering and directing the immense potential of youth towards personality unfoldment and service of humanity.',
+    readTime: '4 min', author: 'Swami Anukoolananda', image: 'assets/gallery-1.jpg', featured: true
   },
   {
-    id: 'sattvik-recipes-monsoon',
-    title: '7 Sattvik Recipes to Nourish Body and Mind This Monsoon',
-    category: 'sattvik-food',
-    tags: ['Food', 'Sattvik', 'Recipe'],
-    shortDesc: 'Light, warming, and deeply nourishing — these monsoon-ready recipes bring Ayurvedic wisdom to your kitchen.',
-    readTime: '5 min read',
-    author: 'Rohini M.',
-    date: '2024-10-01',
-    image: 'assets/gallery-2.jpg',
-    featured: false
+    id: 'crossroads-tradition-modernity', title: 'Navigating the Crossroads: Tradition and Modernity', category: 'Crossroads', source: 'Crossroads',
+    tags: ['Tradition', 'Modernity', 'Culture'], shortDesc: 'A reflection on staying rooted in Bharatiya culture while engaging thoughtfully with a rapidly globalising world.',
+    readTime: '3 min', author: 'CHYK CIRS', image: 'assets/gallery-2.jpg', featured: true
   },
   {
-    id: 'travel-kedarnath',
-    title: 'Kedarnath: A Journey That Changes You',
-    category: 'great-places',
-    tags: ['Travel', 'Himalaya', 'Spiritual'],
-    shortDesc: 'A first-person account of the trek to Kedarnath — mud, mist, and a moment with the divine.',
-    readTime: '8 min read',
-    author: 'Arjun P.',
-    date: '2024-09-15',
-    image: 'assets/gallery-3.jpg',
-    featured: true
+    id: 'chinmaya-transformation-tips', title: 'Ten Tips for Transformation', category: 'Chinmaya Mission', source: 'Chinmaya Mission',
+    tags: ['Transformation', 'Sattva', 'Practice'], shortDesc: 'Ten practical dimensions of life through which noble habits, clarity, and total transformation can unfold.',
+    readTime: '5 min', author: 'Swami Tejomayananda', image: 'assets/gallery-3.jpg', featured: true
   },
   {
-    id: 'tip-focus-digital-age',
-    title: 'How to Actually Focus in the Age of Infinite Distraction',
-    category: 'tips',
-    tags: ['Focus', 'Mindfulness', 'Productivity'],
-    shortDesc: 'Practical Vedantic and neuroscience-backed techniques to reclaim your attention and deepen your work.',
-    readTime: '4 min read',
-    author: 'Kavya R.',
-    date: '2024-11-20',
-    image: 'assets/gallery-1.jpg',
-    featured: false
+    id: 'chinmaya-hanuman-service', title: "The Greatness of Hanuman's Service", category: 'Chinmaya Mission', source: 'Chinmaya Mission',
+    tags: ['Hanuman', 'Service', 'Devotion'], shortDesc: 'A meditation on true mastery, devotion, and the greatness revealed through selfless service to a noble ideal.',
+    readTime: '4 min', author: 'Swami Tejomayananda', image: 'assets/gallery-1.jpg', featured: true
   },
   {
-    id: 'book-review-artofwar',
-    title: 'Review: "The Art of War" and What the Gita Says About Strategy',
-    category: 'book-reviews',
-    tags: ['Books', 'Gita', 'Strategy'],
-    shortDesc: 'A comparative review of Sun Tzu\'s masterpiece alongside the strategic wisdom of the Bhagavad Gita.',
-    readTime: '7 min read',
-    author: 'Nikhil A.',
-    date: '2024-10-18',
-    image: 'assets/gallery-2.jpg',
-    featured: false
+    id: 'publication-harmony-existence', title: 'Harmony of Existence', category: 'Publications', source: 'Kindle Life',
+    tags: ['Harmony', 'Values', 'Living'], shortDesc: 'How scriptural wisdom and disciplined effort can restore balance, intelligence, and harmony to everyday living.',
+    readTime: '4 min', author: 'Swami Chinmayananda', image: 'assets/gallery-2.jpg', featured: true
   },
   {
-    id: 'short-read-equanimity',
-    title: 'Samatvam: The Yoga of Equanimity in a Chaotic World',
-    category: 'short-reads',
-    tags: ['Vedanta', 'Equanimity', 'Mindset'],
-    shortDesc: 'What the Bhagavad Gita\'s concept of samatvam looks like in practice — from board meetings to breakups.',
-    readTime: '3 min read',
-    author: 'CHYK Editorial',
-    date: '2024-12-01',
-    image: 'assets/gallery-3.jpg',
-    featured: true
-  },
-  {
-    id: 'declamation-tips',
-    title: 'Winning at Declamation: Structure, Spirit, and Presence',
-    category: 'declamation',
-    tags: ['Declamation', 'Speaking', 'Competition'],
-    shortDesc: 'Everything you need to know to prepare and deliver a powerful declamation — from topic selection to stage confidence.',
-    readTime: '5 min read',
-    author: 'Shreya K.',
-    date: '2024-11-05',
-    image: 'assets/gallery-1.jpg',
-    featured: false
-  },
-  {
-    id: 'movie-review-dangal',
-    title: 'Dangal: A Story of Disciplined Love',
-    category: 'movie-reviews',
-    tags: ['Movies', 'Discipline', 'Family'],
-    shortDesc: 'Beyond the sports drama, Dangal is a story about love expressed through tough devotion — much like tapas.',
-    readTime: '5 min read',
-    author: 'Mihir S.',
-    date: '2024-08-22',
-    image: 'assets/gallery-2.jpg',
-    featured: false
-  },
-  {
-    id: 'sattvik-guide-eating-out',
-    title: 'Staying Sattvik While Eating Out: A Practical Guide',
-    category: 'sattvik-food',
-    tags: ['Food', 'Sattvik', 'Practical'],
-    shortDesc: 'You can maintain a sattvik diet without being a hermit. Here\'s how to navigate restaurants, events, and travel.',
-    readTime: '4 min read',
-    author: 'Ananya T.',
-    date: '2024-09-30',
-    image: 'assets/gallery-3.jpg',
-    featured: false
+    id: 'publication-law-karma', title: 'Law of Karma', category: 'Publications', source: 'Kindle Life',
+    tags: ['Karma', 'Self-Effort', 'Destiny'], shortDesc: "A clear exploration of destiny and self-effort, showing how today's choices reshape the future.",
+    readTime: '6 min', author: 'Swami Chinmayananda', image: 'assets/gallery-3.jpg', featured: true
   }
 ];

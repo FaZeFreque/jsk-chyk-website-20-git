@@ -84,8 +84,8 @@
       <div class="page-hero-overlay"></div>
       <div class="page-hero-content">
         <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> What's Happening</p>
-        <h1 class="page-hero-title">Upcoming<br><span class="text-gold">Events</span></h1>
-        <p class="page-hero-subtitle">From national conventions to local workshops — discover CHYK events happening near you and around the world.</p>
+        <h1 class="page-hero-title">Events &amp;<br><span class="text-gold">Milestones</span></h1>
+        <p class="page-hero-subtitle">Explore landmark CHYK gatherings, national projects, camps, yatras, talks, and the experiences shaping young seekers across Bharat.</p>
       </div>
       <div class="page-hero-big-text">EVT</div>
     </section>
@@ -102,12 +102,15 @@
         <div class="events-header">
           <div class="filter-tabs" id="event-filters">
             <button class="filter-tab active" data-filter="all">All</button>
-            <button class="filter-tab" data-filter="national">National</button>
             <button class="filter-tab" data-filter="camps">Camps</button>
-            <button class="filter-tab" data-filter="workshops">Workshops</button>
+            <button class="filter-tab" data-filter="conventions">Conventions</button>
+            <button class="filter-tab" data-filter="projects">Projects</button>
+            <button class="filter-tab" data-filter="talks">Talks</button>
             <button class="filter-tab" data-filter="yatras">Yatras</button>
-            <button class="filter-tab" data-filter="arts">Arts</button>
-            <button class="filter-tab" data-filter="study">Study</button>
+            <button class="filter-tab" data-filter="training">Training</button>
+            <button class="filter-tab" data-filter="seminars">Seminars</button>
+            <button class="filter-tab" data-filter="campaigns">Campaigns</button>
+            <button class="filter-tab" data-filter="digital">Digital</button>
           </div>
           <div class="view-toggle">
             <button class="view-btn active" id="view-grid" title="Grid view">⊞</button>
@@ -118,13 +121,7 @@
         <!-- Centre filter -->
         <div style="margin-bottom:1.75rem;">
           <select class="talks-filter-select" id="centre-filter" style="min-width:180px;">
-            <option value="all">All Centres</option>
-            <option value="National">National</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Bengaluru">Bengaluru</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Pune">Pune</option>
+            <option value="all">All Locations</option>
           </select>
         </div>
 
@@ -171,7 +168,7 @@
 
   <!-- Event Detail Modal -->
   <div class="modal-overlay" id="event-modal">
-    <div class="modal-box">
+    <div class="modal-box event-modal-box">
       <button class="modal-close" onclick="CHYK.closeModal('event-modal')">×</button>
       <img class="modal-img" id="modal-event-img" src="" alt="">
       <div class="modal-body">
@@ -247,9 +244,6 @@
     <script src="js/mobile-fun.js"></script>
 </body>
 </html>
-
-
-
 
 
 
