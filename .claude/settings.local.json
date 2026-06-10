@@ -18,7 +18,14 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(node --check \"F:\\\\CIRS F\\\\jsk-chyk-website structured\\\\jsk-chyk-website 16\\\\script.js\")",
       "Skill(run)",
-      "Skill(run:*)"
+      "Skill(run:*)",
+      "Bash(sort -k6)",
+      "Bash(ffmpeg -version)",
+      "Bash(npm install *)",
+      "Bash(node_modules/ffmpeg-static/ffmpeg.exe -version)",
+      "Bash(node_modules/ffmpeg-static/ffmpeg.exe -i \"FINAL TUNEL SEQUNCE SURE/image1_00000.jpg\")",
+      "Bash(grep -n \"innerWidth\\\\|matchMedia\\\\|Lenis\\\\|lenis\\\\|filter\\\\|blur\\\\|requestAnimationFrame\\\\|\\\\\\\\?\\\\\\\\.\\\\|??\" js/base.js)",
+      "Bash(node_modules/ffmpeg-static/ffmpeg.exe -y -loglevel error -f lavfi -i \"color=c=0x111111:s=800x800:d=1\" -frames:v 1 -q:v 6 assets/placeholder.jpg)"
     ]
   }
 }

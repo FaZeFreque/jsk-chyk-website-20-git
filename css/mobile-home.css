@@ -331,6 +331,74 @@
   .m-deck-count b { color: var(--gold, #c9a24a); font-style: normal; }
   .m-deck-count i { font-style: normal; }
 
+  /* ── STACK MODE: swipe-to-throw card deck ──
+     Enabled by JS (adds .m-deck--stack) when Pointer Events are available.
+     Without JS or on old browsers the deck stays a native scroll-snap row. */
+  .m-deck--stack {
+    display: block;
+    overflow: visible;
+    height: clamp(340px, 112vw, 470px);
+    padding: 0.75rem 0 0;
+    scroll-snap-type: none;
+    touch-action: pan-y;          /* vertical page scroll stays native */
+    perspective: 900px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .m-deck--stack * { user-select: none; -webkit-user-select: none; }
+  .m-deck--stack .m-deck-card {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: min(76vw, 330px);
+    height: clamp(310px, 102vw, 430px);
+    min-height: 0;
+    margin-left: calc(min(76vw, 330px) / -2);
+    cursor: grab;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.34, 1.3, 0.5, 1), opacity 0.4s ease;
+    scroll-snap-align: none;
+  }
+  /* Stacked positions — top card flat, others fan behind */
+  .m-deck--stack .m-deck-card.pos-0 { transform: translateY(0) rotate(0deg) scale(1) !important; opacity: 1; }
+  .m-deck--stack .m-deck-card.pos-1 { transform: translateY(14px) rotate(2.2deg) scale(0.955) !important; opacity: 1; }
+  .m-deck--stack .m-deck-card.pos-2 { transform: translateY(27px) rotate(-2deg) scale(0.91) !important; opacity: 1; }
+  .m-deck--stack .m-deck-card.pos-3 { transform: translateY(38px) rotate(1.4deg) scale(0.87) !important; opacity: 0; pointer-events: none; }
+  /* While dragging, JS drives the transform inline */
+  .m-deck--stack .m-deck-card.dragging {
+    transition: none;
+    cursor: grabbing;
+  }
+  .m-deck--stack .m-deck-card.dragging,
+  .m-deck--stack .m-deck-card.flying {
+    transform: var(--drag, none) !important;
+  }
+  .m-deck--stack .m-deck-card.flying {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+    opacity: 0;
+  }
+  /* Idle nudge: top card sways gently until first touch */
+  .m-deck--stack.idle .m-deck-card.pos-0 {
+    animation: mDeckNudge 3.2s ease-in-out 1.2s infinite;
+  }
+  /* Uses individual translate/rotate props so it composes with the
+     !important transform on .pos-0 (animations can't beat !important) */
+  @keyframes mDeckNudge {
+    0%, 100% { translate: 0 0; rotate: 0deg; }
+    8%  { translate: 14px -3px; rotate: 1.6deg; }
+    16% { translate: -10px 0; rotate: -1.2deg; }
+    24% { translate: 0 0; rotate: 0deg; }
+  }
+  /* Gold edge glow on the live card */
+  .m-deck--stack .m-deck-card.pos-0 {
+    border-color: rgba(201, 162, 74, 0.45);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55), 0 0 32px rgba(201, 162, 74, 0.1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .m-deck--stack.idle .m-deck-card.pos-0 { animation: none; }
+  }
+
   /* Polaroid-style photo cards */
   .m-journey-card {
     flex: 0 0 auto;

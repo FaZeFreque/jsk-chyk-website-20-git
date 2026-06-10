@@ -1700,7 +1700,7 @@ h1, h2, h3, .logo, .loading-text {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    /* background-image already set inline (gurudev bg.png) */
+    /* background-image already set inline (gurudev bg.jpg) */
     background-size: cover !important;
     background-position: center !important;
     opacity: 1 !important;
@@ -2098,4 +2098,31 @@ h1, h2, h3, .logo, .loading-text {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BROWSER FAILSAFES — Safari / Samsung Internet insurance
+   If JS or a CDN fails or stalls, the site must still appear.
+   CSS animations override inline styles (non-!important), so
+   these guarantee visibility without fighting GSAP timing.
+   ══════════════════════════════════════════════════════════ */
+
+/* Loading screen always clears itself within 7s even if JS dies */
+.loading-screen {
+  animation: chykLoadingFailsafe 0.8s ease 6.5s forwards;
+}
+@keyframes chykLoadingFailsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Header (inline opacity:0 on index) becomes visible no matter what.
+   Mobile/tablet only — desktop reveal stays with GSAP so the header
+   never pops in over the preloader video. */
+@media (max-width: 1024px) {
+  .site-header {
+    animation: chykHeaderFailsafe 0.6s ease 4s forwards;
+  }
+}
+@keyframes chykHeaderFailsafe {
+  to { opacity: 1; visibility: visible; }
 }

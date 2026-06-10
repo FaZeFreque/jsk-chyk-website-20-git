@@ -13,7 +13,7 @@ window.CHYK_DATA.events = [
     location: 'Chinmaya Vibhooti, Kolwan, Pune',
     centre: 'National',
     category: 'national',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: true,
     tags: ['National', 'Convention', 'Annual'],
     registerLink: '#'
@@ -30,7 +30,7 @@ window.CHYK_DATA.events = [
     location: 'Chinmaya Setu, Khopoli',
     centre: 'Mumbai',
     category: 'camps',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false,
     tags: ['CTC', 'Residential', 'Mumbai'],
     registerLink: '#'
@@ -47,7 +47,7 @@ window.CHYK_DATA.events = [
     location: 'Chinmaya Mission Delhi, New Delhi',
     centre: 'Delhi',
     category: 'national',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     featured: false,
     tags: ['YEP', 'Delhi', 'Workshop'],
     registerLink: '#'
@@ -64,7 +64,7 @@ window.CHYK_DATA.events = [
     location: 'Kedarnath, Uttarakhand',
     centre: 'National',
     category: 'yatras',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: false,
     tags: ['Yatra', 'Himalaya', 'Kedarnath'],
     registerLink: '#'
@@ -81,7 +81,7 @@ window.CHYK_DATA.events = [
     location: 'Chinmaya Mission Bengaluru',
     centre: 'Bengaluru',
     category: 'workshops',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false,
     tags: ['Workshop', 'Speaking', 'Bengaluru'],
     registerLink: '#'
@@ -98,7 +98,7 @@ window.CHYK_DATA.events = [
     location: 'Chinmaya Mission Chennai',
     centre: 'Chennai',
     category: 'arts',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     featured: false,
     tags: ['Theatre', 'Arts', 'Chennai'],
     registerLink: '#'
@@ -115,7 +115,7 @@ window.CHYK_DATA.events = [
     location: 'All CHYK Centres Nationwide',
     centre: 'National',
     category: 'national',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: false,
     tags: ['Seva', 'Environment', 'National'],
     registerLink: '#'
@@ -132,7 +132,7 @@ window.CHYK_DATA.events = [
     location: 'Online (Zoom + YouTube Live)',
     centre: 'National',
     category: 'study',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false,
     tags: ['Gita', 'Online', 'Satsang'],
     registerLink: '#'

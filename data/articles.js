@@ -10,7 +10,7 @@ window.CHYK_DATA.articles = [
     readTime: '6 min read',
     author: 'Priya S.',
     date: '2024-11-10',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: true
   },
   {
@@ -22,7 +22,7 @@ window.CHYK_DATA.articles = [
     readTime: '5 min read',
     author: 'Rohini M.',
     date: '2024-10-01',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false
   },
   {
@@ -34,7 +34,7 @@ window.CHYK_DATA.articles = [
     readTime: '8 min read',
     author: 'Arjun P.',
     date: '2024-09-15',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     featured: true
   },
   {
@@ -46,7 +46,7 @@ window.CHYK_DATA.articles = [
     readTime: '4 min read',
     author: 'Kavya R.',
     date: '2024-11-20',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: false
   },
   {
@@ -58,7 +58,7 @@ window.CHYK_DATA.articles = [
     readTime: '7 min read',
     author: 'Nikhil A.',
     date: '2024-10-18',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false
   },
   {
@@ -70,7 +70,7 @@ window.CHYK_DATA.articles = [
     readTime: '3 min read',
     author: 'CHYK Editorial',
     date: '2024-12-01',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     featured: true
   },
   {
@@ -82,7 +82,7 @@ window.CHYK_DATA.articles = [
     readTime: '5 min read',
     author: 'Shreya K.',
     date: '2024-11-05',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     featured: false
   },
   {
@@ -94,7 +94,7 @@ window.CHYK_DATA.articles = [
     readTime: '5 min read',
     author: 'Mihir S.',
     date: '2024-08-22',
-    image: 'assets/gallery-2.png',
+    image: 'assets/gallery-2.jpg',
     featured: false
   },
   {
@@ -106,7 +106,7 @@ window.CHYK_DATA.articles = [
     readTime: '4 min read',
     author: 'Ananya T.',
     date: '2024-09-30',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     featured: false
   }
 ];

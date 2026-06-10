@@ -93,7 +93,7 @@ window.CHYK_DATA.talks = [
     topic: 'Dharma',
     type: 'article',
     readTime: '6 min',
-    image: 'assets/gallery-3.png',
+    image: 'assets/gallery-3.jpg',
     shortDesc: 'How the concept of Svadharma from the Bhagavad Gita can guide career choices in the modern world.',
     featured: false,
     year: '2024'
@@ -106,7 +106,7 @@ window.CHYK_DATA.talks = [
     topic: 'Inspiration',
     type: 'article',
     readTime: '4 min',
-    image: 'assets/gallery-1.png',
+    image: 'assets/gallery-1.jpg',
     shortDesc: "A curated collection of Pujya Gurudev's most inspiring words addressed specifically to young people.",
     featured: false,
     year: '2024'

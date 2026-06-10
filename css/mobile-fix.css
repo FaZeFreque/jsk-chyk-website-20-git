@@ -870,15 +870,21 @@
 /* The events & other pages use inline style="grid-template-columns:1fr 1fr"
    inside a .container — this must collapse to single column on mobile */
 @media (max-width: 767px) {
-  /* Any inline two-column grid collapses to one column on phones —
-     EXCEPT small stat grids (2-up stats read fine and stay compact) */
-  [style*="grid-template-columns:1fr 1fr"]:not(:has(.stat-item)),
-  [style*="grid-template-columns: 1fr 1fr"]:not(:has(.stat-item)),
+  /* Any inline two-column grid collapses to one column on phones.
+     (No :has() here — unsupported browsers would drop the whole rule;
+     stat grids are re-established to 2-up just below.) */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
   [style*="grid-template-columns:1.2fr"],
   [style*="grid-template-columns: 1.2fr"],
   [style*="grid-template-columns:1fr 1.2fr"] {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
+  }
+  /* Stat grids stay compact 2-up (art page Udghosh band etc.) */
+  .udghosh-stats [style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
   }
   /* Inline stat grids: keep 2-up but make sure nothing clips */
   [style*="grid-template-columns"] .stat-item {
