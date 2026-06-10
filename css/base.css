@@ -48,23 +48,28 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 ul { list-style: none; }
 input, select, textarea { font: inherit; }
 
-/* 3. Custom Cursor (desktop only) */
+/* 3. Custom Cursor (desktop only)
+   NOTE: never put `transform` in these transitions — GSAP drives the
+   cursor position via transform every frame, and a CSS transition on
+   the same property fights it (visible lag/rubber-banding on scroll). */
 .cursor-dot, .cursor-ring {
   position: fixed;
+  top: 0; left: 0;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
+  will-change: transform;
 }
 .cursor-dot {
   width: 8px; height: 8px;
   background: var(--white);
-  transition: transform 0.15s, background 0.3s;
+  transition: background 0.3s;
 }
 .cursor-ring {
   width: 38px; height: 38px;
   border: 1.5px solid rgba(255,255,255,0.55);
-  transition: transform 0.45s var(--ease), width 0.3s, height 0.3s, border-color 0.3s;
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
 }
 .cursor-ring.hovered {
   width: 60px; height: 60px;

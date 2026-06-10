@@ -1349,6 +1349,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const parallaxTexts = document.querySelectorAll('.hero-title, .hero-subtitle, .text-holder h2, .core-title');
 
     if (!isTouch) {
+    // Prebuilt quickTo setters: one reusable tween per element/property
+    // instead of allocating fresh gsap.to() tweens on EVERY mousemove
+    // (that allocation churn made the cursor stutter while scrolling).
+    const parallaxSetters = Array.prototype.map.call(parallaxTexts, el => {
+        gsap.set(el, { transformPerspective: 500 });
+        return {
+            x:  gsap.quickTo(el, 'x',         { duration: 1.5, ease: 'power2.out' }),
+            y:  gsap.quickTo(el, 'y',         { duration: 1.5, ease: 'power2.out' }),
+            rx: gsap.quickTo(el, 'rotationX', { duration: 1.5, ease: 'power2.out' }),
+            ry: gsap.quickTo(el, 'rotationY', { duration: 1.5, ease: 'power2.out' })
+        };
+    });
+
     document.addEventListener('mousemove', (e) => {
         // Standard cursor followers
         xDot(e.clientX);
@@ -1364,18 +1377,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const xOffset = (e.clientX / window.innerWidth - 0.5) * 30; // max 15px shift
         const yOffset = (e.clientY / window.innerHeight - 0.5) * 30;
 
-        parallaxTexts.forEach(el => {
-            gsap.to(el, {
-                x: xOffset,
-                y: yOffset,
-                rotationX: -yOffset * 0.2,
-                rotationY: xOffset * 0.2,
-                transformPerspective: 500,
-                duration: 1.5,
-                ease: "power2.out"
-            });
-        });
-    });
+        for (let i = 0; i < parallaxSetters.length; i++) {
+            const s = parallaxSetters[i];
+            s.x(xOffset);
+            s.y(yOffset);
+            s.rx(-yOffset * 0.2);
+            s.ry(xOffset * 0.2);
+        }
+    }, { passive: true });
     }
 
     // 3. Loading & Preloader Sequence
