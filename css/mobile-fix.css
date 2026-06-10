@@ -1141,3 +1141,64 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Cross-browser mobile viewport and text stability. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  body { overflow-x: hidden; }
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  :root { --mobile-vh: 1vh; }
+
+  .page-wrapper,
+  .leaders-hero,
+  .lightbox-inner {
+    min-height: 100vh;
+    min-height: calc(var(--mobile-vh, 1vh) * 100);
+    min-height: 100svh;
+  }
+
+  .mobile-menu {
+    height: 100vh !important;
+    height: calc(var(--mobile-vh, 1vh) * 100) !important;
+    height: 100svh !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
+
+  h1, h2, h3, p, a, button, span {
+    min-width: 0;
+  }
+
+  h1, h2, h3,
+  .section-title,
+  .page-hero-title {
+    word-break: normal !important;
+    overflow-wrap: break-word;
+    hyphens: none !important;
+  }
+
+  input, textarea, select, button {
+    font-size: max(16px, 1rem);
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .m-hero-vid, .hero-vid { transform: translateZ(0); }
+    .site-header { -webkit-transform: translateZ(0); }
+  }
+}

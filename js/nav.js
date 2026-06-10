@@ -7,6 +7,18 @@
 (function () {
   'use strict';
 
+  // Keep a stable viewport unit for older iOS Safari and Samsung Internet.
+  function setMobileViewportUnit() {
+    var viewport = window.visualViewport;
+    var height = viewport ? viewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--mobile-vh', (height * 0.01) + 'px');
+  }
+  setMobileViewportUnit();
+  window.addEventListener('orientationchange', setMobileViewportUnit, { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setMobileViewportUnit, { passive: true });
+  }
+
   const header   = document.getElementById('site-header');
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');

@@ -8,6 +8,18 @@
   if (window.CHYK_BASE_INIT) return;
   window.CHYK_BASE_INIT = true;
 
+  // Stable viewport unit for mobile browsers whose address bar changes height.
+  function setMobileViewportUnit() {
+    const viewport = window.visualViewport;
+    const height = viewport ? viewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--mobile-vh', `${height * 0.01}px`);
+  }
+  setMobileViewportUnit();
+  window.addEventListener('orientationchange', setMobileViewportUnit, { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setMobileViewportUnit, { passive: true });
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

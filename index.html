@@ -414,7 +414,7 @@
             </div>
             <div class="m-deck-meta">
                 <span class="m-deck-count"><b id="m-deck-count">01</b> / <i id="m-deck-total">13</i></span>
-                <span class="m-deck-tip">↜ either direction works ↝</span>
+                <span class="m-deck-tip">Swipe to explore</span>
             </div>
         </section>
 
@@ -763,15 +763,41 @@
                 var p = mv.play();
                 if (p && p.catch) p.catch(function () { /* poster fallback shows */ });
             }
+
+            /* Journey counter follows the nearest native scroll-snap card. */
+            var deck = document.getElementById('m-deck');
+            var deckCount = document.getElementById('m-deck-count');
+            var deckTotal = document.getElementById('m-deck-total');
+            if (deck && deckCount) {
+                if (deckTotal) deckTotal.textContent = String(deck.children.length).padStart(2, '0');
+                var deckTicking = false;
+                deck.addEventListener('scroll', function () {
+                    if (deckTicking) return;
+                    deckTicking = true;
+                    requestAnimationFrame(function () {
+                        var cards = deck.children;
+                        var center = deck.scrollLeft + deck.clientWidth / 2;
+                        var nearest = 0;
+                        var distance = Infinity;
+                        for (var i = 0; i < cards.length; i++) {
+                            var cardCenter = cards[i].offsetLeft + cards[i].offsetWidth / 2;
+                            var nextDistance = Math.abs(center - cardCenter);
+                            if (nextDistance < distance) {
+                                distance = nextDistance;
+                                nearest = i;
+                            }
+                        }
+                        deckCount.textContent = String(nearest + 1).padStart(2, '0');
+                        deckTicking = false;
+                    });
+                }, { passive: true });
+            }
         })();
         </script>
     <script src="js/mobile-fun.js"></script>
 </body>
 
 </html>
-
-
-
 
 
 
