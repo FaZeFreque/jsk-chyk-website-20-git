@@ -1,0 +1,558 @@
+/* ==========================================================
+   CHYK — MOBILE-EXCLUSIVE HOMEPAGE EXPERIENCE
+   New cinematic mobile hero + "Choose Your Path" section.
+   Scoped to ≤1024px. Desktop (>1024px) completely unchanged.
+   ========================================================== */
+
+/* Hidden on desktop */
+.m-hero, .m-path, .m-journey { display: none; }
+
+@media (max-width: 1024px) {
+
+  /* ─── Replace heavy desktop hero & tunnel with mobile experience ─── */
+  .horizontal-experience { display: none !important; }
+  .tunnel-finale { display: none !important; }
+
+  /* ───────────────────────────────────────────────
+     MOBILE HERO — full-screen cinematic video
+     ─────────────────────────────────────────────── */
+  .m-hero {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 560px;
+    overflow: hidden;
+    background: #050505;
+  }
+  .m-hero-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  /* Gradient shade: keeps title readable, lets video glow through the middle */
+  .m-hero-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(5,5,5,0.72) 0%,
+        rgba(5,5,5,0.15) 22%,
+        rgba(5,5,5,0.05) 45%,
+        rgba(5,5,5,0.55) 72%,
+        rgba(5,5,5,0.92) 100%);
+    pointer-events: none;
+  }
+  .m-hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.25rem calc(2.25rem + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+  /* Stat chips — like the design reference pills */
+  .m-hero-chips {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 0.6rem 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: mHeroRise 0.9s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .m-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(10, 10, 10, 0.45);
+    border: 1px solid rgba(201, 162, 74, 0.45);
+    border-radius: 100px;
+    backdrop-filter: none; /* perf: no blur on mobile */
+    white-space: nowrap;
+  }
+  .m-chip::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold, #c9a24a);
+    flex-shrink: 0;
+  }
+  /* Title — clean two-line lockup, never breaks mid-word.
+     Anton (condensed) matches the design reference and keeps
+     "YOUTH POTENTIAL" on a single line down to 330px wide. */
+  .m-hero-title {
+    font-family: 'Anton', 'Syne', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 9.4vw, 3.8rem);
+    line-height: 1.06;
+    letter-spacing: 1px;
+    color: #fff;
+    margin: 0 0 0.85rem;
+    white-space: nowrap;       /* each <br>-separated line stays intact */
+    overflow: visible;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: mHeroRise 0.9s 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .m-hero-title .m-gold {
+    color: var(--gold, #c9a24a);
+    text-shadow: 0 0 30px rgba(201, 162, 74, 0.35);
+  }
+  .m-hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 30ch;
+    margin: 0 0 1.9rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: mHeroRise 0.9s 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .m-hero-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    animation: mHeroRise 0.9s 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .m-hero-scroll span {
+    width: 1px;
+    height: 26px;
+    background: linear-gradient(180deg, var(--gold, #c9a24a), transparent);
+    animation: mScrollPulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes mHeroRise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes mScrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.45); opacity: 0.4; }
+  }
+
+  /* ───────────────────────────────────────────────
+     THE JOURNEY — horizontal scrapbook gallery
+     (mobile rendition of the desktop scrapbook scroll)
+     ─────────────────────────────────────────────── */
+  .m-journey {
+    display: block;
+    position: relative;
+    background: #050505;
+    padding: 4rem 0 3.5rem;
+    overflow: hidden;
+  }
+  /* faint topographic-style gold wash */
+  .m-journey::before {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 120vw;
+    height: 70vh;
+    background: radial-gradient(ellipse at bottom left, rgba(201,162,74,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .m-journey-head {
+    padding: 0 1.5rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+    z-index: 1;
+  }
+  .m-journey-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 8.4vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin: 0 0 0.7rem;
+  }
+  .m-journey-title .m-gold { color: var(--gold, #c9a24a); }
+  .m-journey-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+  }
+
+  .m-journey-track {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 1rem 1.5rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .m-journey-track::-webkit-scrollbar { display: none; }
+
+  /* Polaroid-style photo cards */
+  .m-journey-card {
+    flex: 0 0 auto;
+    margin: 0;
+    scroll-snap-align: center;
+    width: min(62vw, 280px);
+    background: #0d0d0d;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0.55rem 0.55rem 0.7rem;
+    box-sizing: border-box;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.5);
+  }
+  .m-journey-card.tilt-l { transform: rotate(-1.6deg); }
+  .m-journey-card.tilt-r { transform: rotate(1.6deg); }
+  .m-journey-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+  }
+  .m-journey-card figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    padding: 0.6rem 0.2rem 0;
+  }
+  .m-journey-card figcaption span {
+    color: var(--gold, #c9a24a);
+    font-size: 0.58rem;
+  }
+  .m-journey-finale {
+    border-color: rgba(201,162,74,0.4);
+    box-shadow: 0 10px 40px rgba(201,162,74,0.12);
+  }
+
+  /* Text interstitials — big gold statements between photos */
+  .m-journey-text {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    width: min(56vw, 250px);
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+  }
+  .m-journey-text h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.25rem, 5.6vw, 1.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin: 0 0 0.6rem;
+  }
+  .m-journey-text .m-gold { color: var(--gold, #c9a24a); }
+  .m-journey-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+
+  /* ───────────────────────────────────────────────
+     CHOOSE YOUR PATH — mobile-only swipe section
+     (replaces desktop tunnel sequence on mobile)
+     ─────────────────────────────────────────────── */
+  .m-path {
+    display: block;
+    position: relative;
+    background: #050505;
+    padding: 4.5rem 0 4rem;
+    overflow: hidden;
+  }
+  /* faint gold radial ambience — cheap, static, no animation */
+  .m-path::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130vw;
+    height: 60vh;
+    background: radial-gradient(ellipse at center, rgba(201,162,74,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .m-path-head {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .m-path-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold, #c9a24a);
+    margin-bottom: 0.9rem;
+  }
+  .m-path-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold, #c9a24a);
+  }
+  .m-path-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 8.4vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin: 0 0 0.8rem;
+  }
+  .m-path-title .m-gold { color: var(--gold, #c9a24a); }
+  .m-path-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 34ch;
+  }
+
+  /* Swipe track */
+  .m-path-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.5rem 1.5rem 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  .m-path-track::-webkit-scrollbar { display: none; }
+
+  .m-path-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: min(78vw, 340px);
+    scroll-snap-align: center;
+    border-radius: 18px;
+    padding: 1.6rem 1.4rem 1.5rem;
+    box-sizing: border-box;
+    background:
+      linear-gradient(160deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.012) 60%),
+      #0a0a0a;
+    border: 1px solid rgba(201, 162, 74, 0.22);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+    /* reveal state — animated by IntersectionObserver */
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                transform 0.7s cubic-bezier(0.22,1,0.36,1),
+                border-color 0.3s;
+  }
+  .m-path.in-view .m-path-card { opacity: 1; transform: translateY(0); }
+  .m-path.in-view .m-path-card:nth-child(2) { transition-delay: 0.1s; }
+  .m-path.in-view .m-path-card:nth-child(3) { transition-delay: 0.2s; }
+  .m-path.in-view .m-path-card:nth-child(4) { transition-delay: 0.3s; }
+  .m-path-card:active {
+    border-color: rgba(201, 162, 74, 0.65);
+  }
+  .m-path-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    color: rgba(201,162,74,0.7);
+    margin-bottom: 1.1rem;
+  }
+  .m-path-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.65rem;
+    letter-spacing: 0.5px;
+    color: #fff;
+    margin: 0 0 0.65rem;
+  }
+  .m-path-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.5);
+    margin: 0 0 1.4rem;
+    flex: 1;
+  }
+  .m-path-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold, #c9a24a);
+  }
+  /* gold glow corner accent */
+  .m-path-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 90px; height: 90px;
+    background: radial-gradient(circle at top right, rgba(201,162,74,0.14), transparent 70%);
+    border-radius: 0 18px 0 0;
+    pointer-events: none;
+  }
+
+  /* Dots */
+  .m-path-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    position: relative;
+    z-index: 1;
+  }
+  .m-path-dots i {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .m-path-dots i.active {
+    background: var(--gold, #c9a24a);
+    transform: scale(1.3);
+  }
+
+  /* Closing quote line under the cards */
+  .m-path-quote {
+    margin: 3rem 1.5rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .m-path-quote p {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.05rem, 4.6vw, 1.4rem);
+    line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+    margin: 0 auto 0.6rem;
+    max-width: 26ch;
+  }
+  .m-path-quote span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold, #c9a24a);
+  }
+}
+
+/* ───────────────────────────────────────────────
+   HOMEPAGE TYPOGRAPHY — final overrides (≤1024px)
+   Syne 800 runs ~1.1em per uppercase char, so sizes
+   are tuned to keep MILESTONES / DISRUPTION. intact.
+   ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .core-title {
+    font-size: clamp(1.5rem, 6.4vw, 2.6rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -1px !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
+    white-space: normal !important;
+  }
+  .core-title .gold-text { white-space: normal !important; display: inline !important; }
+  .section-label { font-size: 0.66rem !important; letter-spacing: 2.5px !important; }
+
+  /* Milestone cards: uniform size regardless of image aspect ratio.
+     The wrapper is a flex item (flex:1 1 0%), so its height was
+     content-driven — square images made card 05 taller. Pin it. */
+  .deck-card { height: auto !important; }
+  .deck-card .deck-img-wrapper {
+    flex: 0 0 auto !important;
+    height: clamp(170px, 52vw, 300px) !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  .deck-card .deck-img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .deck-card .deck-content {
+    flex: 0 0 auto !important;
+    height: auto !important;
+  }
+  .home-people-title {
+    font-size: clamp(1.7rem, 7vw, 2.8rem) !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
+  }
+}
+
+/* Tiny phones */
+@media (max-width: 374px) {
+  .m-hero-title { font-size: clamp(1.55rem, 8.4vw, 1.9rem); }
+  .m-hero-chips { grid-template-columns: 1fr; justify-items: center; gap: 0.45rem; }
+  .m-path-card { width: 84vw; }
+}
+
+/* Reduced motion: show everything immediately, no animation */
+@media (prefers-reduced-motion: reduce) {
+  .m-hero-chips, .m-hero-title, .m-hero-sub, .m-hero-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .m-hero-scroll span { animation: none !important; }
+  .m-path-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

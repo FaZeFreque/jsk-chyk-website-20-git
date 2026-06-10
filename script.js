@@ -1490,6 +1490,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mark as loaded for future navigation
     sessionStorage.setItem('chyk-loaded', 'true');
 
+    // MOBILE/TABLET (≤1024px): desktop hero & preloader video are hidden —
+    // show a quick brand flash then start the site immediately (no video wait).
+    if (window.innerWidth <= 1024) {
+        const lsMobile = document.querySelector('.loading-screen');
+        if (preloaderVid) { preloaderVid.pause(); preloaderVid.style.display = 'none'; }
+        gsap.to(lsMobile, {
+            opacity: 0, duration: 0.7, delay: 1.1, ease: 'power2.inOut',
+            onComplete: () => { if (lsMobile) lsMobile.style.display = 'none'; }
+        });
+        masterTl.progress(1);
+        if (typeof lenis !== 'undefined') lenis.start();
+        return;
+    }
+
     // Loading Text Sequence
     const loadingText = document.querySelector('.loading-text');
     if(loadingText) {

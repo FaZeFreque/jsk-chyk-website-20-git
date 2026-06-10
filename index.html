@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/mobile-fix.css">
+    <link rel="stylesheet" href="css/mobile-home.css">
 </head>
 
 <body>
@@ -97,6 +98,25 @@
                 </button>
             </div>
         </header>
+
+        <!-- MOBILE-ONLY HERO (≤1024px) — cinematic video hero -->
+        <section class="m-hero" aria-label="CHYK — Harnessing Youth Potential">
+            <video class="m-hero-vid" autoplay muted loop playsinline preload="metadata" poster="BG PIC.png">
+                <source src="mobile-hero-bg.mp4" type="video/mp4">
+            </video>
+            <div class="m-hero-shade"></div>
+            <div class="m-hero-content">
+                <div class="m-hero-chips">
+                    <span class="m-chip">50K+ Seekers</span>
+                    <span class="m-chip">Zero Boundaries</span>
+                    <span class="m-chip">Established 2024</span>
+                    <span class="m-chip">12 Countries</span>
+                </div>
+                <h1 class="m-hero-title">HARNESSING<br><span class="m-gold">YOUTH POTENTIAL</span></h1>
+                <p class="m-hero-sub">The digital frontier for the next generation of seekers.</p>
+                <div class="m-hero-scroll"><span></span>Scroll Down</div>
+            </div>
+        </section>
 
         <!-- MAIN HORIZONTAL EXPERIENCE -->
         <section class="horizontal-experience">
@@ -331,6 +351,73 @@
 
 
 
+        <!-- MOBILE-ONLY: THE JOURNEY — swipe-to-throw card deck (≤1024px) -->
+        <section class="m-journey" aria-label="The CHYK journey deck">
+            <div class="m-journey-head">
+                <p class="m-path-eyebrow">Chapter One // The Journey</p>
+                <h2 class="m-journey-title">THE ARCHIVE IS IN<br><span class="m-gold">YOUR HANDS.</span></h2>
+                <p class="m-journey-hint">Drag a card. Throw it. History flies.</p>
+            </div>
+            <div class="m-deck idle" id="m-deck">
+                <figure class="m-deck-card">
+                    <img src="assets/gallery-1.png" alt="Mumbai 2024" loading="lazy" draggable="false">
+                    <figcaption><span>01</span>MUMBAI, 2024</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>THE <span class="m-gold">ORIGIN</span></h3>
+                    <p>Where disruption began. A collective effort to redefine the boundaries of the digital space.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img src="lando-grid-1.png" alt="London 2024" loading="lazy" draggable="false">
+                    <figcaption><span>02</span>LONDON, 2024</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img src="assets/gallery-2.png" alt="Tokyo 2025" loading="lazy" draggable="false">
+                    <figcaption><span>03</span>TOKYO, 2025</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>GLOBAL <span class="m-gold">REACH</span></h3>
+                    <p>Expanding across continents, connecting seekers from all corners of the globe.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img src="lando-hero.png" alt="New York 2025" loading="lazy" draggable="false">
+                    <figcaption><span>04</span>NEW YORK, 2025</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img src="assets/gallery-3.png" alt="Monaco 2026" loading="lazy" draggable="false">
+                    <figcaption><span>05</span>MONACO, 2026</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>THE <span class="m-gold">PROCESS</span></h3>
+                    <p>Iterative. Brutal. Beautiful. The journey is the destination.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img src="lando-grid-2.png" alt="Berlin 2026" loading="lazy" draggable="false">
+                    <figcaption><span>06</span>BERLIN, 2026</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img src="1.png" alt="Paris 2027" loading="lazy" draggable="false">
+                    <figcaption><span>07</span>PARIS, 2027</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img src="2.png" alt="Sydney 2028" loading="lazy" draggable="false">
+                    <figcaption><span>08</span>SYDNEY, 2028</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>THE FINAL <span class="m-gold">FRONTIER</span></h3>
+                    <p>We are not just building a website. We are engineering a legacy that will inspire generations to come.</p>
+                </div>
+                <figure class="m-deck-card m-deck-finale">
+                    <img src="lando-hero.png" alt="Global 2030" loading="lazy" draggable="false">
+                    <figcaption><span>09</span>GLOBAL, 2030</figcaption>
+                </figure>
+            </div>
+            <div class="m-deck-meta">
+                <span class="m-deck-count"><b id="m-deck-count">01</b> / <i id="m-deck-total">13</i></span>
+                <span class="m-deck-tip">↜ either direction works ↝</span>
+            </div>
+        </section>
+
         <!-- 4. THE HORIZONTAL CAROUSEL & MILESTONE TEXT (Unified) -->
         <section>
             <div class="chyk-core">
@@ -492,6 +579,46 @@
             </div>
         </section>
 
+        <!-- MOBILE-ONLY: CHOOSE YOUR PATH (replaces tunnel sequence ≤1024px) -->
+        <section class="m-path" aria-label="Choose your path">
+            <div class="m-path-head">
+                <p class="m-path-eyebrow">The CHYK Way</p>
+                <h2 class="m-path-title">CHOOSE YOUR<br><span class="m-gold">PATH.</span></h2>
+                <p class="m-path-sub">Four pillars of the CHYK journey. Swipe to find where you begin.</p>
+            </div>
+            <div class="m-path-track" id="m-path-track">
+                <a href="talks-and-articles.html" class="m-path-card">
+                    <p class="m-path-num">01 // PATH</p>
+                    <h3>LEARN</h3>
+                    <p>Vedanta study circles, talks from Gurudev, and articles that turn ancient wisdom into a modern compass.</p>
+                    <span class="m-path-cta">Explore Talks →</span>
+                </a>
+                <a href="activities.html" class="m-path-card">
+                    <p class="m-path-num">02 // PATH</p>
+                    <h3>SERVE</h3>
+                    <p>Seva projects, camps, and community drives — put dharma into action where it matters most.</p>
+                    <span class="m-path-cta">See Activities →</span>
+                </a>
+                <a href="art.html" class="m-path-card">
+                    <p class="m-path-num">03 // PATH</p>
+                    <h3>CREATE</h3>
+                    <p>Art, music, theatre, and the Udghosh National Youth Festival — expression as a spiritual practice.</p>
+                    <span class="m-path-cta">Enter the Gallery →</span>
+                </a>
+                <a href="join.html" class="m-path-card">
+                    <p class="m-path-num">04 // PATH</p>
+                    <h3>LEAD</h3>
+                    <p>Coordinate a centre, mentor younger seekers, and carry the Chinmaya legacy forward.</p>
+                    <span class="m-path-cta">Join CHYK →</span>
+                </a>
+            </div>
+            <div class="m-path-dots" id="m-path-dots"><i class="active"></i><i></i><i></i><i></i></div>
+            <div class="m-path-quote">
+                <p>"The youth are not useless. They are used less."</p>
+                <span>— Swami Chinmayananda</span>
+            </div>
+        </section>
+
         </main>
 
         <!-- INTERACTIVE CARD DETAIL OVERLAY -->
@@ -588,6 +715,57 @@
         <button id="view-bg-btn" class="magnetic-btn" style="position: fixed; bottom: 30px; right: 30px; z-index: 999999; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 10px 20px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Syne', sans-serif; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;">VIEW BG</button>
         <script src="script.js"></script>
         <script src="js/nav.js"></script>
+        <script>
+        /* Mobile-only: Choose Your Path interactions (≤1024px) */
+        (function () {
+            if (window.innerWidth > 1024) return;
+            var pathSection = document.querySelector('.m-path');
+            var track = document.getElementById('m-path-track');
+            var dots = document.querySelectorAll('#m-path-dots i');
+            if (!pathSection || !track) return;
+
+            /* Reveal cards when section enters viewport */
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            pathSection.classList.add('in-view');
+                            io.disconnect();
+                        }
+                    });
+                }, { threshold: 0.15 });
+                io.observe(pathSection);
+            } else {
+                pathSection.classList.add('in-view');
+            }
+
+            /* Active dot follows scroll position (passive listener) */
+            var ticking = false;
+            track.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(function () {
+                    var cards = track.children;
+                    var mid = track.scrollLeft + track.clientWidth / 2;
+                    var idx = 0;
+                    for (var i = 0; i < cards.length; i++) {
+                        var c = cards[i];
+                        if (mid >= c.offsetLeft && mid < c.offsetLeft + c.offsetWidth) { idx = i; break; }
+                    }
+                    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+                    ticking = false;
+                });
+            }, { passive: true });
+
+            /* Mobile hero video: explicitly kick playback (iOS low-power safety) */
+            var mv = document.querySelector('.m-hero-vid');
+            if (mv) {
+                var p = mv.play();
+                if (p && p.catch) p.catch(function () { /* poster fallback shows */ });
+            }
+        })();
+        </script>
+    <script src="js/mobile-fun.js"></script>
 </body>
 
 </html>

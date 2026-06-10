@@ -42,34 +42,53 @@
       });
     }
 
-    /* Lightbox click */
+    /* Lightbox click — pass the tapped tile so the image can zoom from it */
     grid.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', function () {
-        openLightboxAt(parseInt(this.dataset.index));
+        openLightboxAt(parseInt(this.dataset.index), this.querySelector('img'));
       });
     });
   }
 
   /* ── Lightbox ── */
-  function openLightboxAt(index) {
+  function openLightboxAt(index, originImg) {
     lightboxIndex = index;
     updateLightbox();
-    
+
     const lb = document.getElementById('lightbox');
     if (!lb) return;
     const img = document.getElementById('lightbox-img') || lb.querySelector('.lightbox-img');
     const cap = document.getElementById('lightbox-caption') || lb.querySelector('.lightbox-caption');
-    
+
     lb.style.visibility = 'visible';
     gsap.killTweensOf([lb, img, cap, '.page-wrapper', '.site-header', '.persistent-chyk-logo']);
-    
-    gsap.to('.page-wrapper, .site-header, .persistent-chyk-logo', { filter: 'blur(15px)', duration: 0.8 });
-    gsap.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power3.out" });
-    
-    if (img) gsap.fromTo(img, 
-      { scale: 0.7, opacity: 0, rotationX: 10, yPercent: 10 }, 
-      { scale: 1, opacity: 1, rotationX: 0, yPercent: 0, duration: 0.6, ease: "power3.out" }
-    );
+
+    const isMobileView = window.innerWidth <= 1024;
+
+    // Blur is desktop-only: on mobile it's GPU-heavy and leaves black artifacts
+    if (!isMobileView) {
+      gsap.to('.page-wrapper, .site-header, .persistent-chyk-logo', { filter: 'blur(15px)', duration: 0.8 });
+    }
+    gsap.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: isMobileView ? 0.35 : 0.6, ease: "power3.out" });
+
+    if (img) {
+      if (isMobileView && originImg) {
+        // Zoom the artwork out of the tapped tile (FLIP-style grow-in-place)
+        const r = originImg.getBoundingClientRect();
+        const startX = r.left + r.width / 2 - window.innerWidth / 2;
+        const startY = r.top + r.height / 2 - window.innerHeight / 2;
+        const startScale = Math.max(r.width / (window.innerWidth * 0.92), 0.18);
+        gsap.fromTo(img,
+          { x: startX, y: startY, scale: startScale, opacity: 0.55, rotationX: 0, yPercent: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }
+        );
+      } else {
+        gsap.fromTo(img,
+          { scale: 0.7, opacity: 0, rotationX: 10, yPercent: 10 },
+          { scale: 1, opacity: 1, rotationX: 0, yPercent: 0, duration: 0.6, ease: "power3.out" }
+        );
+      }
+    }
     
     if (cap) gsap.fromTo(cap, 
       { opacity: 0, y: 20 }, 
@@ -98,8 +117,10 @@
     const cap = document.getElementById('lightbox-caption') || lb.querySelector('.lightbox-caption');
     
     gsap.killTweensOf([lb, img, cap, '.page-wrapper', '.site-header', '.persistent-chyk-logo']);
-    
-    gsap.to('.page-wrapper, .site-header, .persistent-chyk-logo', { filter: 'blur(0px)', duration: 0.8 });
+
+    if (window.innerWidth > 1024) {
+      gsap.to('.page-wrapper, .site-header, .persistent-chyk-logo', { filter: 'blur(0px)', duration: 0.8 });
+    }
     
     if (cap) gsap.to(cap, { opacity: 0, y: 10, duration: 0.4, ease: "power3.inOut" });
     if (img) gsap.to(img, { scale: 0.8, opacity: 0, rotationX: 5, yPercent: 5, duration: 0.5, ease: "power3.inOut" });
