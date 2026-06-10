@@ -1,28 +1,36 @@
 (function () {
   'use strict';
 
+  function speakerLabel(type) {
+    if (type === 'gurudev') return 'Pujya Gurudev';
+    if (type === 'acharya') return 'Acharya';
+    if (type === 'guest') return 'Guest Speaker';
+    return 'CHYK Member';
+  }
+
   /* ── Featured Talks (3 items) ── */
   function renderFeaturedTalks() {
     const grid = document.getElementById('featured-talks-grid');
     const data = window.CHYK_DATA && window.CHYK_DATA.talks;
     if (!grid || !data) return;
 
-    const featured = data.filter(t => t.featured).slice(0, 3);
+    const featured = data.filter(t => t.featured).slice(0, 6);
     if (!featured.length) return;
 
     grid.innerHTML = featured.map(t => `
-      <div class="talk-card">
+      <a class="talk-card" href="${t.link || 'talks-and-articles.html'}" target="_blank" rel="noopener">
         <div class="talk-card-img">
           <img src="${t.image || 'assets/placeholder.jpg'}" alt="${t.title}" loading="lazy">
           <span class="talk-type-badge">${t.type === 'video' ? '▶ Video' : '🎧 Audio'}</span>
         </div>
         <div class="talk-card-body">
-          <p class="talk-card-speaker-type">${t.speakerType === 'gurudev' ? 'Pujya Gurudev' : t.speakerType === 'acharya' ? 'Acharya' : 'CHYK Member'}</p>
+          <p class="talk-card-speaker-type">${speakerLabel(t.speakerType)}</p>
           <h3 class="talk-card-title">${t.title}</h3>
           <p class="talk-card-speaker">${t.speaker}</p>
+          <p class="talk-card-desc">${t.shortDesc || ''}</p>
           <p class="talk-card-topic" style="font-size:0.78rem; color:rgba(255,255,255,0.3); margin-top:0.3rem;">${t.topic}</p>
         </div>
-      </div>
+      </a>
     `).join('');
   }
 

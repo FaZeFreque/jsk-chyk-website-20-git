@@ -112,6 +112,7 @@
               <option value="gurudev">Pujya Gurudev</option>
               <option value="acharya">Acharyas</option>
               <option value="member">CHYK Members</option>
+              <option value="guest">Guest Speakers</option>
             </select>
           </div>
         </div>
@@ -193,32 +194,29 @@
 
   <!-- Talk Modal -->
   <div class="modal-overlay" id="talk-modal">
-    <div class="modal-box">
+    <div class="modal-box talk-modal-box">
       <button class="modal-close" onclick="CHYK.closeModal('talk-modal')">×</button>
       <div class="modal-video-wrap" id="modal-talk-video-wrap">
         <img class="modal-img" id="modal-talk-img" src="" alt="">
-        <div class="modal-play-overlay" id="modal-talk-play">
-          <div class="modal-play-btn">▶</div>
-          <span>Play Talk</span>
-        </div>
+        <span class="talk-modal-duration" id="modal-talk-duration"></span>
       </div>
-      <div class="modal-body">
+      <div class="modal-body talk-modal-body">
         <p class="modal-eyebrow" id="modal-talk-speaker-type"></p>
         <h2 class="modal-title" id="modal-talk-title"></h2>
+        <p class="modal-talk-desc" id="modal-talk-desc"></p>
         <div class="gold-line"></div>
-        <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
-          <div>
-            <p style="font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:0.2rem;">Speaker</p>
-            <p style="font-size:0.9rem; color:rgba(255,255,255,0.5);" id="modal-talk-speaker"></p>
+        <div class="talk-modal-meta">
+          <div class="talk-modal-meta-item">
+            <p>Speaker</p>
+            <strong id="modal-talk-speaker"></strong>
           </div>
-          <div>
-            <p style="font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:0.2rem;">Topic</p>
-            <p style="font-size:0.9rem; color:rgba(255,255,255,0.5);" id="modal-talk-topic"></p>
+          <div class="talk-modal-meta-item">
+            <p>Topic</p>
+            <strong id="modal-talk-topic"></strong>
           </div>
         </div>
         <div class="modal-ctas">
-          <a href="#" class="btn btn-primary magnetic-btn" id="modal-talk-link" target="_blank" rel="noopener">Watch / Listen →</a>
-          <button class="btn btn-ghost" onclick="CHYK.closeModal('talk-modal')">Close</button>
+          <a href="#" class="btn btn-primary magnetic-btn talk-youtube-btn" id="modal-talk-link" target="_blank" rel="noopener">Watch on YouTube →</a>
         </div>
       </div>
     </div>
@@ -275,8 +273,6 @@
     <script src="js/mobile-fun.js"></script>
 </body>
 </html>
-
-
 
 
 

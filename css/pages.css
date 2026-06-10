@@ -1362,13 +1362,156 @@
   color: rgba(255,255,255,0.7);
 }
 .talk-card-body { padding: 1.25rem; }
+.talk-card { color: inherit; text-decoration: none; }
 .talk-speaker-chip { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.6rem; }
 .talk-speaker-chip.gurudev { background: rgba(201,162,74,0.15); color: var(--gold); }
 .talk-speaker-chip.acharya { background: rgba(200,200,255,0.08); color: rgba(200,200,255,0.7); }
 .talk-speaker-chip.member { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+.talk-speaker-chip.guest { background: rgba(94,196,255,0.1); color: rgba(150,215,255,0.85); }
 .talk-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 800; margin-bottom: 0.35rem; line-height: 1.3; }
 .talk-card-speaker { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 .talk-card-topic { font-size: 0.74rem; color: rgba(255,255,255,0.25); margin-top: 0.25rem; }
+.talk-card-desc {
+  margin-top: 0.7rem;
+  color: rgba(255,255,255,0.48);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.modal-talk-desc {
+  margin: 0.7rem 0 1rem;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* Talks page detail modal */
+#talk-modal .talk-modal-box {
+  width: min(94vw, 980px);
+  height: auto;
+  max-height: min(88vh, 760px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
+  overflow: hidden;
+  border-color: rgba(201,162,74,0.2);
+  background: #0b0b0b;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.65);
+}
+#talk-modal .modal-video-wrap {
+  position: relative;
+  min-height: 430px;
+  background: #050505;
+  overflow: hidden;
+}
+#talk-modal .modal-img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+  object-fit: cover;
+}
+#talk-modal .modal-video-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.58));
+  pointer-events: none;
+}
+.talk-modal-duration {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font: 700 0.68rem/1 'Inter', sans-serif;
+  letter-spacing: 1px;
+}
+#talk-modal .talk-modal-body {
+  height: auto;
+  min-height: 0;
+  padding: 4.5rem 2.25rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  overflow-y: auto;
+}
+#talk-modal .modal-title {
+  font-size: clamp(1.55rem, 2.5vw, 2.35rem);
+  line-height: 1.08;
+  margin-bottom: 0;
+}
+#talk-modal .modal-talk-desc {
+  margin: 1rem 0 1.25rem;
+  color: rgba(255,255,255,0.62);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+#talk-modal .gold-line { margin-bottom: 1.25rem; }
+.talk-modal-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.talk-modal-meta-item {
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.talk-modal-meta-item p {
+  margin: 0 0 0.35rem;
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.talk-modal-meta-item strong {
+  color: rgba(255,255,255,0.76);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+#talk-modal .modal-ctas { margin-top: 0; padding-top: 0; }
+#talk-modal .talk-youtube-btn {
+  width: 100%;
+  justify-content: center;
+  background: #c9a24a;
+  color: #050505;
+}
+
+@media (max-width: 767px) {
+  #talk-modal .talk-modal-box {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    max-height: 92svh !important;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 20px 0 0 !important;
+    overflow-y: auto !important;
+  }
+  #talk-modal .modal-video-wrap { min-height: 0; aspect-ratio: 16 / 9; }
+  #talk-modal .modal-img {
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    object-fit: cover !important;
+  }
+  #talk-modal .talk-modal-body {
+    padding: 1.35rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    overflow: visible !important;
+  }
+  #talk-modal .modal-title { font-size: clamp(1.35rem, 6vw, 1.8rem) !important; }
+  #talk-modal .modal-talk-desc { font-size: 0.84rem; margin: 0.75rem 0 1rem; }
+  .talk-modal-meta { margin-bottom: 1rem; }
+}
 
 /* Articles */
 .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

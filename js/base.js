@@ -444,6 +444,7 @@
     const box = el.querySelector('.modal-box');
     const body = el.querySelector('.modal-body');
     const isMobile = window.innerWidth < 768;
+    const isTalkModal = id === 'talk-modal';
 
     el.style.visibility = 'visible';
     el.style.opacity = '1';
@@ -472,11 +473,11 @@
         x: 0,
         y: window.innerHeight,
         width: '100vw',
-        height: '88vh',
+        height: isTalkModal ? 'auto' : '88vh',
         borderRadius: '20px 20px 0 0',
         margin: 0,
         maxWidth: '100vw',
-        maxHeight: '88vh'
+        maxHeight: isTalkModal ? '92svh' : '88vh'
       });
       gsap.to(box, { y: 0, duration: 0.5, ease: 'expo.out' });
       if (body) {
@@ -514,7 +515,12 @@
         gsap.fromTo(body, { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 0.35, ease: "power3.out" });
       }
     } else if (box) {
-      gsap.set(box, { position: 'relative', top: 'auto', left: 'auto', x: 0, y: 0, width: '90vw', height: '75vh', transform: 'scale(0.7) translateY(30px)', opacity: 0 });
+      gsap.set(box, {
+        position: 'relative', top: 'auto', left: 'auto', x: 0, y: 0,
+        width: isTalkModal ? 'min(94vw, 980px)' : '90vw',
+        height: isTalkModal ? 'auto' : '75vh',
+        transform: 'scale(0.7) translateY(30px)', opacity: 0
+      });
       gsap.to(box, { scale: 1, opacity: 1, translateY: 0, duration: 0.7, ease: "expo.inOut" });
     }
 

@@ -8,6 +8,13 @@
   let articlesCatFilter = 'all';
   let articlesSearchQuery = '';
 
+  function speakerLabel(type) {
+    if (type === 'gurudev') return 'Pujya Gurudev';
+    if (type === 'acharya') return 'Acharya';
+    if (type === 'guest') return 'Guest Speaker';
+    return 'CHYK Member';
+  }
+
   /* ── Render Talks ── */
   function renderTalks() {
     const grid = document.getElementById('talks-grid');
@@ -35,10 +42,11 @@
           ${t.featured ? '<span class="featured-badge" style="top:auto;bottom:0.75rem;">Featured</span>' : ''}
         </div>
         <div class="talk-card-body">
-          <div class="talk-speaker-chip ${t.speakerType}">${t.speakerType === 'gurudev' ? '✦ Pujya Gurudev' : t.speakerType === 'acharya' ? '◈ Acharya' : '◉ CHYK Member'}</div>
+          <div class="talk-speaker-chip ${t.speakerType}">${speakerLabel(t.speakerType)}</div>
           <h3 class="talk-card-title">${t.title}</h3>
           <p class="talk-card-speaker">${t.speaker}</p>
           <p class="talk-card-topic">${t.topic}</p>
+          <p class="talk-card-desc">${t.shortDesc || ''}</p>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem;">
             <span style="font-size:0.7rem; color:rgba(255,255,255,0.25); letter-spacing:1px;">${t.duration || t.readTime || ''}</span>
             <button class="btn btn-ghost talk-detail-btn" style="font-size:0.75rem; padding:0.4rem 0.9rem;" data-id="${t.id}">Open →</button>
@@ -114,15 +122,17 @@
     if (!t) return;
 
     document.getElementById('modal-talk-img').src = t.image || 'assets/placeholder.jpg';
-    document.getElementById('modal-talk-speaker-type').textContent = t.speakerType === 'gurudev' ? 'Pujya Gurudev' : t.speakerType === 'acharya' ? 'Acharya' : 'CHYK Member';
+    document.getElementById('modal-talk-speaker-type').textContent = speakerLabel(t.speakerType);
     document.getElementById('modal-talk-title').textContent = t.title;
+    document.getElementById('modal-talk-desc').textContent = t.shortDesc || '';
     document.getElementById('modal-talk-speaker').textContent = t.speaker;
     document.getElementById('modal-talk-topic').textContent = t.topic;
+    document.getElementById('modal-talk-duration').textContent = t.duration || t.readTime || '';
 
     const linkEl = document.getElementById('modal-talk-link');
     if (t.link) {
       linkEl.href = t.link;
-      linkEl.textContent = t.type === 'video' ? 'Watch Video →' : 'Listen / Read →';
+      linkEl.textContent = t.type === 'video' ? 'Watch on YouTube →' : 'Listen / Read →';
     } else {
       linkEl.href = '#';
       linkEl.textContent = 'Coming Soon';

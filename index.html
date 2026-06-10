@@ -101,7 +101,12 @@
 
         <!-- MOBILE-ONLY HERO (≤1024px) — cinematic video hero -->
         <section class="m-hero" aria-label="CHYK — Harnessing Youth Potential">
-            <video class="m-hero-vid" autoplay muted loop playsinline preload="metadata" poster="BG PIC.png">
+            <video class="m-hero-vid m-hero-vid-a is-active" autoplay muted playsinline webkit-playsinline
+                preload="auto" disablepictureinpicture poster="BG PIC.png">
+                <source src="mobile-hero-bg.mp4" type="video/mp4">
+            </video>
+            <video class="m-hero-vid m-hero-vid-b" muted playsinline webkit-playsinline preload="auto"
+                disablepictureinpicture aria-hidden="true">
                 <source src="mobile-hero-bg.mp4" type="video/mp4">
             </video>
             <div class="m-hero-shade"></div>
@@ -758,9 +763,66 @@
             }, { passive: true });
 
             /* Mobile hero video: explicitly kick playback (iOS low-power safety) */
-            var mv = document.querySelector('.m-hero-vid');
-            if (mv) {
-                var p = mv.play();
+            var mobileHeroVideos = document.querySelectorAll('.m-hero-vid');
+            if (mobileHeroVideos.length) {
+                var mv = mobileHeroVideos[0];
+                var standbyVideo = mobileHeroVideos[1];
+                var activeVideo = mv;
+                var switchingVideo = false;
+                var crossfadeLead = 0.28;
+
+                mobileHeroVideos.forEach(function (video) {
+                    video.muted = true;
+                    video.defaultMuted = true;
+                });
+
+                function switchMobileHeroVideo() {
+                    if (!standbyVideo || switchingVideo) return;
+                    switchingVideo = true;
+
+                    try { standbyVideo.currentTime = 0.001; } catch (e) {}
+                    var replay = standbyVideo.play();
+
+                    function revealStandbyVideo() {
+                        standbyVideo.classList.add('is-active');
+                        activeVideo.classList.remove('is-active');
+
+                        window.setTimeout(function () {
+                            activeVideo.pause();
+                            try { activeVideo.currentTime = 0.001; } catch (e) {}
+                            var previousVideo = activeVideo;
+                            activeVideo = standbyVideo;
+                            standbyVideo = previousVideo;
+                            switchingVideo = false;
+                        }, 220);
+                    }
+
+                    if (replay && replay.then) {
+                        replay.then(function () {
+                            requestAnimationFrame(revealStandbyVideo);
+                        }).catch(function () {
+                            switchingVideo = false;
+                            activeVideo.loop = true;
+                        });
+                    } else {
+                        requestAnimationFrame(revealStandbyVideo);
+                    }
+                }
+
+                function monitorMobileHeroLoop() {
+                    if (!switchingVideo && isFinite(activeVideo.duration) &&
+                        activeVideo.duration > crossfadeLead &&
+                        activeVideo.currentTime >= activeVideo.duration - crossfadeLead) {
+                        switchMobileHeroVideo();
+                    }
+                    requestAnimationFrame(monitorMobileHeroLoop);
+                }
+
+                activeVideo.addEventListener('ended', switchMobileHeroVideo);
+                if (standbyVideo) standbyVideo.addEventListener('ended', switchMobileHeroVideo);
+                requestAnimationFrame(monitorMobileHeroLoop);
+
+                var p = activeVideo.play();
                 if (p && p.catch) p.catch(function () { /* poster fallback shows */ });
             }
 
@@ -798,6 +860,3 @@
 </body>
 
 </html>
-
-
-

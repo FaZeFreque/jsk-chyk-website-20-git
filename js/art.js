@@ -5,6 +5,7 @@
   let currentFilter = 'all';
   let lightboxIndex = 0;
   let lightboxItems = [];
+  let lightboxAnimating = false;
 
   /* ── Render gallery ── */
   function renderGallery(list) {
@@ -96,6 +97,10 @@
     );
     
     lb.classList.add('open');
+    const swipeHint = document.getElementById('lightbox-swipe-hint');
+    if (swipeHint && !sessionStorage.getItem('chyk-art-swiped')) {
+      swipeHint.classList.add('show');
+    }
     if (typeof lenis !== 'undefined') lenis.stop();
     document.body.style.overflow = 'hidden';
   }
@@ -109,9 +114,73 @@
     if (cap) cap.textContent = item.title + (item.artist ? ' — ' + item.artist : '') + (item.caption ? ' · ' + item.caption : '');
   }
 
+  function navigateLightbox(direction) {
+    if (lightboxAnimating || lightboxItems.length < 2) return;
+
+    const lb = document.getElementById('lightbox');
+    if (!lb || !lb.classList.contains('open')) return;
+
+    const img = document.getElementById('lightbox-img') || lb.querySelector('.lightbox-img');
+    const cap = document.getElementById('lightbox-caption') || lb.querySelector('.lightbox-caption');
+    if (!img) return;
+
+    lightboxAnimating = true;
+    const travel = Math.min(window.innerWidth * 0.32, 320);
+    const exitX = direction > 0 ? -travel : travel;
+    const enterX = -exitX;
+    const targetIndex = (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
+    const targetItem = lightboxItems[targetIndex];
+
+    function runSlideTransition() {
+      gsap.killTweensOf([img, cap]);
+      gsap.timeline({
+        defaults: { overwrite: true },
+        onComplete: () => { lightboxAnimating = false; }
+      })
+      .to(img, {
+        x: exitX,
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.28,
+        ease: 'power2.in'
+      })
+      .to(cap, {
+        x: exitX * 0.2,
+        opacity: 0,
+        duration: 0.18,
+        ease: 'power2.in'
+      }, '<')
+      .add(() => {
+        lightboxIndex = targetIndex;
+        updateLightbox();
+        gsap.set(img, { x: enterX, opacity: 0, scale: 0.97 });
+        if (cap) gsap.set(cap, { x: enterX * 0.2, opacity: 0 });
+      })
+      .to(img, {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.42,
+        ease: 'power3.out'
+      })
+      .to(cap, {
+        x: 0,
+        opacity: 1,
+        duration: 0.32,
+        ease: 'power3.out'
+      }, '-=0.3');
+    }
+
+    const preload = new Image();
+    preload.onload = runSlideTransition;
+    preload.onerror = runSlideTransition;
+    preload.src = targetItem.image || 'assets/placeholder.jpg';
+  }
+
   function closeLightbox() {
     const lb = document.getElementById('lightbox');
     if (!lb || !lb.classList.contains('open')) return;
+    lightboxAnimating = false;
     
     const img = document.getElementById('lightbox-img') || lb.querySelector('.lightbox-img');
     const cap = document.getElementById('lightbox-caption') || lb.querySelector('.lightbox-caption');
@@ -153,11 +222,9 @@
       const lb = document.getElementById('lightbox');
       if (!lb || !lb.classList.contains('open')) return;
       if (e.key === 'ArrowRight') {
-        lightboxIndex = (lightboxIndex + 1) % lightboxItems.length;
-        updateLightbox();
+        navigateLightbox(1);
       } else if (e.key === 'ArrowLeft') {
-        lightboxIndex = (lightboxIndex - 1 + lightboxItems.length) % lightboxItems.length;
-        updateLightbox();
+        navigateLightbox(-1);
       } else if (e.key === 'Escape') {
         closeLightbox();
       }
@@ -179,21 +246,36 @@
     const prevBtn = document.getElementById('lightbox-prev');
     const nextBtn = document.getElementById('lightbox-next');
 
-    if (prevBtn) prevBtn.addEventListener('click', function () {
-      lightboxIndex = (lightboxIndex - 1 + lightboxItems.length) % lightboxItems.length;
-      updateLightbox();
-    });
-    if (nextBtn) nextBtn.addEventListener('click', function () {
-      lightboxIndex = (lightboxIndex + 1) % lightboxItems.length;
-      updateLightbox();
-    });
+    if (prevBtn) prevBtn.addEventListener('click', function () { navigateLightbox(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { navigateLightbox(1); });
 
     /* Close on backdrop */
     const lb = document.getElementById('lightbox');
     if (lb) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+
       lb.addEventListener('click', function (e) {
         if (e.target === lb) closeLightbox();
       });
+
+      lb.addEventListener('touchstart', function (e) {
+        if (!e.touches.length) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      lb.addEventListener('touchend', function (e) {
+        if (!e.changedTouches.length) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+          sessionStorage.setItem('chyk-art-swiped', 'true');
+          const swipeHint = document.getElementById('lightbox-swipe-hint');
+          if (swipeHint) swipeHint.classList.remove('show');
+          navigateLightbox(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
     }
 
     /* Override CHYK global closeLightbox for this page */
