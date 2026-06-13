@@ -1,0 +1,30 @@
+/* Visual Editor overlays inside the page iframe (edit mode only). */
+.ve-hover-box, .ve-select-box {
+  position: absolute;
+  z-index: 2147483600;
+  pointer-events: none !important;
+  border-radius: 3px;
+}
+.ve-hover-box { outline: 1.5px dashed rgba(201, 162, 74, 0.85); }
+.ve-select-box { outline: 2px solid #c9a24a; box-shadow: 0 0 0 4px rgba(201, 162, 74, 0.18); }
+.ve-hover-tag, .ve-select-tag {
+  position: absolute;
+  z-index: 2147483601;
+  pointer-events: none !important;
+  background: #c9a24a;
+  color: #14110a;
+  font: 600 11px/1.6 Inter, Segoe UI, sans-serif;
+  padding: 0 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.ve-hover-tag { background: rgba(20, 17, 10, 0.92); color: #e7c878; border: 1px solid rgba(201, 162, 74, 0.5); }
+.ve-editing {
+  outline: 2px solid #7db6ff !important;
+  box-shadow: 0 0 0 4px rgba(125, 182, 255, 0.25) !important;
+  cursor: text;
+  min-width: 8px;
+}
+.ve-focal { cursor: crosshair !important; outline: 2px dashed #7db6ff !important; }
+html.ve-active, html.ve-active body { cursor: default !important; }
+html.ve-active .cursor, html.ve-active .cursor-dot, html.ve-active .cursor-ring { display: none !important; }

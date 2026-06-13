@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHYK Visual Editor</title>
+<link rel="stylesheet" href="/visual-editor/editor.css">
+</head>
+<body>
+<div id="app">
+
+  <header id="topbar">
+    <div class="tb-group">
+      <span class="brand">CHYK<b>EDITOR</b></span>
+      <select id="page-select" title="Current page"></select>
+    </div>
+    <div class="tb-group" id="device-group" role="group" aria-label="Preview width">
+      <button data-device="desktop" class="active" title="Desktop preview (1280px+)">Desktop</button>
+      <button data-device="tablet" title="Tablet preview (768px)">Tablet</button>
+      <button data-device="mobile" title="Mobile preview (390px)">Mobile</button>
+    </div>
+    <div class="tb-group">
+      <button id="btn-undo" title="Undo (Ctrl+Z)" disabled>Undo</button>
+      <button id="btn-redo" title="Redo (Ctrl+Y)" disabled>Redo</button>
+      <span class="tb-sep"></span>
+      <button id="btn-preview" title="Open the page without the editor (Ctrl+P)">Preview</button>
+      <button id="btn-save" class="primary" title="Save this page (Ctrl+S)" disabled>Save Page</button>
+      <button id="btn-save-all" title="Save every edited page" disabled>Save All</button>
+      <span class="tb-sep"></span>
+      <button id="btn-check" title="Run the website health check">Check</button>
+      <button id="btn-dist" title="Build the dist/ hosting package">Package</button>
+      <button id="btn-exit" title="Exit Developer Mode">Exit</button>
+    </div>
+  </header>
+
+  <div id="workspace">
+    <aside id="left">
+      <div class="panel">
+        <h3>Search</h3>
+        <input id="layer-search" type="search" placeholder="Find text, image or section...">
+      </div>
+      <div class="panel grow">
+        <h3>Layers <button id="btn-refresh-layers" class="mini" title="Rebuild the layer tree">Refresh</button></h3>
+        <div id="layers" tabindex="0" aria-label="Page layers"></div>
+      </div>
+      <div class="panel">
+        <h3>History <span id="history-count" class="dim"></span></h3>
+        <div id="history"></div>
+        <button id="btn-backups" class="mini" title="Restore a previously saved version">Saved versions…</button>
+      </div>
+    </aside>
+
+    <main id="stage">
+      <div id="frame-wrap">
+        <iframe id="frame" title="Website preview"></iframe>
+        <div id="frame-loading">Loading page…</div>
+      </div>
+      <div id="statusbar">
+        <span id="status-dirty">No unsaved changes</span>
+        <span id="status-hint">Click any element to select it. Double-click text to edit. Esc deselects.</span>
+      </div>
+    </main>
+
+    <aside id="right">
+      <div class="panel grow" id="props">
+        <h3 id="props-title">Properties</h3>
+        <div id="props-body"><p class="dim">Nothing selected.<br><br>Click any text, image, card or section in the page preview.</p></div>
+      </div>
+      <div class="panel" id="advanced-panel">
+        <label class="row"><input type="checkbox" id="advanced-toggle"> Advanced developer mode</label>
+        <p class="dim small">Unlocks section hide/label tools. Structural CSS and animations stay read-only by design.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div id="modal" hidden>
+    <div id="modal-card">
+      <h3 id="modal-title"></h3>
+      <div id="modal-body"></div>
+      <div id="modal-actions"></div>
+    </div>
+  </div>
+  <div id="toast" hidden></div>
+</div>
+<script src="/visual-editor/editor.js"></script>
+</body>
+</html>

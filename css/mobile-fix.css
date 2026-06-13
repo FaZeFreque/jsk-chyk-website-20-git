@@ -66,6 +66,9 @@
 }
 
 @media (max-width: 768px) {
+  /* "Publications" is one long word — keep it on a single line on small screens */
+  .publications-hero .page-hero-title { font-size: clamp(1.45rem, 6.6vw, 2.4rem) !important; letter-spacing: -1px !important; }
+
   .publication-preview,
   .publication-article-grid { grid-template-columns: 1fr !important; }
 
@@ -83,6 +86,12 @@
   }
 
   .publication-source-nav .filter-tab { white-space: nowrap; flex-shrink: 0; }
+
+  .udghosh-issue-grid { grid-template-columns: 1fr !important; }
+  .udghosh-issue-card.is-featured { flex-direction: column !important; }
+  .udghosh-issue-card.is-featured .udghosh-issue-cover { flex: none; aspect-ratio: 16/9; min-height: 0; }
+  .udghosh-issue-card.is-featured .udghosh-issue-body { padding: 1.6rem; }
+
   .social-feed-card { min-height: 260px; }
   .social-platform-card { padding: 1.35rem !important; gap: 1rem !important; }
   .social-platform-icon { width: 48px !important; height: 48px !important; }
@@ -192,6 +201,28 @@
   .youtube-feed-section .yt-grid { grid-template-columns: 1fr !important; }
   .instagram-mini-player iframe { width: 125% !important; height: 550px !important; }
   .youtube-mini-player iframe { width: 100% !important; height: 100% !important; }
+}
+
+/* Final mobile fullscreen scroll contract. Keep this last in the cascade. */
+@media (max-width: 767px) {
+  .modal-overlay.open { overflow: hidden !important; touch-action: pan-y !important; }
+  .modal-overlay.open .modal-box {
+    height: 92dvh !important;
+    max-height: 92dvh !important;
+    min-height: 0 !important;
+  }
+  .modal-overlay.open .modal-body {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    justify-content: flex-start !important;
+    touch-action: pan-y !important;
+    overscroll-behavior-y: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -372,6 +403,8 @@
     height: 30% !important;
     min-height: 180px !important;
     flex-shrink: 0 !important;
+    object-fit: contain !important;
+    background: #080808 !important;
   }
   #event-modal .modal-body {
     height: auto !important;
@@ -486,6 +519,8 @@
     height: 30% !important;
     min-height: 180px !important;
     flex-shrink: 0 !important;
+    object-fit: contain !important;
+    background: #080808 !important;
   }
   #activity-modal .modal-body {
     height: auto !important;
@@ -729,7 +764,7 @@
     height: auto !important;
     max-height: 55vw !important;
     min-height: 180px !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     flex-shrink: 0 !important;
   }
   .modal-body {
@@ -832,6 +867,27 @@
    ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 767px) {
+  .modal-overlay.open {
+    overflow: hidden !important;
+    touch-action: pan-y;
+  }
+  .modal-overlay.open .modal-box {
+    height: 92dvh !important;
+    max-height: 92dvh !important;
+    min-height: 0 !important;
+  }
+  .modal-overlay.open .modal-body {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    justify-content: flex-start !important;
+    touch-action: pan-y !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
   /* Leader/alumni card grids */
   [class*="people-grid"],
   [class*="leaders-grid"],
@@ -1312,6 +1368,26 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
+}
+
+html.chyk-scroll-locked,
+body.chyk-scroll-locked {
+  overflow: hidden !important;
+}
+
+@media (max-width: 1024px) {
+  html:not(.chyk-scroll-locked),
+  body:not(.chyk-scroll-locked) {
+    overflow-y: auto !important;
+    touch-action: pan-y !important;
+    overscroll-behavior-y: auto !important;
+  }
+  body:not(.chyk-scroll-locked) .page-wrapper {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    touch-action: pan-y !important;
+  }
 }
 
 @supports not (overflow: clip) {

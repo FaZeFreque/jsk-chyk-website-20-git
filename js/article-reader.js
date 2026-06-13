@@ -10,7 +10,10 @@
   function renderArticle() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    const articles = (window.CHYK_DATA && window.CHYK_DATA.articles) || [];
+    const articles = [
+      ...((window.CHYK_DATA && window.CHYK_DATA.articles) || []),
+      ...((window.CHYK_DATA && window.CHYK_DATA.udghoshArticles) || [])
+    ];
     const content = (window.CHYK_DATA && window.CHYK_DATA.articleContent) || {};
     const article = articles.find(item => item.id === id);
     const body = article && content[article.id];

@@ -23,6 +23,20 @@
     return CATEGORY_LABELS[cat] || 'CHYK Leader';
   }
 
+  function leaderImageStyle(person, context) {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const isModal = context === 'modal';
+    const defaultPosition = isModal ? 'center center' : 'center top';
+    const fit = isMobile
+      ? (isModal ? person.mobileModalImageFit : person.mobileImageFit) || 'cover'
+      : 'cover';
+    const position = isMobile
+      ? (isModal ? person.mobileModalImagePosition : person.mobileImagePosition) || defaultPosition
+      : defaultPosition;
+
+    return `object-fit:${fit};object-position:${position};`;
+  }
+
   /* ── Intro Animation ── */
   function runIntroAnimation(onDone) {
     const overlay = document.getElementById('leaders-intro');
@@ -107,7 +121,7 @@
       <div class="leader-feat-card" data-id="${l.id}" role="button" tabindex="0" aria-label="View profile of ${l.name}">
         <div class="leader-feat-img-wrap">
           ${l.image
-            ? `<img src="${l.image}" alt="${l.name}" class="leader-feat-img" loading="lazy">`
+            ? `<img src="${l.image}" alt="${l.name}" class="leader-feat-img" style="${leaderImageStyle(l, 'card')}" loading="lazy">`
             : `<div class="leader-feat-placeholder"><span>${getInitial(l.name)}</span></div>`
           }
         </div>
@@ -143,7 +157,7 @@
       <div class="profile-card leaders-card" data-id="${l.id}" role="button" tabindex="0" aria-label="View profile of ${l.name}">
         <div class="profile-card-img leaders-card-img">
           ${l.image
-            ? `<img src="${l.image}" alt="${l.name}" loading="lazy">`
+            ? `<img src="${l.image}" alt="${l.name}" style="${leaderImageStyle(l, 'card')}" loading="lazy">`
             : `<div class="profile-img-placeholder leaders-placeholder"><span>${getInitial(l.name)}</span></div>`
           }
         </div>
@@ -205,7 +219,7 @@
     const imgEl = document.getElementById('leaders-modal-img');
     /* Always rebuild innerHTML — do NOT reference child IDs before this or they get destroyed */
     if (person.image) {
-      imgEl.innerHTML = `<img src="${person.image}" alt="${person.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">`;
+      imgEl.innerHTML = `<img src="${person.image}" alt="${person.name}" style="width:100%;height:100%;${leaderImageStyle(person, 'modal')}border-radius:inherit;">`;
       imgEl.className = 'profile-img-placeholder large leaders-placeholder';
     } else {
       imgEl.innerHTML = `<span>${getInitial(person.name)}</span>`;

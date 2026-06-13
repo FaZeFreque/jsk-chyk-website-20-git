@@ -25,7 +25,28 @@
       "Bash(node_modules/ffmpeg-static/ffmpeg.exe -version)",
       "Bash(node_modules/ffmpeg-static/ffmpeg.exe -i \"FINAL TUNEL SEQUNCE SURE/image1_00000.jpg\")",
       "Bash(grep -n \"innerWidth\\\\|matchMedia\\\\|Lenis\\\\|lenis\\\\|filter\\\\|blur\\\\|requestAnimationFrame\\\\|\\\\\\\\?\\\\\\\\.\\\\|??\" js/base.js)",
-      "Bash(node_modules/ffmpeg-static/ffmpeg.exe -y -loglevel error -f lavfi -i \"color=c=0x111111:s=800x800:d=1\" -frames:v 1 -q:v 6 assets/placeholder.jpg)"
+      "Bash(node_modules/ffmpeg-static/ffmpeg.exe -y -loglevel error -f lavfi -i \"color=c=0x111111:s=800x800:d=1\" -frames:v 1 -q:v 6 assets/placeholder.jpg)",
+      "Read(//f/f/CIRS F/jsk-chyk-website structured/**)",
+      "Read(//f/f/CIRS F/jsk-chyk-website structured/jsk-chyk-website-21-contenting-updation-also-bug-fixing/**)",
+      "Read(//f/f/CIRS F/jsk-chyk-website structured/jsk-chyk-website-21-contenting-updation-also-bug-fixing/assets/**)",
+      "Bash(sort -k2)",
+      "Bash(mkdir -p \"backup-before-perf-2026-06-11\")",
+      "Bash(cp script.js index.html style.css \"backup-before-perf-2026-06-11/\")",
+      "Bash(python -)",
+      "Bash(node -e ' *)",
+      "Bash(node --check script.js)",
+      "Bash(grep -v \"//\")",
+      "Bash(unzip -p \"CHYK Website - Content Hub.docx\" word/document.xml)",
+      "Bash(grep -v '^\\\\s*$')",
+      "Bash(mkdir -p assets/content)",
+      "Bash(cp __TRACKED_VAR__/2.jpg assets/content/ten-tips-transformation-havan.jpg)",
+      "Bash(cp __TRACKED_VAR__/3.jpg assets/content/youth-potential-satsang.jpg)",
+      "Bash(cp __TRACKED_VAR__/6.jpg assets/content/kindle-life-gurudev-book.jpg)",
+      "Bash(cp __TRACKED_VAR__/1.jpg assets/content/tradition-modernity-dance.jpg)",
+      "Bash(magick -version)",
+      "Bash(unzip -p \"RelativeReality-Jun2026.docx\" word/document.xml)",
+      "Bash(sed -n '146p' about.html)",
+      "Bash(node -e \"const s=require\\('fs'\\).readFileSync\\('about.html','utf8'\\);const m=s.match\\(/<p class=\\\\\"shloka-text\\\\\">\\([\\\\s\\\\S]*?\\)<\\\\/p>/\\);console.log\\(JSON.stringify\\(m[1]\\).slice\\(0,120\\)\\);console.log\\('devanagari ok:', /^[ऀ-ॿ\\\\s।॥]+$/.test\\(m[1].replace\\(/<br>/,''\\)\\)\\)\")"
     ]
   }
 }

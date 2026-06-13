@@ -1,0 +1,8 @@
+node_modules/
+dist/
+content-manager/backups/
+_SOURCE FILES (not for hosting)/
+.claude/
+.vercel/
+.netlify/
+*.log

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHYK Content Manager</title>
+  <link rel="stylesheet" href="/content-manager/admin.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>CHYK</span><strong>Content Manager</strong><small>Local website editor</small></div>
+    <button class="nav-button active" data-view="collections">Collections</button>
+    <button class="nav-button" data-view="pages">Page Copy & Images</button>
+    <button class="nav-button" data-view="backups">Backups</button>
+    <div class="sidebar-note"><strong>Local only</strong><span>Changes are saved to this website folder. The live website changes only after you upload/deploy it.</span></div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><p class="eyebrow">CHYK WEBSITE</p><h1 id="view-title">Collections</h1></div>
+      <div class="top-actions"><span class="save-state" id="save-state">Ready</span><a class="button ghost" href="/index.html" target="_blank">Open Website</a><button class="button primary" id="save-button" disabled>Save Changes</button></div>
+    </header>
+
+    <section class="view active" id="collections-view">
+      <div class="toolbar">
+        <label><span>Content section</span><select id="collection-select"></select></label>
+        <label class="search"><span>Search items</span><input id="item-search" type="search" placeholder="Search by title, name or id"></label>
+        <a class="button ghost" id="preview-link" href="#" target="_blank">Preview Page</a>
+        <button class="button" id="add-item">Add Item</button>
+      </div>
+      <div class="notice" id="validation-box" hidden></div>
+      <div class="item-list" id="item-list"></div>
+    </section>
+
+    <section class="view" id="pages-view">
+      <div class="toolbar">
+        <label><span>Website page</span><select id="page-select"></select></label>
+        <label><span>Page section</span><select id="page-section-select"></select></label>
+        <label class="search"><span>Find text or image</span><input id="page-search" type="search" placeholder="Search this page"></label>
+        <a class="button ghost" id="page-preview-link" href="#" target="_blank">Preview Page</a>
+      </div>
+      <div class="notice warning"><strong>Page editor:</strong> choose a page, then choose its section. Text and image uploads for that section stay together here. A backup is made before saving.</div>
+      <div class="page-fields" id="page-fields"></div>
+    </section>
+
+    <section class="view" id="backups-view">
+      <div class="notice"><strong>Automatic backups</strong><span>Every save copies the previous file into a timestamped folder. These remain local under <code>content-manager/backups/</code>.</span></div>
+      <div class="backup-list" id="backup-list"></div>
+    </section>
+  </main>
+
+  <input id="upload-input" type="file" accept="image/*,video/*,.pdf" hidden>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/content-manager/admin.js"></script>
+</body>
+</html>

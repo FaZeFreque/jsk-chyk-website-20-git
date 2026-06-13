@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo Skipping local editor dependencies",
+  "buildCommand": "node tools/make-dist.js",
+  "outputDirectory": "dist",
+  "cleanUrls": false,
+  "trailingSlash": false
+}

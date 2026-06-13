@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,7 @@
 </head>
 <body>
   <div class="persistent-chyk-logo" style="position:fixed;top:-15px;left:40px;z-index:999999;opacity:1;pointer-events:none;">
-    <img src="chyk website logo.png" alt="CHYK Logo" style="height:140px;object-fit:contain;filter:brightness(0) invert(1);">
+    <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK Logo" style="height:140px;object-fit:contain;filter:brightness(0) invert(1);">
   </div>
   <div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition-overlay"></div>
 
@@ -28,7 +28,7 @@
         <a href="activities.html" class="mobile-nav-link">Activities</a><a href="events.html" class="mobile-nav-link">Events</a>
         <a href="content-hub.html" class="mobile-nav-link">Content Hub</a><a href="talks-and-articles.html" class="mobile-nav-link">Talks</a>
         <a href="magazine.html" class="mobile-nav-link">Publications</a><a href="art.html" class="mobile-nav-link">Art</a>
-        <a href="social.html" class="mobile-nav-link">Social</a><a href="wings.html" class="mobile-nav-link">Wings</a><a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="social.html" class="mobile-nav-link">Social</a><a href="wings.html" class="mobile-nav-link">Centres</a><a href="contact.html" class="mobile-nav-link">Contact</a>
       </nav>
       <a href="join.html" class="mobile-cta">Join CHYK →</a>
     </div>
@@ -37,12 +37,12 @@
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="index.html" class="header-logo"><img src="chyk website logo.png" alt="CHYK" class="logo-img"><span class="logo-text">CHYK</span></a>
+      <a href="index.html" class="header-logo"><img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="logo-img"><span class="logo-text">CHYK</span></a>
       <nav class="desktop-nav">
         <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
         <a href="activities.html" class="nav-link">Activities</a><a href="events.html" class="nav-link">Events</a><a href="content-hub.html" class="nav-link">Content Hub</a>
         <div class="nav-more-wrapper"><button class="nav-more-trigger nav-link">More <span class="nav-arrow">↓</span></button>
-          <div class="nav-dropdown"><a href="talks-and-articles.html">Talks & Articles</a><a href="magazine.html">Publications</a><a href="art.html">Art</a><a href="social.html">Social</a><a href="wings.html">Wings</a><a href="contact.html">Contact</a></div>
+          <div class="nav-dropdown"><a href="talks-and-articles.html">Talks & Articles</a><a href="magazine.html">Publications</a><a href="art.html">Art</a><a href="social.html">Social</a><a href="wings.html">Centres</a><a href="contact.html">Contact</a></div>
         </div>
         <a href="join.html" class="nav-link nav-cta magnetic-btn">Join CHYK</a>
       </nav>
@@ -56,7 +56,7 @@
       <div class="page-hero-content">
         <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> Ideas Worth Exploring</p>
         <h1 class="page-hero-title">Publications<br><span class="text-gold">& Blog</span></h1>
-        <p class="page-hero-subtitle">Youth perspectives from Crossroads, teachings from Chinmaya Mission, and selected writings from foundational publications.</p>
+        <p class="page-hero-subtitle">Youth perspectives, teachings from Chinmaya Mission, and selected writings from foundational publications.</p>
       </div>
       <div class="page-hero-big-text">READ</div>
     </section>
@@ -64,7 +64,7 @@
     <section class="section-sm publication-intro-band">
       <div class="container publication-source-nav" id="publication-source-nav">
         <button class="filter-tab active" data-filter="all">All Writing</button>
-        <button class="filter-tab" data-filter="Crossroads">Crossroads</button>
+        <button class="filter-tab" data-filter="Youth Essays">Youth Essays</button>
         <button class="filter-tab" data-filter="Chinmaya Mission">Chinmaya Mission</button>
         <button class="filter-tab" data-filter="Publications">Publications</button>
       </div>
@@ -72,14 +72,49 @@
 
     <section class="section">
       <div class="container">
-        <div class="publications-lead">
-          <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> Curated Reading</p><h2 class="section-title">Six Pieces.<br><span class="text-gold">Three Perspectives.</span></h2></div>
-          <p>Read young voices alongside the reflections of Acharyas and the enduring clarity of Chinmaya publications. Each selection offers a different doorway into thoughtful living.</p>
+        <div id="publication-articles-view">
+          <div class="publications-lead">
+            <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> Curated Reading</p><h2 class="section-title">Essays, Articles &<br><span class="text-gold">Selected Writings.</span></h2></div>
+            <p>Read young voices alongside the reflections of Acharyas and the enduring clarity of Chinmaya publications. Each selection offers a different doorway into thoughtful living.</p>
+          </div>
+          <div class="publication-article-grid" id="publication-article-grid"></div>
+          <div class="no-results" id="publication-no-results"><div class="empty-state"><p>No writing found in this collection.</p></div></div>
         </div>
-        <div class="publication-article-grid" id="publication-article-grid"></div>
-        <div class="no-results" id="publication-no-results"><div class="empty-state"><p>No writing found in this collection.</p></div></div>
       </div>
     </section>
+
+    <section class="section udghosh-feature-section" id="chinmaya-udghosh">
+      <div class="container">
+        <div class="udghosh-feature-head">
+          <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> The Flagship Voice of CHYK</p><h2 class="section-title">Chinmaya<br><span class="text-gold">Udghosh.</span></h2></div>
+          <p>More than a subsection, Chinmaya Udghosh is a space for youth voices, purposeful ideas, visual storytelling, poetry, and reflections rooted in Vedanta.</p>
+        </div>
+        <div class="udghosh-poster-feature" id="udghosh-poster-feature"></div>
+
+        <div class="udghosh-subhead">
+          <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> Read Chinmaya Udghosh</p><h3>Articles &amp; Reflections.<br><span class="text-gold">Open Doorways.</span></h3></div>
+          <p>Articles will appear here in the same complete reading format as the Publications &amp; Blog collection.</p>
+        </div>
+        <div class="publication-article-grid udghosh-article-grid" id="udghosh-article-grid"></div>
+        <div class="udghosh-empty" id="udghosh-article-empty">New writing will appear here as it is published through the Content Manager.</div>
+
+        <div class="udghosh-subhead udghosh-subhead--archive">
+          <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> Magazine Archive</p><h3>Issues &amp; <span class="text-gold">Editions.</span></h3></div>
+        </div>
+        <div class="udghosh-issue-grid" id="udghosh-issue-grid"></div>
+
+        <div class="udghosh-subhead udghosh-subhead--posters">
+          <div><p class="section-eyebrow"><span class="eyebrow-dot"></span> Visual Archive</p><h3>Posters With<br><span class="text-gold">A Message.</span></h3></div>
+          <p>Wide and long-format artwork can be uploaded here and opened at full size.</p>
+        </div>
+        <div class="udghosh-poster-grid" id="udghosh-poster-grid"></div>
+      </div>
+    </section>
+
+    <div class="udghosh-poster-modal" id="udghosh-poster-modal" aria-hidden="true">
+      <button class="udghosh-poster-close" type="button" aria-label="Close poster">&times;</button>
+      <div class="udghosh-poster-scroll"><img id="udghosh-poster-modal-image" src="" alt=""></div>
+    </div>
 
     <section class="section-sm" style="background:#000;border-top:1px solid rgba(255,255,255,0.05);">
       <div class="container text-center">
@@ -93,17 +128,19 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand"><img src="chyk website logo.png" alt="CHYK" class="footer-logo"><p class="footer-tagline">Find Yourself.</p><p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p></div>
+      <div class="footer-brand"><img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="footer-logo"><p class="footer-tagline">Find Yourself.</p><p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p></div>
       <div class="footer-links">
         <div class="footer-col"><h5>Navigate</h5><a href="about.html">About CHYK</a><a href="activities.html">Activities</a><a href="events.html">Events</a><a href="join.html">Join CHYK</a></div>
         <div class="footer-col"><h5>Explore</h5><a href="content-hub.html">Content Hub</a><a href="talks-and-articles.html">Talks & Articles</a><a href="magazine.html">Publications</a><a href="art.html">Art</a></div>
-        <div class="footer-col"><h5>Connect</h5><a href="social.html">Social Media</a><a href="wings.html">Wings</a><a href="contact.html">Contact</a><a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></div>
+        <div class="footer-col"><h5>Connect</h5><a href="social.html">Social Media</a><a href="wings.html">Centres</a><a href="contact.html">Contact</a><a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></div>
       </div>
       <div class="footer-social-col"><a href="https://www.instagram.com/chykindia/" class="footer-social-icon" target="_blank" rel="noopener">IG</a><a href="https://www.youtube.com/@CHYKIndia" class="footer-social-icon" target="_blank" rel="noopener">YT</a></div>
     </div>
     <div class="footer-bottom"><p>© 2024 CHYK — Chinmaya Yuva Kendra. All rights reserved.</p><p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p></div>
   </footer>
 
-  <script src="data/articles.js"></script><script src="js/base.js"></script><script src="js/magazine.js"></script><script src="js/mobile-fun.js"></script>
+  <script src="data/articles.js"></script><script src="data/magazine.js"></script><script src="js/base.js"></script><script src="js/magazine.js"></script><script src="js/mobile-fun.js"></script>
 </body>
 </html>
+
+

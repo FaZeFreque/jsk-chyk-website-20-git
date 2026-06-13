@@ -66,15 +66,21 @@
     const articles = (window.CHYK_DATA && window.CHYK_DATA.articles) || [];
     if (!wrap || !articles.length) return;
     const sources = ['Crossroads', 'Chinmaya Mission', 'Publications'];
+    const udghoshIssues = (window.CHYK_DATA && window.CHYK_DATA.magazine && window.CHYK_DATA.magazine.udghosh) || [];
     wrap.innerHTML = sources.map(source => {
       const count = articles.filter(article => article.category === source).length;
       return `<a href="magazine.html#${source.toLowerCase().replace(/\s+/g, '-')}" class="publication-source-card">
-        <span class="publication-source-count">0${count}</span>
+        <span class="publication-source-count">${String(count).padStart(2, '0')}</span>
         <p>${source}</p>
         <h3>${source === 'Crossroads' ? 'Youth Essays' : source === 'Chinmaya Mission' ? 'Acharya Articles' : 'Selected Writings'}</h3>
         <span class="publication-source-link">Explore collection</span>
       </a>`;
-    }).join('');
+    }).join('') + (udghoshIssues.length ? `<a href="magazine.html#chinmaya-udghosh" class="publication-source-card">
+        <span class="publication-source-count">${String(udghoshIssues.length).padStart(2, '0')}</span>
+        <p>Chinmaya Udghosh</p>
+        <h3>The Annual Magazine</h3>
+        <span class="publication-source-link">Browse issues</span>
+      </a>` : '');
   }
 
   /* ── Art preview (6 items masonry) ── */

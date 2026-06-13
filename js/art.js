@@ -101,8 +101,7 @@
     if (swipeHint && !sessionStorage.getItem('chyk-art-swiped')) {
       swipeHint.classList.add('show');
     }
-    if (typeof lenis !== 'undefined') lenis.stop();
-    document.body.style.overflow = 'hidden';
+    if (window.CHYK && window.CHYK.lockPageScroll) window.CHYK.lockPageScroll();
   }
 
   function updateLightbox() {
@@ -203,8 +202,7 @@
         lb.classList.remove('open');
         lb.style.visibility = 'hidden';
         gsap.set('.page-wrapper, .site-header, .persistent-chyk-logo', { clearProps: 'filter' });
-        if (typeof lenis !== 'undefined') lenis.start();
-        document.body.style.overflow = '';
+        if (window.CHYK && window.CHYK.unlockPageScroll) window.CHYK.unlockPageScroll(true);
       }
     });
   }

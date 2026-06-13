@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHYK | Wings</title>
+  <title>CHYK | Centres</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
@@ -16,227 +16,85 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 </head>
 <body>
-        <!-- Persistent Huge CHYK Logo -->
-        <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 1; pointer-events: none;">
-            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
-        </div>
-
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-  <div class="page-transition-overlay"></div>
+  <div class="persistent-chyk-logo" style="position:fixed;top:-15px;left:40px;z-index:999999;opacity:1;pointer-events:none;">
+    <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK Logo" style="height:140px;object-fit:contain;filter:brightness(0) invert(1);">
+  </div>
+  <div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition-overlay"></div>
 
   <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-top">
-      <nav class="mobile-nav-links">
-        <a href="index.html" class="mobile-nav-link">Home</a>
-        <a href="about.html" class="mobile-nav-link">About</a>
-        <a href="activities.html" class="mobile-nav-link">Activities</a>
-        <a href="events.html" class="mobile-nav-link">Events</a>
-        <a href="content-hub.html" class="mobile-nav-link">Content Hub</a>
-        <a href="talks-and-articles.html" class="mobile-nav-link">Talks</a>
-        <a href="magazine.html" class="mobile-nav-link">Magazine</a>
-        <a href="art.html" class="mobile-nav-link">Art</a>
-        <a href="social.html" class="mobile-nav-link">Social</a>
-        <a href="wings.html" class="mobile-nav-link">Wings</a>
-        <a href="contact.html" class="mobile-nav-link">Contact</a>
-      </nav>
-      <a href="join.html" class="mobile-cta">Join CHYK →</a>
-    </div>
-    <p class="mobile-menu-footer">CHYK — Chinmaya Yuva Kendra © 2024</p>
+    <div class="mobile-menu-top"><nav class="mobile-nav-links"></nav><a href="join.html" class="mobile-cta">Join CHYK</a></div>
+    <p class="mobile-menu-footer">CHYK - Chinmaya Yuva Kendra</p>
   </div>
-
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="index.html" class="header-logo">
-        <img src="chyk website logo.png" alt="CHYK" class="logo-img">
-        <span class="logo-text">CHYK</span>
-      </a>
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="activities.html" class="nav-link">Activities</a>
-        <a href="events.html" class="nav-link">Events</a>
-        <a href="content-hub.html" class="nav-link">Content Hub</a>
-        <div class="nav-more-wrapper">
-          <button class="nav-more-trigger nav-link">More <span class="nav-arrow">↓</span></button>
-          <div class="nav-dropdown">
-            <a href="talks-and-articles.html">Talks & Articles</a>
-            <a href="magazine.html">Magazine</a>
-            <a href="art.html">Art</a>
-            <a href="social.html">Social</a>
-            <a href="wings.html">Wings</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </div>
-        <a href="join.html" class="nav-link nav-cta magnetic-btn">Join CHYK</a>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="header-logo"><img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="logo-img"><span class="logo-text">CHYK</span></a>
+      <nav class="desktop-nav"></nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <main class="page-wrapper">
-
-    <!-- Hero -->
-    <section class="page-hero">
+    <section class="page-hero centres-hero">
       <div class="page-hero-overlay"></div>
       <div class="page-hero-content">
-        <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> Specialised Programmes</p>
-        <h1 class="page-hero-title">CHYK<br><span class="text-gold">Wings</span></h1>
-        <p class="page-hero-subtitle">Dedicated vertical programmes within CHYK — each wing focuses on a specific domain, from education to environment to entrepreneurship.</p>
+        <p class="page-hero-eyebrow"><span class="eyebrow-dot"></span> Find Your Community</p>
+        <h1 class="page-hero-title">CHYK<br><span class="text-gold">Centres</span></h1>
+        <p class="page-hero-subtitle">Find a CHYK community near you and connect with local study groups, events, camps, and opportunities to serve.</p>
       </div>
-      <div class="page-hero-big-text">WING</div>
+      <div class="page-hero-big-text">NEAR</div>
     </section>
 
-    <!-- Wings Intro -->
-    <section class="section">
+    <section class="section wings-grid-section">
       <div class="container">
-        <div class="text-center" style="margin-bottom:3rem;">
-          <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> What Are Wings</p>
-          <h2 class="section-title gsap-reveal">Focused Verticals Within<br>the <span class="text-gold">CHYK Family</span></h2>
-          <p class="gsap-reveal" style="color:rgba(255,255,255,0.35); font-size:0.9rem; max-width:580px; margin:1rem auto 0; line-height:1.8;">Each CHYK Wing is a dedicated programme that brings together members with a shared interest or skill area — channelling the CHYK spirit of purpose and Vedantic values into a specific domain of impact.</p>
+        <div class="wings-intro centres-directory-intro">
+          <p class="section-eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> Across India and Beyond</p>
+          <h2 class="section-title centres-directory-title gsap-reveal">A Local Doorway Into the <span class="text-gold">CHYK Family</span></h2>
+          <p class="centres-intro-copy">Search the directory by region. Each centre can guide you towards nearby classes, activities, events, and coordinators.</p>
         </div>
         <div class="wings-category-tabs" id="wings-cat-tabs">
-          <button class="filter-tab active" data-filter="all">All Wings</button>
-          <button class="filter-tab" data-filter="education">Education</button>
-          <button class="filter-tab" data-filter="environment">Environment</button>
-          <button class="filter-tab" data-filter="arts">Arts</button>
-          <button class="filter-tab" data-filter="service">Service</button>
-          <button class="filter-tab" data-filter="wellness">Wellness</button>
+          <button class="filter-tab active" data-filter="all">All Centres</button>
+          <button class="filter-tab" data-filter="West India">West India</button>
+          <button class="filter-tab" data-filter="North India">North India</button>
+          <button class="filter-tab" data-filter="South India">South India</button>
         </div>
-        <div class="wings-grid" id="wings-grid">
-          <!-- Populated by JS -->
-        </div>
+        <div class="wings-grid" id="wings-grid"></div>
       </div>
     </section>
 
-    <!-- Wing Detail Area (expanded view) -->
-    <section class="section" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);" id="wing-detail-section">
-      <div class="container">
-        <div class="wing-detail-layout" id="wing-detail-layout">
-          <!-- Populated by JS when a wing is selected -->
-          <div class="wing-detail-placeholder">
-            <p style="font-size:0.85rem; color:rgba(255,255,255,0.2); font-style:italic; text-align:center;">Click a wing above to learn more about it.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <div class="stats-band">
-      <div class="stats-grid">
-        <div class="stat-item gsap-reveal">
-          <span class="stat-number" data-counter data-target="8" data-suffix="">0</span>
-          <span class="stat-label">Active Wings</span>
-        </div>
-        <div class="stat-item gsap-reveal">
-          <span class="stat-number" data-counter data-target="5000" data-suffix="+">0</span>
-          <span class="stat-label">Wing Members</span>
-        </div>
-        <div class="stat-item gsap-reveal">
-          <span class="stat-number" data-counter data-target="50" data-suffix="+">0</span>
-          <span class="stat-label">Projects Run</span>
-        </div>
-        <div class="stat-item gsap-reveal">
-          <span class="stat-number" data-counter data-target="12" data-suffix="">0</span>
-          <span class="stat-label">Cities Covered</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Get Involved -->
     <section class="section">
-      <div class="container">
-        <div class="wings-involve-grid">
-          <div class="gsap-reveal-left">
-            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Join a Wing</p>
-            <h2 class="section-title" style="font-size:clamp(2rem,4vw,3rem);">Find Your <span class="text-gold">Focus</span></h2>
-            <div class="gold-line"></div>
-            <p style="font-size:0.9rem; color:rgba(255,255,255,0.4); line-height:1.8; margin-top:1rem;">Wing membership is open to all CHYK members. Once you join CHYK, you can express interest in any wing and become part of that focused community within the broader CHYK family.</p>
-            <div class="flex gap-sm mt-md">
-              <a href="join.html" class="btn btn-primary magnetic-btn">Join CHYK First</a>
-              <a href="contact.html" class="btn btn-outline">Ask About Wings</a>
-            </div>
-          </div>
-          <div class="gsap-reveal-right">
-            <div style="display:flex; flex-direction:column; gap:1rem;">
-              <div style="padding:1.25rem; border:1px solid rgba(255,255,255,0.07); border-radius:14px; background:rgba(255,255,255,0.02);">
-                <p style="font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">How Wings Work</p>
-                <ul style="list-style:none; font-size:0.83rem; color:rgba(255,255,255,0.4); line-height:2.1;">
-                  <li>✦ All CHYK members can join any wing</li>
-                  <li>✦ Each wing has its own coordinator and projects</li>
-                  <li>✦ Wings meet independently and at CHYK events</li>
-                  <li>✦ Wing work counts toward CHYK seva hours</li>
-                  <li>✦ Some wings have national and zonal chapters</li>
-                </ul>
-              </div>
-              <div style="padding:1.25rem; border:1px solid rgba(255,255,255,0.07); border-radius:14px; background:rgba(255,255,255,0.02);">
-                <p style="font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Start a Wing</p>
-                <p style="font-size:0.83rem; color:rgba(255,255,255,0.4); line-height:1.7;">Have an idea for a new wing? Bring a proposal to your CHYK centre coordinator — CHYK actively encourages member-led initiatives.</p>
-              </div>
-            </div>
-          </div>
+      <div class="container wings-involve-grid">
+        <div class="gsap-reveal-left">
+          <p class="section-eyebrow"><span class="eyebrow-dot"></span> Cannot Find Your City?</p>
+          <h2 class="section-title centres-connect-title">We Will Help You <span class="text-gold">Connect</span></h2>
+          <div class="gold-line"></div>
+          <p class="centres-connect-copy">The directory will continue to grow. Share your location through the Join CHYK form and a coordinator will help connect you with the nearest active community or online programme.</p>
+          <div class="flex gap-sm mt-md"><a href="join.html" class="btn btn-primary magnetic-btn">Join CHYK</a><a href="contact.html" class="btn btn-outline">Contact the Team</a></div>
+        </div>
+        <div class="centres-help-card gsap-reveal-right">
+          <p class="centres-help-label">How Centres Help</p>
+          <ul><li>Local weekly study and discussion groups</li><li>Camps, yatras, workshops, and cultural programmes</li><li>Seva projects and volunteering opportunities</li><li>Connections with local mentors and coordinators</li><li>Online options when no nearby group is available</li></ul>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
-        <p class="footer-tagline">Find Yourself.</p>
-        <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
-      </div>
+      <div class="footer-brand"><img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="footer-logo"><p class="footer-tagline">Find Yourself.</p><p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p></div>
       <div class="footer-links">
-        <div class="footer-col">
-          <h5>Navigate</h5>
-          <a href="about.html">About CHYK</a>
-          <a href="activities.html">Activities</a>
-          <a href="events.html">Events</a>
-          <a href="join.html">Join CHYK</a>
-        </div>
-        <div class="footer-col">
-          <h5>Explore</h5>
-          <a href="content-hub.html">Content Hub</a>
-          <a href="talks-and-articles.html">Talks & Articles</a>
-          <a href="magazine.html">Magazine</a>
-          <a href="art.html">Art</a>
-        </div>
-        <div class="footer-col">
-          <h5>Connect</h5>
-          <a href="social.html">Social Media</a>
-          <a href="wings.html">Wings</a>
-          <a href="contact.html">Contact</a>
-          <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a>
-        </div>
-      </div>
-      <div class="footer-social-col">
-        <a href="#" class="footer-social-icon">IG</a>
-        <a href="#" class="footer-social-icon">YT</a>
-        <a href="#" class="footer-social-icon">FB</a>
-        <a href="#" class="footer-social-icon">X</a>
+        <div class="footer-col"><h5>Navigate</h5><a href="about.html">About CHYK</a><a href="activities.html">Activities</a><a href="events.html">Events</a><a href="join.html">Join CHYK</a></div>
+        <div class="footer-col"><h5>Explore</h5><a href="content-hub.html">Content Hub</a><a href="talks-and-articles.html">Talks & Articles</a><a href="magazine.html">Publications</a><a href="art.html">Art</a></div>
+        <div class="footer-col"><h5>Connect</h5><a href="social.html">Social Media</a><a href="wings.html">Centres</a><a href="contact.html">Contact</a></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 CHYK — Chinmaya Yuva Kendra. All rights reserved.</p>
-      <p>A wing of <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a></p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2024 CHYK - Chinmaya Yuva Kendra. All rights reserved.</p><p>A wing of Chinmaya Mission</p></div>
   </footer>
 
-  <script src="data/wings.js"></script>
+  <script src="data/centres.js"></script>
   <script src="js/base.js"></script>
   <script src="js/wings.js"></script>
-    <script src="js/mobile-fun.js"></script>
+  <script src="js/mobile-fun.js"></script>
 </body>
 </html>
-
-
-
-
-
 
 

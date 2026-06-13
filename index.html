@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHYK | Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,7 +27,7 @@
 <body>
         <!-- Persistent Huge CHYK Logo -->
         <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 0; pointer-events: none;">
-            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+            <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
         </div>
 
     <!-- Custom Cursor -->
@@ -54,7 +54,7 @@
                 <a href="magazine.html" class="mobile-nav-link">Magazine</a>
                 <a href="art.html" class="mobile-nav-link">Art</a>
                 <a href="social.html" class="mobile-nav-link">Social</a>
-                <a href="wings.html" class="mobile-nav-link">Wings</a>
+                <a href="wings.html" class="mobile-nav-link">Centres</a>
                 <a href="contact.html" class="mobile-nav-link">Contact</a>
                 <a href="leaders.html" class="mobile-nav-link">Leaders</a>
                 <a href="alumni.html" class="mobile-nav-link">Alumni</a>
@@ -71,7 +71,7 @@
         <header class="nav site-header" id="site-header" style="opacity: 0; visibility: hidden;">
             <div class="header-inner">
                 <a href="index.html" class="header-logo">
-                    <img src="chyk website logo.png" alt="CHYK" class="logo-img">
+                    <img src="assets/uploads/index/1781225987573-chyklogo-white.webp" alt="CHYK" class="logo-img">
                 </a>
                 <nav class="desktop-nav">
                     <a href="index.html" class="nav-link active">Home</a>
@@ -86,7 +86,7 @@
                             <a href="magazine.html">Magazine</a>
                             <a href="art.html">Art</a>
                             <a href="social.html">Social</a>
-                            <a href="wings.html">Wings</a>
+                            <a href="wings.html">Centres</a>
                             <a href="contact.html">Contact</a>
                             <a href="leaders.html">Leaders</a>
                             <a href="alumni.html">Alumni</a>
@@ -102,21 +102,23 @@
 
         <!-- MOBILE-ONLY HERO (≤1024px) — cinematic video hero -->
         <section class="m-hero" aria-label="CHYK — Harnessing Youth Potential">
-            <video class="m-hero-vid m-hero-vid-a is-active" autoplay muted playsinline webkit-playsinline
-                preload="auto" disablepictureinpicture poster="BG PIC.jpg">
-                <source src="mobile-hero-bg.mp4" type="video/mp4">
+            <!-- preload="none": mobile JS kicks playback; desktop (where this
+                 section is display:none) no longer downloads the file twice -->
+            <video class="m-hero-vid m-hero-vid-a is-active" muted playsinline webkit-playsinline
+                preload="none" disablepictureinpicture poster="assets/site/home/images/bg-pic.jpg">
+                <source data-src="assets/site/home/video/mobile-hero-bg.mp4" type="video/mp4">
             </video>
-            <video class="m-hero-vid m-hero-vid-b" muted playsinline webkit-playsinline preload="auto"
+            <video class="m-hero-vid m-hero-vid-b" muted playsinline webkit-playsinline preload="none"
                 disablepictureinpicture aria-hidden="true">
-                <source src="mobile-hero-bg.mp4" type="video/mp4">
+                <source data-src="assets/site/home/video/mobile-hero-bg.mp4" type="video/mp4">
             </video>
             <div class="m-hero-shade"></div>
             <div class="m-hero-content">
                 <div class="m-hero-chips">
-                    <span class="m-chip">50K+ Seekers</span>
-                    <span class="m-chip">Zero Boundaries</span>
-                    <span class="m-chip">Established 2024</span>
-                    <span class="m-chip">12 Countries</span>
+                    <span class="m-chip">5M+ Youth Reached</span>
+                    <span class="m-chip">20 Countries</span>
+                    <span class="m-chip">120+ Centres</span>
+                    <span class="m-chip">50 Years of Legacy</span>
                 </div>
                 <h1 class="m-hero-title">HARNESSING<br><span class="m-gold">YOUTH POTENTIAL</span></h1>
                 <p class="m-hero-sub">The digital frontier for the next generation of seekers.</p>
@@ -130,8 +132,10 @@
 
                 <!-- FIXED BACKGROUND LAYERS (Shared across home and horizontal scroll) -->
                 <div class="hero-bg" style="position: absolute; width: 100vw; height: 100vh;">
-                    <video class="hero-vid main-vid" muted loop playsinline>
-                        <source src="./BG VID.mp4" type="video/mp4">
+                    <!-- data-src: home.js attaches the source only on tiers
+                         that play video, so low-bandwidth users never fetch it -->
+                    <video class="hero-vid main-vid" muted loop playsinline preload="none">
+                        <source data-src="assets/site/home/video/bg-video.mp4" type="video/mp4">
                     </video>
                 </div>
 
@@ -155,17 +159,17 @@
                 </div>
 
                 <!-- Preloader video (Ensured autoplay and higher z-index) -->
-                <video class="hero-vid preloader-vid" autoplay muted playsinline
+                <video class="hero-vid preloader-vid" muted playsinline preload="none"
                     style="z-index: 100; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover;">
-                    <source src="./pre loader half.mp4" type="video/mp4">
+                    <source data-src="./assets/site/home/video/preloader-main.mp4" type="video/mp4">
                 </video>
 
                 <!-- HERO CONTENT (HIDDEN TAGS) -->
                 <div class="hero-content">
                     <div class="logo top-left" style="position: absolute; top: -15px; left: 40px;">
-                        <img src="chinmaya logo.png" alt="Chinmaya Logo" style="height: 140px; object-fit: contain;">
+                        <img src="assets/site/branding/chinmaya-logo.png" alt="Chinmaya Logo" style="height: 140px; object-fit: contain;">
                     </div>
-                    <div class="hero-tag top-right">EST. 2024 / CHYK GLOBAL<br>MUMBAI, IN</div>
+                    <div class="hero-tag top-right">EST. 1975 / CHYK INDIA</div>
                     <div class="hero-main" style="mix-blend-mode: difference;">
                         <h1 class="hero-title"
                             style="color: #ffffff; font-size: 4.5vw; line-height: 1.1; text-align: center; font-weight: 800; letter-spacing: -1px;">
@@ -174,10 +178,10 @@
                         </h1>
                         <p class="hero-subtitle">The digital frontier for the next generation of seekers.</p>
                     </div>
-                    <div class="floating-node" style="top: 25%; left: 15%;">50K+ SEEKERS</div>
-                    <div class="floating-node" style="top: 70%; left: 80%;">12 COUNTRIES</div>
-                    <div class="floating-node" style="top: 35%; left: 82%;">ZERO BOUNDARIES</div>
-                    <div class="floating-node" style="top: 75%; left: 20%;">ESTABLISHED 2024</div>
+                    <div class="floating-node" style="top: 25%; left: 15%;">5M+ YOUTH REACHED</div>
+                    <div class="floating-node" style="top: 70%; left: 80%;">20 COUNTRIES</div>
+                    <div class="floating-node" style="top: 35%; left: 82%;">120+ CENTRES</div>
+                    <div class="floating-node" style="top: 75%; left: 20%;">50 YEARS OF LEGACY</div>
                     <div class="scroll-indicator" style="mix-blend-mode: normal;">SCROLL DOWN</div>
                 </div>
 
@@ -189,7 +193,16 @@
 
                     <!-- Increased spacer width to 150vw to keep frames off-screen initially -->
                     <div class="slide hero-slide"
-                        style="background: transparent; width: 150vw; height: 100vh; flex-shrink: 0; pointer-events: none;"></div>
+                        style="background: transparent; width: 150vw; height: 100vh; flex-shrink: 0; pointer-events: none;">
+                        <article class="chyk-objective-panel">
+                            <div class="chyk-objective-image"><img src="assets/gurudev/objective-chyk.webp" alt="Pujya Gurudev Swami Chinmayananda" loading="eager"></div>
+                            <div class="chyk-objective-copy">
+                                <p class="chyk-objective-eyebrow">Objective of CHYK</p>
+                                <blockquote>Youth is a stage in human development when the personality is bursting with energy, enthusiasm, and dynamism. This is also a phase in life when receptivity and retention are at the optimum. What youth require is a clear vision of a goal in life and exercises for the cultivation of the right values of life to enable them to mold their personality and harness their inner resources along constructive channels. This systematic preparation alone can equip the youth to face the challenges of life with a smile. This essential training of youth for leadership in life is being successfully accomplished through the Chinmaya Yuva Kendra.</blockquote>
+                                <cite>Pujya Gurudev Swami Chinmayananda</cite>
+                            </div>
+                        </article>
+                    </div>
 
                     <!-- Lando Style Scrapbook Gallery -->
                     <div class="scrapbook-track">
@@ -234,121 +247,128 @@
 
                         <!-- Items (Tighter Spacing for Dense Experience) -->
                         <div class="scrapbook-item size-detail y-top" style="left: 5vw;">
-                            <div class="scrapbook-text">MUMBAI, 2024</div>
-                            <img src="assets/gallery-1.jpg" alt="Mumbai">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 01</div>
+                            <img src="assets/scroll/scroll-1.jpg" alt="CHYK youth in action — horizontal journey frame 1" loading="lazy" decoding="async">
                         </div>
 
                         <div class="text-holder y-bot" style="left: 25vw;">
-                            <h2>The Origin</h2>
-                            <p>Where disruption began. A collective effort to redefine the boundaries of the digital
-                                space.</p>
+                            <h2>Path of Self-Discovery</h2>
+                            <p>To bring together young seekers on their path of self-discovery.</p>
                         </div>
 
                         <div class="scrapbook-item size-standard y-mid" style="left: 55vw;">
-                            <div class="scrapbook-text">LONDON, 2024</div>
-                            <img src="./lando-grid-1.jpg" alt="London">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 02</div>
+                            <img src="assets/scroll/scroll-2.jpg" alt="CHYK youth in action — horizontal journey frame 2" loading="lazy" decoding="async">
                         </div>
 
                         <div class="text-holder y-top" style="left: 85vw;">
-                            <h2>Global Reach</h2>
-                            <p>Expanding across continents, connecting seekers from all corners of the globe.</p>
+                            <h2>Character &amp; Intellectual Growth</h2>
+                            <p>To provide a platform for self-unfoldment, intellect enrichment, and character building.</p>
                         </div>
 
                         <div class="scrapbook-item size-detail y-bot" style="left: 115vw;">
-                            <div class="scrapbook-text">TOKYO, 2025</div>
-                            <img src="assets/gallery-2.jpg" alt="Tokyo">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 03</div>
+                            <img src="assets/scroll/scroll-3.jpg" alt="CHYK youth in action — horizontal journey frame 3" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-hero y-mid" style="left: 145vw;">
-                            <div class="scrapbook-text">NEW YORK, 2025</div>
-                            <img src="./lando-hero.jpg" alt="New York">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 04</div>
+                            <img src="assets/scroll/scroll-4.jpg" alt="CHYK youth in action — horizontal journey frame 4" loading="lazy" decoding="async">
                         </div>
 
                         <div class="text-holder y-bot" style="left: 195vw;">
-                            <h2>Unseen Dimensions</h2>
-                            <p>Pushing the limits of what is visually possible. Every frame tells a story of speed and
-                                precision.</p>
+                            <h2>Understanding Sanatana Dharma</h2>
+                            <p>To answer the inquisitive youth through systematic study and service of Sanatana Dharma.</p>
+                        </div>
+
+                        <div class="text-holder y-bot" style="left: 250vw;">
+                            <h2>Holistic Transformation</h2>
+                            <p>To bring about complete individual transformation across physical, emotional, and spiritual levels.</p>
                         </div>
 
                         <div class="scrapbook-item size-standard y-top" style="left: 230vw;">
-                            <div class="scrapbook-text">MONACO, 2026</div>
-                            <img src="assets/gallery-3.jpg" alt="Monaco">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 05</div>
+                            <img src="assets/scroll/scroll-5.jpg" alt="CHYK youth in action — horizontal journey frame 5" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-detail y-mid" style="left: 265vw;">
-                            <div class="scrapbook-text">DATA-01</div>
-                            <img src="./3.jpg" alt="Data 1">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 06</div>
+                            <img src="assets/scroll/scroll-6.jpg" alt="CHYK youth in action — horizontal journey frame 6" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-standard y-bot" style="left: 295vw;">
-                            <div class="scrapbook-text">DATA-02</div>
-                            <img src="./4.jpg" alt="Data 2">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 07</div>
+                            <img src="assets/scroll/scroll-7.jpg" alt="CHYK youth in action — horizontal journey frame 7" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-detail y-top" style="left: 330vw;">
-                            <div class="scrapbook-text">DATA-03</div>
-                            <img src="./5.jpg" alt="Data 3">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 08</div>
+                            <img src="assets/scroll/scroll-8.jpg" alt="CHYK youth in action — horizontal journey frame 8" loading="lazy" decoding="async">
                         </div>
 
-                        <div class="text-holder y-mid" style="left: 360vw; width: 14vw;">
-                            <h2>The Process</h2>
-                            <p>Iterative. Brutal. Beautiful. The journey is the destination.</p>
+                        <div class="text-holder y-mid" style="left: 360vw;">
+                            <h2>Clarity of Life's Purpose</h2>
+                            <p>To develop in the youth a clear, unwavering vision of the true goal of life.</p>
                         </div>
 
                         <div class="scrapbook-item size-detail y-bot" style="left: 395vw;">
-                            <div class="scrapbook-text">BERLIN, 2026</div>
-                            <img src="./lando-grid-2.jpg" alt="Berlin">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 09</div>
+                            <img src="assets/scroll/scroll-9.jpg" alt="CHYK youth in action — horizontal journey frame 9" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-standard y-mid" style="left: 430vw;">
-                            <div class="scrapbook-text">PARIS, 2027</div>
-                            <img src="./1.jpg" alt="Paris">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 10</div>
+                            <img src="assets/scroll/scroll-10.jpg" alt="CHYK youth in action — horizontal journey frame 10" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-detail y-top" style="left: 465vw;">
-                            <div class="scrapbook-text">SYDNEY, 2028</div>
-                            <img src="./4.jpg" alt="Sydney">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 11</div>
+                            <img src="assets/scroll/scroll-11.jpg" alt="CHYK youth in action — horizontal journey frame 11" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-standard y-bot" style="left: 495vw;">
-                            <div class="scrapbook-text">PERTH, 2028</div>
-                            <img src="./1.jpg" alt="Perth">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 12</div>
+                            <img src="assets/scroll/scroll-12.jpg" alt="CHYK youth in action — horizontal journey frame 12" loading="lazy" decoding="async">
+                        </div>
+
+                        <div class="text-holder y-top" style="left: 515vw;">
+                            <h2>Creative Value Cultivation</h2>
+                            <p>To mold personalities and channel inner resources into creative and constructive outlets.</p>
                         </div>
 
                         <div class="scrapbook-item size-detail y-mid" style="left: 535vw;">
-                            <div class="scrapbook-text">BRISBANE, 2028</div>
-                            <img src="./2.jpg" alt="Brisbane">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 13</div>
+                            <img src="assets/scroll/scroll-13.jpg" alt="CHYK youth in action — horizontal journey frame 13" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-standard y-top" style="left: 565vw;">
-                            <div class="scrapbook-text">SEOUL, 2028</div>
-                            <img src="./3.jpg" alt="Seoul">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 14</div>
+                            <img src="assets/scroll/scroll-14.jpg" alt="CHYK youth in action — horizontal journey frame 14" loading="lazy" decoding="async">
                         </div>
 
                         <div class="text-holder y-bot" style="left: 600vw;">
-                            <h2>Digital Synergy</h2>
-                            <p>Connecting the dots between ancient culture and modern technology.</p>
+                            <h2>Nationalistic Citizenship</h2>
+                            <p>To inculcate a strong vision for India and build aggressively good citizens.</p>
                         </div>
 
                         <div class="scrapbook-item size-detail y-mid" style="left: 645vw;">
-                            <div class="scrapbook-text">MILAN, 2029</div>
-                            <img src="./5.jpg" alt="Milan">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 15</div>
+                            <img src="assets/scroll/scroll-15.jpg" alt="CHYK youth in action — horizontal journey frame 15" loading="lazy" decoding="async">
                         </div>
 
                         <div class="scrapbook-item size-standard y-bot" style="left: 675vw;">
-                            <div class="scrapbook-text">MADRID, 2029</div>
-                            <img src="./1.jpg" alt="Madrid">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 16</div>
+                            <img src="assets/scroll/scroll-16.jpg" alt="CHYK youth in action — horizontal journey frame 16" loading="lazy" decoding="async">
                         </div>
 
-                        <div class="text-holder y-mid" style="left: 710vw; width: 20vw;">
-                            <h2>The Final Frontier</h2>
-                            <p>We are not just building a website. We are engineering a legacy that will inspire
-                                generations to come.</p>
+                        <div class="text-holder y-mid" style="left: 710vw;">
+                            <h2>Leadership for the Mission</h2>
+                            <p>To create and nurture the next rung of dynamic leaders in Chinmaya Mission.</p>
                         </div>
 
                         <div class="scrapbook-item size-hero y-bot" style="left: 750vw;">
-                            <div class="scrapbook-text">GLOBAL, 2030</div>
-                            <img src="./lando-hero.jpg" alt="Legacy">
+                            <div class="scrapbook-text">CHYK ARCHIVE, 17</div>
+                            <img src="assets/scroll/scroll-17.jpg" alt="CHYK youth in action — horizontal journey frame 17" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -366,66 +386,114 @@
             </div>
             <div class="m-deck idle" id="m-deck">
                 <figure class="m-deck-card">
-                    <img src="assets/gallery-1.jpg" alt="Mumbai 2024" loading="lazy" draggable="false">
-                    <figcaption><span>01</span>MUMBAI, 2024</figcaption>
+                    <img src="assets/home-horizontal/01-mobile.webp" alt="Gurudev addressing a CHYK gathering" loading="lazy" draggable="false" style="object-position: 10% 50%;">
+                    <figcaption><span>01</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <div class="m-deck-card m-deck-quote">
-                    <h3>THE <span class="m-gold">ORIGIN</span></h3>
-                    <p>Where disruption began. A collective effort to redefine the boundaries of the digital space.</p>
+                    <h3>PATH OF <span class="m-gold">SELF-DISCOVERY</span></h3>
+                    <p>To bring together young seekers on their path of self-discovery.</p>
                 </div>
                 <figure class="m-deck-card">
-                    <img src="lando-grid-1.jpg" alt="London 2024" loading="lazy" draggable="false">
-                    <figcaption><span>02</span>LONDON, 2024</figcaption>
+                    <img src="assets/home-horizontal/02-mobile.webp" alt="Gurudev with young CHYK members" loading="lazy" draggable="false" style="object-position: 88% 50%;">
+                    <figcaption><span>02</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <figure class="m-deck-card">
-                    <img src="assets/gallery-2.jpg" alt="Tokyo 2025" loading="lazy" draggable="false">
-                    <figcaption><span>03</span>TOKYO, 2025</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/03-mobile.webp" alt="Early CHYK group photograph" loading="lazy" draggable="false">
+                    <figcaption><span>03</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <div class="m-deck-card m-deck-quote">
-                    <h3>GLOBAL <span class="m-gold">REACH</span></h3>
-                    <p>Expanding across continents, connecting seekers from all corners of the globe.</p>
+                    <h3>CHARACTER &amp; <span class="m-gold">INTELLECTUAL GROWTH</span></h3>
+                    <p>To provide a platform for self-unfoldment, intellect enrichment, and character building.</p>
                 </div>
                 <figure class="m-deck-card">
-                    <img src="lando-hero.jpg" alt="New York 2025" loading="lazy" draggable="false">
-                    <figcaption><span>04</span>NEW YORK, 2025</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/04-mobile.webp" alt="CHYK members on a motorcycle journey" loading="lazy" draggable="false">
+                    <figcaption><span>04</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <figure class="m-deck-card">
-                    <img src="assets/gallery-3.jpg" alt="Monaco 2026" loading="lazy" draggable="false">
-                    <figcaption><span>05</span>MONACO, 2026</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/05-mobile.webp" alt="CHYK motorcycle journey through India" loading="lazy" draggable="false">
+                    <figcaption><span>05</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <div class="m-deck-card m-deck-quote">
-                    <h3>THE <span class="m-gold">PROCESS</span></h3>
-                    <p>Iterative. Brutal. Beautiful. The journey is the destination.</p>
+                    <h3>UNDERSTANDING <span class="m-gold">SANATANA DHARMA</span></h3>
+                    <p>To answer the inquisitive youth through systematic study and service of Sanatana Dharma.</p>
                 </div>
                 <figure class="m-deck-card">
-                    <img src="lando-grid-2.jpg" alt="Berlin 2026" loading="lazy" draggable="false">
-                    <figcaption><span>06</span>BERLIN, 2026</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/06-mobile.webp" alt="CHYK members at the world's highest motorable road" loading="lazy" draggable="false">
+                    <figcaption><span>06</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <figure class="m-deck-card">
-                    <img src="1.jpg" alt="Paris 2027" loading="lazy" draggable="false">
-                    <figcaption><span>07</span>PARIS, 2027</figcaption>
+                    <img src="assets/home-horizontal/07-mobile.webp" alt="Gurudev speaking at a CHYK event" loading="lazy" draggable="false" style="object-position: 50% 35%;">
+                    <figcaption><span>07</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <figure class="m-deck-card">
-                    <img src="2.jpg" alt="Sydney 2028" loading="lazy" draggable="false">
-                    <figcaption><span>08</span>SYDNEY, 2028</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/08-mobile.webp" alt="All India CHYK office bearers conference" loading="lazy" draggable="false">
+                    <figcaption><span>08</span>CHYK ARCHIVE</figcaption>
                 </figure>
                 <div class="m-deck-card m-deck-quote">
-                    <h3>THE FINAL <span class="m-gold">FRONTIER</span></h3>
-                    <p>We are not just building a website. We are engineering a legacy that will inspire generations to come.</p>
+                    <h3>HOLISTIC <span class="m-gold">TRANSFORMATION</span></h3>
+                    <p>To bring about complete individual transformation across physical, emotional, and spiritual levels.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img src="assets/home-horizontal/09-mobile.webp" alt="Gurudev with CHYK members" loading="lazy" draggable="false" style="object-position: 25% 58%;">
+                    <figcaption><span>09</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/10-mobile.webp" alt="CHYK community gathering" loading="lazy" draggable="false">
+                    <figcaption><span>10</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>CLARITY OF <span class="m-gold">LIFE'S PURPOSE</span></h3>
+                    <p>To develop in the youth a clear, unwavering vision of the true goal of life.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/11-mobile.webp" alt="A CHYK cultural performance" loading="lazy" draggable="false">
+                    <figcaption><span>11</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/12-mobile.webp" alt="A large international CHYK gathering" loading="lazy" draggable="false">
+                    <figcaption><span>12</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>CREATIVE VALUE <span class="m-gold">CULTIVATION</span></h3>
+                    <p>To mold personalities and channel inner resources into creative and constructive outlets.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/13-mobile.webp" alt="CHYK members at a stage gathering" loading="lazy" draggable="false">
+                    <figcaption><span>13</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img src="assets/home-horizontal/14-mobile.webp" alt="Gurudev at an All India CHYK conference" loading="lazy" draggable="false" style="object-position: 50% 45%;">
+                    <figcaption><span>14</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/15-mobile.webp" alt="A speaker addressing a large CHYK audience" loading="lazy" draggable="false">
+                    <figcaption><span>15</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>NATIONALISTIC <span class="m-gold">CITIZENSHIP</span></h3>
+                    <p>To inculcate a strong vision for India and build aggressively good citizens.</p>
+                </div>
+                <figure class="m-deck-card">
+                    <img class="archive-contain" src="assets/home-horizontal/16-mobile.webp" alt="CHYK participants together on stage" loading="lazy" draggable="false">
+                    <figcaption><span>16</span>CHYK ARCHIVE</figcaption>
+                </figure>
+                <div class="m-deck-card m-deck-quote">
+                    <h3>LEADERSHIP FOR <span class="m-gold">THE MISSION</span></h3>
+                    <p>To create and nurture the next rung of dynamic leaders in Chinmaya Mission.</p>
                 </div>
                 <figure class="m-deck-card m-deck-finale">
-                    <img src="lando-hero.jpg" alt="Global 2030" loading="lazy" draggable="false">
-                    <figcaption><span>09</span>GLOBAL, 2030</figcaption>
+                    <img class="archive-contain" src="assets/home-horizontal/17-mobile.webp" alt="An early CHYK discourse and gathering" loading="lazy" draggable="false">
+                    <figcaption><span>17</span>CHYK ARCHIVE</figcaption>
                 </figure>
             </div>
             <div class="m-deck-meta">
-                <span class="m-deck-count"><b id="m-deck-count">01</b> / <i id="m-deck-total">13</i></span>
+                <span class="m-deck-count"><b id="m-deck-count">01</b> / <i id="m-deck-total">25</i></span>
                 <span class="m-deck-tip">Swipe to explore</span>
             </div>
         </section>
 
         <!-- 4. THE HORIZONTAL CAROUSEL & MILESTONE TEXT (Unified) -->
-        <section>
+        <section data-editor-label="Milestones & Archive">
             <div class="chyk-core">
             <div class="core-bg-text">MILESTONES</div>
             
@@ -436,12 +504,12 @@
                     CHAPTER THREE // THE ARCHIVE
                 </div>
                 <h2 class="core-title" style="color: #111;">
-                    MILESTONES<br><span class="gold-text">DISRUPTION.</span>
+                    MILESTONES OF<br><span class="gold-text">A MOVEMENT.</span>
                 </h2>
                     <div class="core-line"></div>
                 <div class="core-desc" style="max-width: 600px; margin-top: 2rem;">
-                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">CHYK is the convergence of pure aesthetics and high-performance execution. We strip away the unnecessary, leaving only what is absolutely vital to the user experience.</p>
-                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8;">Through the lens of modern architecture and brutalist precision, we bridge the gap between abstract thought and digital reality. Welcome to the new standard.</p>
+                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem;">A powerful spiritual revolution has been reshaping the global youth landscape. This timeline is a living roadmap of dynamic inner transformation.</p>
+                    <p style="color: #444; font-size: 1.2rem; line-height: 1.8;">When ancient wisdom meets youthful dynamism, nations are rebuilt. Witness the evolution of a global movement.</p>
                 </div>
             </div>
             <!-- HORIZONTAL WHITE GATES -->
@@ -449,17 +517,24 @@
             <div class="chyk-gate chyk-gate-bottom"></div>
             
             <!-- VOID CONTENT: Hidden beneath the white gates -->
-            <div class="void-content" style="background: url('gurudev bg.jpg') center/cover no-repeat;">
+            <div id="ascent-archive" class="void-content" style="background: #000 url('assets/site/home/images/gurudev-bg.jpg') center/contain no-repeat;">
+                <div class="void-archive-brand" aria-label="CHYK Gurudev Archive">
+                    <img src="assets/site/branding/chyk-website-logo.png" alt="CHYK">
+                    <div><span>CHYK ARCHIVE</span><strong>FIND GURUDEV</strong></div>
+                </div>
                 
                 <!-- Darkness Overlay for the Void Reveal (Z-index 0) -->
                 <div class="void-darkness" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;">
                     <canvas id="void-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair;"></canvas>
                 </div>
                 <!-- Text on top of the darkness (Z-index 10) -->
-                <div class="void-center-text" style="z-index: 10; position: relative;">
-                    <span class="void-label">EST. 2026 // COMING SOON</span>
-                    <h2 class="rift-title">THE ASCENT <br> CONTINUES <span class="gold-text">SOON.</span></h2>
-                    <p class="void-manifesto">The next chapter is refining in the void.</p>
+                <div class="void-center-text void-game-card" style="z-index: 10; position: relative;">
+                    <span class="void-label">GURUDEV ARCHIVE // FIND THE MOMENT</span>
+                    <p id="void-game-question" class="void-game-question">Explore the archive.</p>
+                    <div class="void-game-actions">
+                        <span class="void-game-hint">Move to reveal. Click the image for another clue.</span>
+                        <button id="void-next-question" class="void-next-question" type="button">Next clue</button>
+                    </div>
                 </div>
             </div>
 
@@ -469,83 +544,83 @@
             <div class="carousel-container">
                 <!-- Cards -->
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-fallback.jpeg" alt="Milestone" loading="lazy" decoding="async"></div>
                     <div class="deck-content"><h4>MILESTONE 01</h4><p>GENESIS // 2020</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 02</h4><p>ASSEMBLY // 2021</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="2.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-2.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 03</h4><p>EXPANSION // 2022</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="3.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-3.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 04</h4><p>ACCELERATE // 2023</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="assets/gallery-1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/gallery-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 05</h4><p>INCEPTION // 2024</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-fallback.jpeg" alt="Milestone" loading="lazy" decoding="async"></div>
                     <div class="deck-content"><h4>MILESTONE 06</h4><p>SYNTHESIS // 2025</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 07</h4><p>GLOBAL // 2026</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="2.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-2.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 08</h4><p>ASCENSION // 2027</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="3.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-3.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 09</h4><p>LEGACY // 2028</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-fallback.jpeg" alt="Milestone" loading="lazy" decoding="async"></div>
                     <div class="deck-content"><h4>MILESTONE 10</h4><p>BEYOND // 2029</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 11</h4><p>HORIZON // 2030</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="2.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-2.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 12</h4><p>ECLIPSE // 2031</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="3.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-3.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 13</h4><p>OMNIPRESENCE // 2032</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-fallback.jpeg" alt="Milestone" loading="lazy" decoding="async"></div>
                     <div class="deck-content"><h4>MILESTONE 14</h4><p>NEXUS // 2033</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 15</h4><p>QUANTUM // 2034</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="2.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-2.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 16</h4><p>AETHER // 2035</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="3.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-3.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 17</h4><p>ZENITH // 2036</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="fnal chyk.jpeg" alt="Milestone"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-fallback.jpeg" alt="Milestone" loading="lazy" decoding="async"></div>
                     <div class="deck-content"><h4>MILESTONE 18</h4><p>PARADIGM // 2037</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="1.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-1.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 19</h4><p>INFINITE // 2038</p></div>
                 </div>
                 <div class="deck-card">
-                    <div class="deck-img-wrapper"><img src="2.jpg" alt="Milestone" onerror="this.src='fnal chyk.jpeg'"></div>
+                    <div class="deck-img-wrapper"><img src="assets/site/home/images/milestone-2.jpg" alt="Milestone" loading="lazy" decoding="async" onerror="this.src='assets/site/home/images/milestone-fallback.jpeg'"></div>
                     <div class="deck-content"><h4>MILESTONE 20</h4><p>ARCHIVE // 2039</p></div>
                 </div>
 
@@ -560,8 +635,8 @@
         <section class="tunnel-finale">
             <!-- THE DESTINATION VIDEO (Behind the canvas for seamless fade) -->
             <div class="final-experience">
-                <video class="final-hover-vid" autoplay muted loop playsinline>
-                    <source src="assets/MAIN HOVER.mp4" type="video/mp4">
+                <video class="final-hover-vid" muted loop playsinline preload="none">
+                    <source data-src="assets/MAIN HOVER.mp4" type="video/mp4">
                 </video>
 
             </div>
@@ -571,16 +646,35 @@
 
             <div class="tunnel-container">
                 <!-- Transition Text: Appears during the blackout -->
-                <div class="tunnel-text-holder text-transition">
-                    <h2 class="journey-text">PREPARE FOR <span class="gold-text">IMPACT.</span></h2>
+                <div class="tunnel-text-holder text-transition tunnel-step">
+                    <h2 class="journey-text">THE JOURNEY BEGINS</h2>
                 </div>
 
-                <div class="tunnel-text-holder text-1">
-                    <h2 class="journey-text">BEYOND THE <span class="gold-text">HORIZON.</span></h2>
+                <!-- The full mantra, one beat per tunnel phase:
+                     "Introspect daily, detect diligently, negate ruthlessly,
+                      substitute wisely, grow steadily... and be free!" -->
+                <div class="tunnel-text-holder text-1 tunnel-step">
+                    <h2 class="journey-text">INTROSPECT DAILY</h2>
                 </div>
 
-                <div class="tunnel-text-holder text-2">
-                    <h2 class="journey-text">THE ASCENT IS <span class="gold-text">INFINITE.</span></h2>
+                <div class="tunnel-text-holder text-2 tunnel-step">
+                    <h2 class="journey-text">DETECT DILIGENTLY</h2>
+                </div>
+
+                <div class="tunnel-text-holder text-3 tunnel-step">
+                    <h2 class="journey-text">NEGATE RUTHLESSLY</h2>
+                </div>
+
+                <div class="tunnel-text-holder text-4 tunnel-step">
+                    <h2 class="journey-text">SUBSTITUTE WISELY</h2>
+                </div>
+
+                <div class="tunnel-text-holder text-5 tunnel-step">
+                    <h2 class="journey-text">GROW STEADILY</h2>
+                </div>
+
+                <div class="tunnel-text-holder text-6 tunnel-step">
+                    <h2 class="journey-text">AND BE FREE</h2>
                 </div>
             </div>
         </section>
@@ -678,7 +772,7 @@
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
+                    <img src="assets/site/branding/chyk-website-logo.png" alt="CHYK" class="footer-logo">
                     <p class="footer-tagline">Find Yourself.</p>
                     <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
                 </div>
@@ -701,7 +795,7 @@
                         <h5>People</h5>
                         <a href="leaders.html">CHYK Leaders</a>
                         <a href="alumni.html">CHYK Alumni</a>
-                        <a href="wings.html">Wings</a>
+                        <a href="wings.html">Centres</a>
                         <a href="contact.html">Contact</a>
                     </div>
                 </div>
@@ -719,7 +813,8 @@
         </footer>
 
         <button id="view-bg-btn" class="magnetic-btn" style="position: fixed; bottom: 30px; right: 30px; z-index: 999999; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 10px 20px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Syne', sans-serif; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;">VIEW BG</button>
-        <script src="script.js"></script>
+        <script src="data/homepage.js"></script>
+        <script src="js/home.js"></script>
         <script src="js/nav.js"></script>
         <script>
         /* Mobile-only: Choose Your Path interactions (≤1024px) */
@@ -775,6 +870,7 @@
                 mobileHeroVideos.forEach(function (video) {
                     video.muted = true;
                     video.defaultMuted = true;
+                    video.preload = video === activeVideo ? 'auto' : 'none';
                 });
 
                 function switchMobileHeroVideo() {
@@ -948,3 +1044,4 @@
 </body>
 
 </html>
+

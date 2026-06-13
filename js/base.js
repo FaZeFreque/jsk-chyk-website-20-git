@@ -74,12 +74,12 @@
           <span class="nav-dd-sub">Who we are &amp; our mission</span>
         </a>
         <a href="wings.html"   class="nav-dd-item${isActive('wings.html')}">
-          <span class="nav-dd-label">Wings</span>
-          <span class="nav-dd-sub">Specialised programme verticals</span>
+          <span class="nav-dd-label">CHYK Centres</span>
+          <span class="nav-dd-sub">Find a community near you</span>
         </a>
         <a href="contact.html" class="nav-dd-item${isActive('contact.html')}">
           <span class="nav-dd-label">Contact</span>
-          <span class="nav-dd-sub">Find a centre near you</span>
+          <span class="nav-dd-sub">Reach the CHYK team</span>
         </a>
       </div>
     </div>
@@ -119,7 +119,7 @@
         </a>
         <a href="magazine.html" class="nav-dd-item${isActive('magazine.html')}">
           <span class="nav-dd-label">Publications &amp; Blog</span>
-          <span class="nav-dd-sub">Crossroads, Mission &amp; selected writings</span>
+          <span class="nav-dd-sub">Blogs, publications &amp; Chinmaya Udghosh</span>
         </a>
         <a href="art.html" class="nav-dd-item${isActive('art.html')}">
           <span class="nav-dd-label">Art &amp; Culture</span>
@@ -162,7 +162,7 @@
     <a href="magazine.html"           class="mobile-nav-link${isActive('magazine.html')}">Publications &amp; Blog</a>
     <a href="art.html"                class="mobile-nav-link${isActive('art.html')}">Art &amp; Culture</a>
     <a href="social.html"             class="mobile-nav-link${isActive('social.html')}">Social</a>
-    <a href="wings.html"              class="mobile-nav-link${isActive('wings.html')}">Wings</a>
+    <a href="wings.html"              class="mobile-nav-link${isActive('wings.html')}">CHYK Centres</a>
     <a href="contact.html"            class="mobile-nav-link${isActive('contact.html')}">Contact</a>
     <a href="leaders.html"            class="mobile-nav-link${isActive('leaders.html')}">Leaders</a>
     <a href="alumni.html"             class="mobile-nav-link${isActive('alumni.html')}">Alumni</a>
@@ -306,16 +306,15 @@
     hamburger.addEventListener('click', () => {
       const open = hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-      if (open) lenis.stop(); else lenis.start();
+      if (open && window.CHYK && window.CHYK.lockPageScroll) window.CHYK.lockPageScroll();
+      else if (!open && window.CHYK && window.CHYK.unlockPageScroll) window.CHYK.unlockPageScroll(true);
     });
 
     mobileMenu.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(el => {
       el.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-        lenis.start();
+        if (window.CHYK && window.CHYK.unlockPageScroll) window.CHYK.unlockPageScroll(true);
       });
     });
 
@@ -323,8 +322,7 @@
       if (window.innerWidth > 1024) {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-        lenis.start();
+        if (window.CHYK && window.CHYK.unlockPageScroll) window.CHYK.unlockPageScroll(true);
       }
     });
   }
@@ -437,6 +435,29 @@
   ───────────────────────────────────────────── */
   window.CHYK = window.CHYK || {};
 
+  let scrollLockCount = 0;
+  function lockPageScroll() {
+    scrollLockCount += 1;
+    document.documentElement.classList.add('chyk-scroll-locked');
+    document.body.classList.add('chyk-scroll-locked');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    lenis.stop();
+  }
+
+  function unlockPageScroll(force) {
+    scrollLockCount = force ? 0 : Math.max(0, scrollLockCount - 1);
+    if (scrollLockCount > 0) return;
+    document.documentElement.classList.remove('chyk-scroll-locked');
+    document.body.classList.remove('chyk-scroll-locked');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    lenis.start();
+  }
+
+  window.CHYK.lockPageScroll = lockPageScroll;
+  window.CHYK.unlockPageScroll = unlockPageScroll;
+
   window.CHYK.openModal = function (id, triggerElement) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -481,6 +502,7 @@
       });
       gsap.to(box, { y: 0, duration: 0.5, ease: 'expo.out' });
       if (body) {
+        body.scrollTop = 0;
         gsap.fromTo(body, { opacity: 0 }, { opacity: 1, duration: 0.35, delay: 0.2, ease: 'power3.out' });
       }
     } else if (triggerElement && box) {
@@ -525,8 +547,7 @@
     }
 
     el.classList.add('open');
-    if (typeof lenis !== 'undefined') lenis.stop();
-    document.body.style.overflow = 'hidden';
+    lockPageScroll();
   };
   
   window.CHYK.closeModal = function (id) {
@@ -537,6 +558,10 @@
     const body = el.querySelector('.modal-body');
     
     const isMobile = window.innerWidth < 768;
+
+    // Restore page input immediately. The closing animation is decorative and
+    // must never be allowed to keep the underlying page frozen.
+    unlockPageScroll(true);
 
     gsap.killTweensOf([el, box, body, '.page-wrapper', '.site-header', '.persistent-chyk-logo']);
 
@@ -564,8 +589,7 @@
         delete box.dataset.mobileModal;
       }
       if (body) gsap.set(body, { clearProps: 'opacity' });
-      if (typeof lenis !== 'undefined') lenis.start();
-      document.body.style.overflow = '';
+      unlockPageScroll(true);
     };
 
     if (box && box.dataset.mobileModal) {
@@ -628,8 +652,7 @@
     }
     
     lb.classList.add('open');
-    if (typeof lenis !== 'undefined') lenis.stop();
-    document.body.style.overflow = 'hidden';
+    lockPageScroll();
   };
   
   window.CHYK.closeLightbox = function () {
@@ -638,6 +661,8 @@
     
     const img = lb.querySelector('.lightbox-img');
     const cap = lb.querySelector('.lightbox-caption');
+
+    unlockPageScroll(true);
     
     gsap.killTweensOf([lb, img, cap, '.page-wrapper', '.site-header', '.persistent-chyk-logo']);
     
@@ -657,8 +682,7 @@
         lb.classList.remove('open');
         lb.style.visibility = 'hidden';
         gsap.set('.page-wrapper, .site-header, .persistent-chyk-logo', { clearProps: 'filter' });
-        if (typeof lenis !== 'undefined') lenis.start();
-        document.body.style.overflow = '';
+        unlockPageScroll(true);
       }
     });
   };
@@ -668,6 +692,15 @@
     document.querySelectorAll('.modal-overlay.open').forEach(el => window.CHYK.closeModal(el.id));
     window.CHYK.closeLightbox();
   });
+
+  function recoverPageScroll() {
+    const overlayOpen = document.querySelector('.modal-overlay.open, .lightbox-overlay.open');
+    const menuOpen = document.querySelector('.mobile-menu.open');
+    if (!overlayOpen && !menuOpen) unlockPageScroll(true);
+  }
+  window.addEventListener('pageshow', recoverPageScroll);
+  window.addEventListener('orientationchange', () => window.setTimeout(recoverPageScroll, 100));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) recoverPageScroll(); });
 
   /* ─────────────────────────────────────────────
      12. REFRESH SCROLLTRIGGER AFTER FULL LOAD

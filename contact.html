@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <body>
         <!-- Persistent Huge CHYK Logo -->
         <div class="persistent-chyk-logo" style="position: fixed; top: -15px; left: 40px; z-index: 999999; opacity: 1; pointer-events: none;">
-            <img src="chyk website logo.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
+            <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK Logo" style="height: 140px; object-fit: contain; filter: brightness(0) invert(1);">
         </div>
 
   <div class="cursor-dot"></div>
@@ -37,7 +37,7 @@
         <a href="magazine.html" class="mobile-nav-link">Magazine</a>
         <a href="art.html" class="mobile-nav-link">Art</a>
         <a href="social.html" class="mobile-nav-link">Social</a>
-        <a href="wings.html" class="mobile-nav-link">Wings</a>
+        <a href="wings.html" class="mobile-nav-link">Centres</a>
         <a href="contact.html" class="mobile-nav-link">Contact</a>
       </nav>
       <a href="join.html" class="mobile-cta">Join CHYK →</a>
@@ -48,7 +48,7 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="header-logo">
-        <img src="chyk website logo.png" alt="CHYK" class="logo-img">
+        <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="logo-img">
         <span class="logo-text">CHYK</span>
       </a>
       <nav class="desktop-nav">
@@ -64,7 +64,7 @@
             <a href="magazine.html">Magazine</a>
             <a href="art.html">Art</a>
             <a href="social.html">Social</a>
-            <a href="wings.html">Wings</a>
+            <a href="wings.html">Centres</a>
             <a href="contact.html">Contact</a>
           </div>
         </div>
@@ -153,7 +153,7 @@
               <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 <a href="join.html" style="font-size:0.83rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">→ Join CHYK as a member</a>
                 <a href="activities.html" style="font-size:0.83rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">→ Register for an activity or camp</a>
-                <a href="wings.html" style="font-size:0.83rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">→ Join or start a CHYK Wing</a>
+                <a href="wings.html" style="font-size:0.83rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">→ Find a CHYK centre</a>
                 <a href="magazine.html" style="font-size:0.83rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">→ Submit writing for Udghosh</a>
               </div>
             </div>
@@ -248,50 +248,13 @@
       </div>
     </section>
 
-    <!-- Find a Centre -->
-    <section class="section" style="background:#000; border-top:1px solid rgba(255,255,255,0.05);">
-      <div class="container">
-        <div class="section-hrow" style="margin-bottom:2.5rem;">
-          <div>
-            <p class="section-eyebrow"><span class="eyebrow-dot"></span> Near You</p>
-            <h2 class="section-title">Find a <span class="text-gold">Centre</span></h2>
-          </div>
-        </div>
-        <div class="centres-search-row" style="margin-bottom:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-          <div class="search-bar" style="max-width:320px; border-radius:100px; padding:0.5rem 1.25rem; flex:1;">
-            <span class="search-icon">⌕</span>
-            <input type="text" class="search-input" id="centre-search" placeholder="Search by city...">
-          </div>
-          <select class="talks-filter-select" id="centre-state-filter">
-            <option value="all">All States</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="International">International</option>
-          </select>
-        </div>
-        <div class="centres-grid" id="centres-grid">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Map placeholder -->
-    <div class="contact-map-placeholder" style="height:320px; background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.75rem;">
-      <p style="font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.15);">Interactive Map</p>
-      <p style="font-size:0.8rem; color:rgba(255,255,255,0.1);">Map integration placeholder — connect Google Maps or Mapbox here</p>
-    </div>
-
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="chyk website logo.png" alt="CHYK" class="footer-logo">
+        <img src="assets/site/branding/chyk-logo-white.png" alt="CHYK" class="footer-logo">
         <p class="footer-tagline">Find Yourself.</p>
         <p class="footer-desc">The global youth wing of Chinmaya Mission, empowering young seekers worldwide.</p>
       </div>
@@ -313,7 +276,7 @@
         <div class="footer-col">
           <h5>Connect</h5>
           <a href="social.html">Social Media</a>
-          <a href="wings.html">Wings</a>
+          <a href="wings.html">Centres</a>
           <a href="contact.html">Contact</a>
           <a href="https://www.chinmayamission.com" target="_blank" rel="noopener">Chinmaya Mission</a>
         </div>
@@ -336,8 +299,6 @@
     <script src="js/mobile-fun.js"></script>
 </body>
 </html>
-
-
 
 
 

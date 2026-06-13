@@ -1,52 +1,39 @@
-/* CHYK Testimonials Data */
+/* Managed locally by CHYK Content Manager: About - Testimonials */
 window.CHYK_DATA = window.CHYK_DATA || {};
 window.CHYK_DATA.testimonials = [
   {
-    id: 't1',
-    quote: 'CHYK didn\'t just teach me Vedanta — it gave me a community, a purpose, and the tools to actually live a meaningful life. The CTCs alone changed how I think about everything.',
-    name: 'Arjun Patel',
-    role: 'CHYKer, Mumbai | Software Engineer',
-    initials: 'AP',
-    year: '2018–present'
+    "id": "rishi-iyer",
+    "quote": "CHYK on Sunday morning is a reminder to me - a reminder that I wake up to serve this nation, this identity, and this culture which makes me who I am. This desire to serve stemmed from a quote by Pujya Gurudev: Through individual transformation alone, world transformation can be aspired. At CHYK, that path of transformation is what we call Sadhana. Sadhana improved my efficiency and gave me the tranquillity to connect with the people around me, helping me create positive change in the community.",
+    "name": "Rishi Iyer",
+    "role": "CHYK - Singapore",
+    "initials": "RI"
   },
   {
-    id: 't2',
-    quote: 'I came to CHYK at a point in my life when I felt completely lost. The weekly study classes, the incredible acharyas, and the bonds I built here — they literally rebuilt me.',
-    name: 'Priya Sharma',
-    role: 'CHYKer, Delhi | CA Aspirant',
-    initials: 'PS',
-    year: '2020–present'
+    "id": "shivani-kanoujia",
+    "quote": "Being a CHYK, I started knowing myself more. Participation in spiritual and cultural activities, enriching sessions, and youth camps nurtured my self-growth and made me an active youth for the nation. CHYK classes helped me go on a quest for my path and become a better version of myself - a responsible, vigilant, and good human being who knows the art of living and serving.",
+    "name": "Shivani Kanoujia",
+    "role": "CHYK - Noida",
+    "initials": "SK"
   },
   {
-    id: 't3',
-    quote: 'The National Youth Convention is an experience that defies description. Standing in that hall with thousands of other young seekers, chanting together — something shifts in you permanently.',
-    name: 'Rohit Nair',
-    role: 'CHYKer, Bengaluru | MBA Student',
-    initials: 'RN',
-    year: '2019–present'
+    "id": "adityan-dubai",
+    "quote": "When I first heard of CHYK, I thought it would be full of activities, team building, and spiritual learning. Being in CHYK truly helped me. I understood various spiritual concepts which brought a drastic change in my life. I once complained about every small problem, but CHYK helped me understand that I am responsible for how I respond to what happens. Reading Gurudev's thought-provoking essays also helped me explore the beauty of language. I am delighted to be part of CHYK because it transformed me into a better person.",
+    "name": "Adityan",
+    "role": "CHYK - Dubai",
+    "initials": "AD"
   },
   {
-    id: 't4',
-    quote: 'YEP was a turning point for my career and my relationships. The workshop didn\'t give me answers — it helped me ask better questions. That\'s what Vedanta does.',
-    name: 'Kavya Menon',
-    role: 'Pre-CHYK Alumni, Chennai | Medical Student',
-    initials: 'KM',
-    year: '2021–2023'
+    "id": "hindupur-chyker",
+    "quote": "Before I began my journey with CHYK, I was hesitant, unsure of how to express myself, and doubtful about my identity as a Bharatiya. At times my emotions took control, especially in relationships. CHYK taught me that emotional development means growing stronger within, caring deeply without becoming dependent, and responding with patience instead of reacting. Bharatiya culture, with its values of empathy, respect, knowledge, and selflessness, helped me build stronger and more meaningful connections. Today I proudly present Bharat's values and traditional practices. This transformation has shaped my identity and strengthened my character.",
+    "name": "CHYK Member",
+    "role": "Hindupur, Andhra Pradesh",
+    "initials": "AP"
   },
   {
-    id: 't5',
-    quote: 'The Himalayan Yatra was the hardest and most beautiful thing I\'ve ever done. Physically exhausting, spiritually electric. Every step was a teaching.',
-    name: 'Aarav Singh',
-    role: 'CHYKer, Pune | IIT Student',
-    initials: 'AS',
-    year: '2022–present'
-  },
-  {
-    id: 't6',
-    quote: 'CHYK theatre gave me my voice. Literally. I was terrified of stages. Now I perform mono acts in front of thousands. What it actually gave me was confidence rooted in self-knowledge.',
-    name: 'Tanvi Iyer',
-    role: 'CHYKer, Hyderabad | Law Student',
-    initials: 'TI',
-    year: '2020–present'
+    "id": "shruthi-sure",
+    "quote": "CHYK has been a transformative part of my life. It helped me discover my strengths, build confidence, and improve my communication and leadership skills. Through study sessions, seva, and mentorship, I gained clarity, self-awareness, and purpose. The values, friendships, and experiences continue to inspire my personal growth and service to society.",
+    "name": "Shruthi Sure",
+    "role": "CHYK - Andhra Pradesh",
+    "initials": "SS"
   }
 ];

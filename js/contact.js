@@ -136,7 +136,6 @@
   document.addEventListener('DOMContentLoaded', function () {
     initContactTypeSelector();
     initContactForm();
-    initCentres();
   });
 
 })();
